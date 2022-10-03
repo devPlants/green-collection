@@ -30,6 +30,20 @@ const Users = {
             return { status: 500, response: err };
         }
     },
+    getAllUsers: async () => {
+        try {
+            const client = await db;
+            const getUsers = await client.query(
+                `
+                SELECT id, photo, email, cpf, name, admin, phone_number, zip_code, address, number, city, state FROM users WHERE deleted = false;
+                `
+            );
+
+            return { status: 200, response: getUsers.rows };
+        } catch (err) {
+            return { status: 500, response: err };
+        }
+    },
     getUserById: async (id) => {
         try {
             const client = await db;

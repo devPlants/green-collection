@@ -10,8 +10,14 @@ const UserServices = {
             };
         }
         const create = await users.create(data);
+        console.log(data);
 
         return create;
+    },
+    getAllUsers: async () => {
+        const getUsers = await users.getAllUsers();
+
+        return getUsers;
     },
     getUserId: async (id) => {
         const getUser = await users.getUserById(id);

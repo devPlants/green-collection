@@ -14,6 +14,17 @@ const UserControllers = {
 
         res.status(201).json({ id: createUser.response });
     },
+    getAll: async (req, res) => {
+        const users = await UserServices.getAllUsers();
+
+        if (users.status > 300) {
+            return res.status(users.status).json({
+                message: users.response,
+            });
+        }
+
+        res.status(200).json(users.response);
+    },
     get: async (req, res) => {
         const id = req.params.id;
         const user = await UserServices.getUserId(id);
