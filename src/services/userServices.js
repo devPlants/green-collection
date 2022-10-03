@@ -1,5 +1,6 @@
 const validations = require("../validations/userValidations.js");
 const users = require("../repositories/users.js");
+const encrypt = require("./encrypt.js");
 
 const UserServices = {
     saveUser: async (data) => {
@@ -9,8 +10,13 @@ const UserServices = {
                 response: "Bad Request",
             };
         }
+
+        const { password } = data;
+        const hash = encrypt(password);
+
+        data.password = hash;
+
         const create = await users.create(data);
-        console.log(data);
 
         return create;
     },
