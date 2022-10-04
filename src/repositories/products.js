@@ -7,7 +7,7 @@ const Products = {
             data.category,
             data.description,
             data.photo,
-            data.user_id
+            data.user_id,
         ];
         try {
             const client = await db;
