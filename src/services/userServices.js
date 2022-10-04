@@ -1,10 +1,9 @@
 const validations = require("../validations/userValidations.js");
 const users = require("../repositories/users.js");
 const encrypt = require("./encrypt.js");
-const jwt = require("jsonwebtoken");
 
 const UserServices = {
-    saveProduct: async (data) => {
+    saveUser: async (data) => {
         if (!validations(data)) {
             return {
                 status: 400,
