@@ -2,7 +2,7 @@ const validations = require("../validations/userValidations.js");
 const users = require("../repositories/users.js");
 
 const UserServices = {
-    saveUser: async (data) => {
+    saveProduct: async (data) => {
         if (!validations(data)) {
             return {
                 status: 400,
