@@ -25,14 +25,18 @@
                     <h2 id="login-title">Login</h2>
                 </div>
                 <div class="inputs-container">
-                    <label for="email">E-mail:</label>
-                    <input type="text" name="email">
-                    <label for="passwd">Senha:</label>
-                    <input type="password" name="passwd">
-                    <span>Esqueceu sua senha?</span>
+                    <div class="email-container">
+                        <label for="email">E-mail:</label>
+                        <input type="text" name="email">
+                    </div>
+                    <div class="passwd-container">
+                        <label for="passwd">Senha:</label>
+                        <input type="password" name="passwd">
+                        <span id="forgot-passwd">Esqueceu sua senha?</span>
+                    </div>
                     <div class="btns-container">
-                        <button type="button">Cadastrar</button>
-                        <button type="button">Entrar</button>
+                        <button id="signup-btn" type="button">Cadastrar</button>
+                        <button id="login-btn" type="button">Entrar</button>
                     </div>
                 </div>
             </div>
