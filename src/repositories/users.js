@@ -30,6 +30,20 @@ const Users = {
             return { status: 500, response: err };
         }
     },
+    getAllUsers: async () => {
+        try {
+            const client = await db;
+            const getUsers = await client.query(
+                `
+                SELECT id, photo, email, cpf, name, admin, phone_number, zip_code, address, number, city, state FROM users WHERE deleted = false;
+                `
+            );
+
+            return { status: 200, response: getUsers.rows };
+        } catch (err) {
+            return { status: 500, response: err };
+        }
+    },
     getUserById: async (id) => {
         try {
             const client = await db;
@@ -39,6 +53,25 @@ const Users = {
                 `,
                 [id]
             );
+
+            return { status: 200, response: getUser.rows };
+        } catch (err) {
+            return { status: 500, response: err };
+        }
+    },
+    getUserByEmail: async (email) => {
+        try {
+            const client = await db;
+            const getUser = await client.query(
+                `
+                SELECT id, email, password, admin FROM users WHERE email = $1 AND deleted = false;
+                `,
+                [email]
+            );
+
+            if (!getUser.rows.length) {
+                return { status: 400, response: "Email not registered" };
+            }
 
             return { status: 200, response: getUser.rows };
         } catch (err) {

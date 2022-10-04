@@ -1,5 +1,7 @@
 const validations = require("../validations/userValidations.js");
 const users = require("../repositories/users.js");
+const encrypt = require("./encrypt.js");
+const jwt = require("jsonwebtoken");
 
 const UserServices = {
     saveProduct: async (data) => {
@@ -9,9 +11,20 @@ const UserServices = {
                 response: "Bad Request",
             };
         }
+
+        const { password } = data;
+        const hash = encrypt(password);
+
+        data.password = hash;
+
         const create = await users.create(data);
 
         return create;
+    },
+    getAllUsers: async () => {
+        const getUsers = await users.getAllUsers();
+
+        return getUsers;
     },
     getUserId: async (id) => {
         const getUser = await users.getUserById(id);

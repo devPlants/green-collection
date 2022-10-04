@@ -14,6 +14,17 @@ const UserControllers = {
 
         res.status(201).json({ id: createUser.response });
     },
+    getAll: async (req, res) => {
+        const users = await UserServices.getAllUsers();
+
+        if (users.status > 300) {
+            return res.status(users.status).json({
+                message: users.response,
+            });
+        }
+
+        res.status(200).json(users.response);
+    },
     get: async (req, res) => {
         const id = req.params.id;
         const user = await UserServices.getUserId(id);
@@ -27,7 +38,7 @@ const UserControllers = {
         res.status(200).json(user.response);
     },
     update: async (req, res) => {
-        const id = req.params.id;
+        const id = req.userId;
         const data = req.body;
 
         data.id = id;
@@ -43,7 +54,7 @@ const UserControllers = {
         res.status(204).send();
     },
     delete: async (req, res) => {
-        const id = req.params.id;
+        const id = req.userId;
         const del = await UserServices.deleteUser(id);
 
         if (del.status > 300) {
