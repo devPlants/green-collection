@@ -6,8 +6,7 @@ const Products = {
             data.name,
             data.category,
             data.description,
-            data.photo,
-            data.user_id
+            data.photo
         ];
         try {
             const client = await db;
@@ -18,14 +17,6 @@ const Products = {
                 `,
                 values
             );
-
-            // const createCollections = await client.query(
-            //     `
-            //     INSERT INTO collections (user_id, product_id)
-            //     VALUES ($5, ${createProducts.rows[0].id}) RETURNING id;
-            //     `,
-            //     values
-            // );
 
             return { status: 201, response: createProducts.rows[0].id };
         } catch (err) {
