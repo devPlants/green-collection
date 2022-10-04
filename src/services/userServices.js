@@ -1,7 +1,6 @@
 const validations = require("../validations/userValidations.js");
 const users = require("../repositories/users.js");
 const encrypt = require("./encrypt.js");
-const jwt = require("jsonwebtoken");
 
 const UserServices = {
     saveUser: async (data) => {
