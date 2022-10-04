@@ -4,7 +4,7 @@ const encrypt = require("./encrypt.js");
 const jwt = require("jsonwebtoken");
 
 const UserServices = {
-    saveUser: async (data) => {
+    saveProduct: async (data) => {
         if (!validations(data)) {
             return {
                 status: 400,
