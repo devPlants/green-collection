@@ -38,7 +38,7 @@ const UserControllers = {
         res.status(200).json(user.response);
     },
     update: async (req, res) => {
-        const id = req.params.id;
+        const id = req.userId;
         const data = req.body;
 
         data.id = id;
@@ -54,7 +54,7 @@ const UserControllers = {
         res.status(204).send();
     },
     delete: async (req, res) => {
-        const id = req.params.id;
+        const id = req.userId;
         const del = await UserServices.deleteUser(id);
 
         if (del.status > 300) {
