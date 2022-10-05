@@ -17,24 +17,24 @@ module.exports = authService = {
         }
 
         const _token = jwt.sign(
-            { userId: user.response[0].id },
+            {
+                userId: user.response[0].id,
+                userEmail: user.response[0].email,
+                userName: user.response[0].name,
+                userPhoto: user.response[0].photo,
+                userAdmin: user.response[0].admin,
+            },
             process.env.JWTSECRET,
             { expiresIn: 9999 }
         );
 
         return {
             status: 200,
-            response: { id: user.response[0].id, token: _token },
+            response: { token: _token },
         };
     },
-    verifyAdmin: async (id) => {
-        const user = await Users.getUserById(id);
-
-        if (user.status != 200) {
-            return { status: user.status, response: user.response };
-        }
-
-        if (!user.response[0].admin) {
+    verifyAdmin: async (admin) => {
+        if (!admin) {
             return { status: 401, response: "User is not admin" };
         }
 

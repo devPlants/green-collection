@@ -8,12 +8,17 @@ module.exports = auth = {
             if (err) return res.status(401).end();
 
             req.userId = decoded.userId;
+            req.userAdmin = decoded.userAdmin;
+            req.userName = decoded.userName;
+            req.userPhoto = decoded.userPhoto;
+            req.userEmail = decoded.userEmail;
 
             next();
         });
     },
     authAdmin: async (req, res, next) => {
-        const admin = await authServices.verifyAdmin(req.userId);
+        const isAdmin = req.userAdmin;
+        const admin = await authServices.verifyAdmin(isAdmin);
 
         if (admin.status != 200) {
             return res.status(admin.status).json(admin.response);

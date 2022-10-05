@@ -1,11 +1,11 @@
 module.exports = collectionValidates = (data) => {
     if (
-        data.status != "pending" ||
-        data.status != "approved" ||
-        data.status != "rejected" ||
-        data.status != "in_exchange"
+        data.status == "pending" ||
+        data.status == "approved" ||
+        data.status == "rejected" ||
+        data.status == "in_exchange"
     ) {
-        return false;
+        return true;
     }
-    return true;
+    return false;
 };
