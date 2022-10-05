@@ -18,6 +18,7 @@ const loginMain = `<section class="login-section">
             <button id="signup-btn" type="button">Cadastrar</button>
             <button id="login-btn" type="button">Entrar</button>
         </div>
+        <span id="valid-container"></span>
     </div>
 </div>
 <img src="./assets/imgs/logo.png" alt="" width="150px" height="150px">
