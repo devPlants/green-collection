@@ -1,7 +1,8 @@
 const db = require("../database/index.js");
+const collections = require("./collections.js");
 
 const Products = {
-    create: async (data) => {
+    create: async (data, userId) => {
         const values = [
             data.name,
             data.category,
@@ -17,8 +18,9 @@ const Products = {
                 `,
                 values
             );
+            const resCollection = await collections.create({ userId: userId, productId: createProducts.rows[0].id });
 
-            return { status: 201, response: createProducts.rows[0].id };
+            return { status: 201, response: createProducts.rows[0].id, collection: `${resCollection.response}` };
         } catch (err) {
             return { status: 500, response: err };
         }
@@ -28,19 +30,48 @@ const Products = {
             const client = await db;
             const getProducts = await client.query(
                 `
-                SELECT id, photo, email, cpf, name, admin, phone_number, zip_code, address, number, city, state FROM Productss WHERE id = $1 AND deleted = false;
+                SELECT id, name, category, photo, description FROM products WHERE id = $1 AND deleted = false;
                 `,
                 [id]
             );
-
             return { status: 200, response: getProducts.rows };
         } catch (err) {
             return { status: 500, response: err };
         }
     },
-    updateProducts: async (data) => {
+    getProducts: async (userId) => {
         try {
             const client = await db;
+            const userAdmin = (await client.query(
+                `
+                SELECT admin FROM users WHERE id = '${userId}';
+                `
+            )).rows[0].admin;
+
+            if (userAdmin != true) { return { status: 401 } }
+
+            const getProducts = await client.query(
+                `
+                SELECT id, name, category, photo, description FROM products WHERE deleted = false;
+                `
+            );
+            return { status: 200, response: getProducts.rows };
+        } catch (err) {
+            return { status: 500, response: err };
+        }
+    },
+    updateProduct: async (data, userId) => {
+        try {
+            const client = await db;
+
+            const productOwner = (await client.query(
+                `
+                SELECT users_id FROM collections WHERE products_id = '${data.id}';
+                `
+            )).rows[0].users_id;
+
+            if (productOwner != userId) { return { status: 401 } }
+
             const helpQuery = {
                 columns: "",
                 count: 0,
@@ -68,10 +99,19 @@ const Products = {
             return { status: 500, response: err };
         }
     },
-    deleteProducts: async (id) => {
+    deleteProducts: async (id, userId) => {
         try {
             const date = new Date();
             const client = await db;
+
+            const productOwner = (await client.query(
+                `
+                SELECT users_id FROM collections WHERE products_id = '${id}';
+                `
+            )).rows[0].users_id;
+
+            if (productOwner != userId) { return { status: 401 } }
+
             const getProducts = await client.query(
                 `
                 UPDATE products SET deleted=$1, deleted_at=$2 WHERE id=$3;

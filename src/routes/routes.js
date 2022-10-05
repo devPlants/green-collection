@@ -17,8 +17,9 @@ router.put("/users", users.update);
 router.delete("/users", users.delete);
 
 router.get("/products/:id", products.get);
+router.get("/products", products.getAll);
 router.post("/products", storage.single("photo"), products.create);
-router.put("/products", products.update);
-router.delete("/products", products.delete);
+router.put("/products/:id", products.update);
+router.delete("/products/:id", products.delete);
 
 module.exports = router;
