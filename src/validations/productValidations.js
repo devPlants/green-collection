@@ -3,14 +3,12 @@ const userValidations = (data) => {
         name,
         photo,
         description,
-        category,
-        user_id
+        category
     } = data;
     if (
         typeof name != "string" ||
         /*  typeof photo != "string" || */
         typeof description != "string" ||
-        typeof user_id != "string" ||
         typeof category != "string"
     ) {
         return false;
