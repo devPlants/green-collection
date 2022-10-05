@@ -19,7 +19,7 @@ module.exports = authService = {
         const _token = jwt.sign(
             { userId: user.response[0].id },
             process.env.JWTSECRET,
-            { expiresIn: 3000 }
+            { expiresIn: 9999 }
         );
 
         return {
