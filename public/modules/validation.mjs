@@ -2,7 +2,6 @@ export async function login(){
     const emailInput = document.querySelector('#email-input');
     const passwdInput = document.querySelector('#passwd-input')
 
-
     const userEmail = emailInput.value;
     const userPasswd = passwdInput.value;
 

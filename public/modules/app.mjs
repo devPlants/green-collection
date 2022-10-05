@@ -9,28 +9,33 @@ const header = document.querySelector('header');
 const main = document.querySelector('main');
 const searchCard = document.querySelectorAll('.search-card');
 
-searchCard.forEach((element) => {
-    element.addEventListener('click', () => {
+function homePage(){
+    header.innerHTML = homeHeader;
+    main.innerHTML = homeMain;
+}
 
-        header.innerHTML = '';
-        main.innerHTML = '';
+function loginPage(){
+    header.innerHTML = '';
+    main.innerHTML = '';
 
-        header.innerHTML = loginHeader;
-        main.innerHTML = loginMain;
-        loginBtn = document.querySelector('#login-btn');
-        loginBtn.addEventListener('click', async () => {
+    header.innerHTML = loginHeader;
+    main.innerHTML = loginMain;
+    loginBtn = document.querySelector('#login-btn');
+    loginBtn.addEventListener('click', async () => {
 
-        const response = await login();
-        if (response == 400) {
-            console.log(`Email ou senha não válidos`);
-            return;
-        }
-        token = response;
-        console.log(token);
-        header.innerHTML = homeHeader;
-        main.innerHTML = homeMain;
-        });
-    })
+    const response = await login();
+    if (response == 400) {
+        console.log(`Email ou senha não válidos`);
+        return;
+    }
+    token = response;
+    console.log(token);
+    homePage();
+    });
+}
+
+searchCard.forEach(element => {
+    element.addEventListener('click', loginPage)
 });
 
 
