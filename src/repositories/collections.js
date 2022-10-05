@@ -7,13 +7,61 @@ const collections = {
             const client = await db;
             const createCollections = await client.query(
                 `
-                INSERT INTO collections (user_id, product_id)
+                INSERT INTO collections (users_id, products_id)
                 VALUES ($1, $2);
                 `,
                 values
             );
 
             return { status: 201, response: "collections created" };
+        } catch (err) {
+            return { status: 500, response: err };
+        }
+    },
+    getByProductId: async (id) => {
+        try {
+            const client = await db;
+            const query = `
+                SELECT user_id, product_id, p.name as product_name, p.category, p.photo  as product_photo, 
+                p.description, p.created_at, u.name as user_name, u.photo as user_photo, 
+                u.city as user_city, u.state as user_state 
+
+                FROM collections c
+                INNER JOIN products p
+                ON c.product_id = p.id
+                               
+                INNER JOIN users u
+                ON c.user_id = u.id
+                WHERE c.product_id = $1;
+                `;
+
+            const getCollections = await client.query(query, [id]);
+
+            return { status: 200, response: getCollections.rows };
+        } catch (err) {
+            return { status: 500, response: err };
+        }
+    },
+    getByStatus: async (status) => {
+        try {
+            const client = await db;
+            const query = `
+                SELECT user_id, product_id, c.status, p.name as product_name, p.category, p.photo  as product_photo, 
+                p.description, u.name as user_name, u.photo as user_photo, 
+                u.city as user_city, u.state as user_state 
+
+                FROM collections c
+                INNER JOIN products p
+                ON c.product_id = p.id
+                               
+                INNER JOIN users u
+                ON c.user_id = u.id
+                WHERE c.status = $1 ORDER BY p.created_at;
+                `;
+
+            const getCollections = await client.query(query, [status]);
+
+            return { status: 200, response: getCollections.rows };
         } catch (err) {
             return { status: 500, response: err };
         }
