@@ -7,7 +7,7 @@ const collections = {
             const client = await db;
             const createCollections = await client.query(
                 `
-                INSERT INTO collections (user_id, product_id)
+                INSERT INTO collections (users_id, products_id)
                 VALUES ($1, $2);
                 `,
                 values

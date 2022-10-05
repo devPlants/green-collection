@@ -25,7 +25,7 @@ module.exports = authService = {
                 userAdmin: user.response[0].admin,
             },
             process.env.JWTSECRET,
-            { expiresIn: 3000 }
+            { expiresIn: 9999 }
         );
 
         return {

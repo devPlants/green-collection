@@ -59,6 +59,10 @@ footer {
     color: #ffffff;
 }
 
+input{
+    outline: none;
+}
+
 
 .searchbar-container {
     height: fit-content;
@@ -71,11 +75,13 @@ footer {
 
     gap: 0.1em;
 }
-.login-container{
+
+.login-container {
     display: flex;
     flex-direction: column;
 }
-.login-container span:nth-child(2){
+
+.login-container span:nth-child(2) {
     font-size: 0.6rem;
     color: #6B6A6A;
 }
@@ -116,7 +122,7 @@ footer {
 
 /* ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; */
 
-.title-card{
+.title-card {
     color: #ffff;
     display: flex;
     justify-content: end;
@@ -124,19 +130,143 @@ footer {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: left top;
-    height:70vh
+    height: 70vh
 }
 
 
 
-.title-container{
+.title-container {
     text-align: center;
     width: 42vw;
     margin: 0 8rem 0 0;
     padding: 5rem 10rem 0 0;
 }
 
-.title-container h2{
+.title-container h2 {
     text-shadow: 2px 2px #6B6A6A;
 }
 
+
+.search-cards-section {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 3rem;
+}
+
+.search-cards-title {
+    display: flex;
+    margin-bottom: 2em;
+
+}
+
+.search-cards-container {
+    max-width: 700px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    position: relative;
+
+}
+
+.search-card {
+    width: 300px;
+    height: 300px;
+    background-size: cover;
+}
+
+.search-card:nth-child(1) {
+    background-image: url(../imgs/search-plants.png);
+    border-radius: 0 0 1.75rem 0;
+}
+
+.search-card:nth-child(2) {
+    background-image: url(../imgs/search-seeds.png);
+    border-radius: 0 1.75rem 0 0;
+}
+
+.search-card:nth-child(3) {
+    background-image: url(../imgs/search-users.png);
+    border-radius: 0 1.75rem 0 0;
+}
+
+.search-card:nth-child(4) {
+    background-image: url(../imgs/search-location.png);
+    border-radius: 0 0 1.75rem 0;
+}
+
+#cards-logo {
+    position: absolute;
+    top: 296px;
+}
+
+/* ///////////
+    Login
+////////////// */
+
+.login-section {
+    padding-top: 5%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 2rem
+}
+
+
+.login-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+}
+
+#login-title{
+    text-align: center;
+    font-size: 2rem;
+
+}
+
+.inputs-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.email-container,
+.passwd-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#forgot-passwd {
+    font-size: 0.75rem;
+    text-align: end;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.btns-container{
+    display: flex;
+    gap: 1em;
+    padding: 1em 0 0 0;
+}
+
+.inputs-container button {
+    border-radius: 0.4em;
+    border: none;
+    width: 15ch;
+    height: 2em;
+    cursor: pointer;
+}
+
+#signup-btn {
+    background-color: var(--background);
+    border: solid var(--black) 1px;
+}
+
+#login-btn {
+    color: var(--background);
+    background-color: var(--black);
+}
