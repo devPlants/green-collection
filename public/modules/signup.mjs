@@ -1,4 +1,4 @@
-export async function signup(){
+export async function signup() {
     const nameInput = document.querySelector('#name-input');
     const emailInput = document.querySelector('#email-input');
     const cpfInput = document.querySelector('#cpf-input');
@@ -27,7 +27,7 @@ export async function signup(){
 
     ///////////
 
-        const form = new FormData();
+    const form = new FormData();
     form.append(`"name", ${userName}`);
     form.append(`"email", ${userEmail}`);
     form.append(`"password", ${userpassword}`);
@@ -38,14 +38,14 @@ export async function signup(){
     form.append(`"number", ${userNummber}`);
     form.append(`"city", ${userCity}`);
     form.append(`"state", ${userState}`);
-   //form.append("photo", "C:\\Users\\ozias\\Desktop\\minion.jpg");
+    //form.append("photo", "C:\\Users\\ozias\\Desktop\\minion.jpg");
 
     const options = {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'multipart/form-data; boundary=---011000010111000001101001',
-        'authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI3ODJjMjgzNC02YjhmLTRiMGQtOTI0OS0yZWVkYjc3NzQ3MmQiLCJpYXQiOjE2NjQ5MDc3MzIsImV4cCI6MTY2NDkxNzczMX0.pk0mqD1oFfvzRF_-lt2_o4qQknUIzgXY7ITdVcipysM'
-    }
+        method: 'POST',
+        headers: {
+            'Content-Type': 'multipart/form-data; boundary=---011000010111000001101001',
+            'authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI3ODJjMjgzNC02YjhmLTRiMGQtOTI0OS0yZWVkYjc3NzQ3MmQiLCJpYXQiOjE2NjQ5MDc3MzIsImV4cCI6MTY2NDkxNzczMX0.pk0mqD1oFfvzRF_-lt2_o4qQknUIzgXY7ITdVcipysM'
+        }
     };
 
     options.body = form;
