@@ -19,15 +19,37 @@ const collectionsServices = {
 
         return products;
     },
+    getByUserIdPaginate: async (id, _rows, _page) => {
+        const rows = _rows;
+        const page = rows * (_page - 1);
+        const products = await collections.getByUserId(id, rows, page);
+
+        if (products.status > 300) return products;
+
+        return products;
+    },
     getByStatus: async (_status) => {
         const data = { status: _status };
+
         if (!validations(data)) {
             return {
                 status: 400,
                 response: "Bad Request",
             };
         }
+
         const products = await collections.getByStatus(data.status);
+
+        return products;
+    },
+    searchPaginate: async (data) => {
+        const rows = data.rows;
+        const _page = rows * (data.page - 1);
+        data.page = _page;
+
+        const products = await collections.search(data);
+
+        if (products.status > 300) return products;
 
         return products;
     },
