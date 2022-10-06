@@ -9,22 +9,22 @@ export async function signup() {
 
     const form = new FormData(forms);
 
-    async function getToken(_email, _password) {
-        const options = {
-            method: 'POST'
-        };
+    
+    const options = {
+        method: 'POST'
+    };
 
-        options.body = form;
+    options.body = form;
 
-        const response = await fetch('http://localhost:8000/users', options)
-        if (response.status != 201) {
-            return alert("Erro de cadastro!")
-        }
-        const data = await response.json()
-        const token = await getToken(emailUser.value, passwordUser.value);
-        renderHomeBySignup(token.token, token.userId);
-        return true;
+    const response = await fetch('http://localhost:8000/users', options)
+    if (response.status != 201) {
+        return alert("Erro de cadastro!")
     }
+    const data = await response.json()
+    const token = await getToken(emailUser.value, passwordUser.value);
+    renderHomeBySignup(token.token, token.userId);
+    return true;
+    
 
     async function getToken(_email, _password) {
         const options = {
