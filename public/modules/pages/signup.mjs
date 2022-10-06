@@ -2,16 +2,16 @@ const signupMain = ` <div class="singup-title-container">
 <h2 id="singup-title">Cadastro</h2>
 </div>
 <section class="singup-section">
-<div class="singup-wrapper">
+<form id="form-signup" enctype="multipart/form-data" class="singup-wrapper">
     <div class="signup-inputs-container">
         <div class="first-input-container">
             <div class="name-container  label">
                 <label for="name">Nome:</label>
-                <input type="text" name="nome">
+                <input type="text" name="name">
             </div>
             <div class="signup-email-container label">
                 <label for="email">E-mail:</label>
-                <input type="text" name="email">
+                <input type="text" id ="email-input" name="email">
             </div>
         </div>
         <div class="second-input-container">
@@ -21,13 +21,13 @@ const signupMain = ` <div class="singup-title-container">
             </div>
             <div class="phone-container label">
                 <label for="phone">Telefone:</label>
-                <input type="text" name="phone">
+                <input type="text" name="phoneNumber">
             </div>
         </div>
         <div class="zipcode-input-container">
             <div class="zipcode-container label">
                 <label for="zipcode">CEP:</label>
-                <input type="text" name="zipcode">
+                <input type="text" name="zipCode">
             </div>
         </div>
         <div class="third-input-container">
@@ -53,7 +53,7 @@ const signupMain = ` <div class="singup-title-container">
         <div class="fifth-input-container">
             <div class="signup-passwd-container label">
                 <label for="passwd">Senha:</label>
-                <input type="password" name="passwd">
+                <input type="password" id="password-input" name="password">
             </div>
             <div class="confirm-passwd-container label">
                 <label for="confirm-passwd">Confirme sua senha:</label>
@@ -61,16 +61,17 @@ const signupMain = ` <div class="singup-title-container">
             </div>
         </div>
     </div>
-</div>
-<div class="photo-wrapper">
+    <div class="photo-wrapper">
     <div class= "photo-container">
     </div>
     <label for='photo-btn' class="label-for-photo-btn"> Adicionar Imagem</label>
-    <input id="photo-btn" type="file" value="Adicionar imagem">
+    <input id="photo-btn" type="file" name="photo">
 </div>
-</section>
 <div class="btn-container">
 <button id="signup-btn" type="button" onclick="signup()">Cadastrar</button>
-</div>`;
+</div>
+</form>
+</section>
+`;
 
 export {signupMain}

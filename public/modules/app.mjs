@@ -14,6 +14,15 @@ const header = document.querySelector('header');
 const main = document.querySelector('main');
 const searchCard = document.querySelectorAll('.search-card');
 
+export function renderHomeBySignup(_token, _userId){
+    token = _token;
+    userId = _userId;
+
+    homePage();
+
+
+}
+
 async function homePage() {
     const data = await dataUser(token, userId);
 
