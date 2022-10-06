@@ -13,7 +13,10 @@ const ProductControllers = {
             });
         }
 
-        res.status(201).json({ id: saveProduct.response, collection: saveProduct.collection });
+        res.status(201).json({
+            id: saveProduct.response,
+            collection: saveProduct.collection,
+        });
     },
     get: async (req, res) => {
         const id = req.params.id;
@@ -32,7 +35,7 @@ const ProductControllers = {
 
         if (products.status > 300) {
             return res.status(products.status).json({
-                message: products.response
+                message: products.response,
             });
         }
 
@@ -41,14 +44,16 @@ const ProductControllers = {
     update: async (req, res) => {
         const id = req.params.id;
         const data = req.body;
+        const date = new Date();
 
+        data.updated_at = date;
         data.id = id;
 
         const update = await ProductServices.updateProductId(data, req.userId);
 
         if (update.status > 300) {
             return res.status(update.status).json({
-                message: update.response
+                message: update.response,
             });
         }
 
@@ -60,7 +65,7 @@ const ProductControllers = {
 
         if (del.status > 300) {
             return res.status(del.status).json({
-                message: del.response
+                message: del.response,
             });
         }
 
