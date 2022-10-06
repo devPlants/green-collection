@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const storage = require("../storage/storage.js");
+const files = require("../storage/files.js");
 const users = require("../controllers/userControllers.js");
 const auth = require("../controllers/auth.js");
 const products = require("../controllers/productControllers.js");
@@ -10,6 +11,7 @@ const collections = require("../controllers/collectionControllers.js");
 
 router.post("/login", auth.login);
 router.post("/users", storage.single("photo"), users.create);
+router.get("/files/:file", files.getFiles);
 
 router.use(auth.verifyAuth);
 

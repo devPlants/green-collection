@@ -2,7 +2,6 @@ const db = require("../database/index.js");
 
 const Users = {
     create: async (data) => {
-        console.log(data);
         const values = [
             data.name,
             data.email,
