@@ -13,7 +13,7 @@ export async function login(){
 
         async function requisition(){
             try {
-                const response = await fetch('http://localhost:8000/login', options);
+                const response = await fetch('/login', options);
                 if(response.status >= 300){
                     return 400;
                 }

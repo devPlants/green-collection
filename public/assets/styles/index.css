@@ -175,6 +175,7 @@ input {
     width: 450px;
     height: 320px;
     background-size: cover;
+    cursor: pointer;
 }
 
 .search-card:nth-child(1) {
@@ -408,3 +409,8 @@ textarea{
     color: var(--background);
     width: 18ch;
 }
+
+/* ;;;;;;;;;;;;
+    Cadastro
+;;;;;;;;;;;;;;*/
+
