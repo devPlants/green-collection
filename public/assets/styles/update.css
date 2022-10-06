@@ -206,7 +206,7 @@ input{
     singup
 ////////////// */
 
-.singup-section {
+.update-section {
     padding-top: 5%;
     display: flex;
     justify-content: space-evenly;
@@ -215,7 +215,7 @@ input{
 }
 
 
-.singup-wrapper {
+.update-wrapper {
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -223,14 +223,14 @@ input{
     width: 40vw;
 }
 
-#singup-title{
+#update-title{
     text-align: center;
     margin-top: 2em;;
     font-size: 2rem;
    
 }
 
-#signup-title{
+#update-title{
     font-size: 2rem;
 
 }
@@ -242,7 +242,7 @@ input{
     width: 100%;
 }
 
-.singup-section{
+.update-section{
     display: flex;
 }
 
@@ -302,7 +302,7 @@ input{
     gap: 1em;
 }
 
-#signup-btn{
+#update-btn{
     background-color: var(--black);
     color:#ffffff;
     padding: 0.6;
