@@ -34,7 +34,7 @@ module.exports = auth = {
         }
 
         res.status(200).json({
-            userId: user.response.id,
+            userId: user.response.userId,
             token: user.response.token,
         });
     },
