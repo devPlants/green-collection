@@ -12,8 +12,6 @@ export async function signup(){
     const confPasswordInput = document.querySelector('#confirm-passwd-input');
     //FALTA FOTO!!
 
-
-
     const userName = nameInput.value;
     const userEmail = emailInput.value;
     const userCpf = cpfInput.value;

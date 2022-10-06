@@ -13,7 +13,6 @@ let userId;
 const header = document.querySelector('header');
 const main = document.querySelector('main');
 const searchCard = document.querySelectorAll('.search-card');
-let signUpBtn;
 
 async function homePage() {
     const data = await dataUser(token, userId);
@@ -50,6 +49,21 @@ function loginPage() {
 function signUpPage() {
     header.innerHTML = loginHeader;
     main.innerHTML = signupMain;
+    function readImage(){
+
+        if(this.files && this.files[0]){
+            const file = new FileReader();
+            file.onload = function(e){
+            const photoContainer = document.querySelector('.photo-container');
+            photoContainer.style = `background-image: url(${e.target.result});
+            background-size: cover;
+            background-position: center;`;
+            };
+        file.readAsDataURL(this.files[0]);
+        }
+    }
+
+    document.querySelector('#photo-btn').addEventListener('change', readImage, false);
 }
 
 searchCard.forEach(element => {

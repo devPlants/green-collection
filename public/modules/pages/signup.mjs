@@ -53,11 +53,11 @@ const signupMain = ` <div class="singup-title-container">
         <div class="fifth-input-container">
             <div class="signup-passwd-container label">
                 <label for="passwd">Senha:</label>
-                <input type="text" name="passwd">
+                <input type="password" name="passwd">
             </div>
             <div class="confirm-passwd-container label">
                 <label for="confirm-passwd">Confirme sua senha:</label>
-                <input type="text" name="confirm-passwd">
+                <input type="password" name="confirm-passwd">
             </div>
         </div>
     </div>
@@ -65,11 +65,12 @@ const signupMain = ` <div class="singup-title-container">
 <div class="photo-wrapper">
     <div class= "photo-container">
     </div>
-    <button id="photo-btn" type="button">Adicionar imagem</button>
+    <label for='photo-btn' class="label-for-photo-btn"> Adicionar Imagem</label>
+    <input id="photo-btn" type="file" value="Adicionar imagem">
 </div>
 </section>
 <div class="btn-container">
-<button id="signup-btn" type="button">CADASTRAR</button>
+<button id="signup-btn" type="button" onclick="signup()">Cadastrar</button>
 </div>`;
 
 export {signupMain}
