@@ -9,6 +9,7 @@ export async function signup(){
     
         const form = new FormData(forms);
 
+    async function getToken(_email, _password){
     const options = {
     method: 'POST'
     };
