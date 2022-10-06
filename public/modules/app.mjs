@@ -3,6 +3,7 @@ import { homeMain, homeHeader } from "./pages/home.mjs";
 import { login } from "./validation.mjs";
 import { modalCreate } from "./modal.mjs"
 import { signupMain } from "./pages/signup.mjs";
+import { signup } from "./signup.mjs"
 
 let loginBtn;
 let token;
@@ -50,3 +51,4 @@ searchCard.forEach(element => {
 window.signUpPage = signUpPage;
 window.loginPage = loginPage;
 window.modalCreate = modalCreate;
+window.signup = signup;
