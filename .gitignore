@@ -7,5 +7,4 @@ temp/
 coverage
 dist
 
-# uploads/*
 !uploads/.gitkeep
