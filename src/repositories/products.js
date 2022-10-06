@@ -3,12 +3,7 @@ const collections = require("./collections.js");
 
 const Products = {
     create: async (data, userId) => {
-        const values = [
-            data.name,
-            data.category,
-            data.description,
-            data.photo
-        ];
+        const values = [data.name, data.category, data.description, data.photo];
         try {
             const client = await db;
             const createProducts = await client.query(
@@ -18,9 +13,16 @@ const Products = {
                 `,
                 values
             );
-            const resCollection = await collections.create({ userId: userId, productId: createProducts.rows[0].id });
+            const resCollection = await collections.create({
+                userId: userId,
+                productId: createProducts.rows[0].id,
+            });
 
-            return { status: 201, response: createProducts.rows[0].id, collection: `${resCollection.response}` };
+            return {
+                status: 201,
+                response: createProducts.rows[0].id,
+                collection: `${resCollection.response}`,
+            };
         } catch (err) {
             return { status: 500, response: err };
         }
@@ -42,13 +44,17 @@ const Products = {
     getProducts: async (userId) => {
         try {
             const client = await db;
-            const userAdmin = (await client.query(
-                `
+            const userAdmin = (
+                await client.query(
+                    `
                 SELECT admin FROM users WHERE id = '${userId}';
                 `
-            )).rows[0].admin;
+                )
+            ).rows[0].admin;
 
-            if (userAdmin != true) { return { status: 401 } }
+            if (userAdmin != true) {
+                return { status: 401 };
+            }
 
             const getProducts = await client.query(
                 `
@@ -64,13 +70,17 @@ const Products = {
         try {
             const client = await db;
 
-            const productOwner = (await client.query(
+            const productOwner = (
+                await client.query(
+                    `
+                SELECT user_id FROM collections WHERE product_id = '${data.id}';
                 `
-                SELECT users_id FROM collections WHERE products_id = '${data.id}';
-                `
-            )).rows[0].users_id;
+                )
+            ).rows[0].user_id;
 
-            if (productOwner != userId) { return { status: 401 } }
+            if (productOwner != userId) {
+                return { status: 401 };
+            }
 
             const helpQuery = {
                 columns: "",
@@ -104,13 +114,17 @@ const Products = {
             const date = new Date();
             const client = await db;
 
-            const productOwner = (await client.query(
-                `
+            const productOwner = (
+                await client.query(
+                    `
                 SELECT users_id FROM collections WHERE products_id = '${id}';
                 `
-            )).rows[0].users_id;
+                )
+            ).rows[0].users_id;
 
-            if (productOwner != userId) { return { status: 401 } }
+            if (productOwner != userId) {
+                return { status: 401 };
+            }
 
             const getProducts = await client.query(
                 `
