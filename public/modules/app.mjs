@@ -10,8 +10,8 @@ const main = document.querySelector('main');
 const searchCard = document.querySelectorAll('.search-card');
 
 function homePage(){
-    header.innerHTML = homeHeader;
-    main.innerHTML = homeMain;
+    header.innerHTML = homeHeader(token);
+    main.innerHTML = homeMain(token);
 }
 
 function loginPage(){

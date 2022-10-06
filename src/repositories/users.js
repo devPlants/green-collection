@@ -2,6 +2,7 @@ const db = require("../database/index.js");
 
 const Users = {
     create: async (data) => {
+        console.log(data);
         const values = [
             data.name,
             data.email,
@@ -64,7 +65,7 @@ const Users = {
             const client = await db;
             const getUser = await client.query(
                 `
-                SELECT id, email, password, admin, photo FROM users WHERE email = $1 AND deleted = false;
+                SELECT id, email, password, admin, photo, name FROM users WHERE email = $1 AND deleted = false;
                 `,
                 [email]
             );
