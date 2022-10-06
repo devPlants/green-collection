@@ -29,7 +29,6 @@ function homeHeader(token) {
 
 function homeMain(token) {
 
-
     return `<section class="title-card">
             <div class="title-container">
                 <h2>Encontre as plantas que sua coleção precisa</h2>
@@ -50,7 +49,7 @@ function homeMain(token) {
             <section class="collection-section">
             <h2>Sua coleção</h2>
             <div class="collection-cards-container">
-                <div class="collection-card" id="create-card">
+                <div class="collection-card" id="create-card onclick="modalCreate()">
                     <img src="./assets/imgs/add.png" alt="" width="42px" height="64px">
                     <span>Adicionar à coleção</span>
                 </div>

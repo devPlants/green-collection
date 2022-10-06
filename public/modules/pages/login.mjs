@@ -15,7 +15,7 @@ const loginMain = `<section class="login-section">
             <span id="forgot-passwd">Esqueceu sua senha?</span>
         </div>
         <div class="btns-container">
-            <button id="signup-btn" type="button">Cadastrar</button>
+            <button id="signup-btn" type="button" onclick="signUpPage()">Cadastrar</button>
             <button id="login-btn" type="button">Entrar</button>
         </div>
         <span id="valid-container"></span>
