@@ -33,7 +33,7 @@ const homeMain = `<section class="title-card">
 <section class="collection-section">
 <h2>Sua coleção</h2>
 <div class="collection-cards-container">
-    <div class="collection-card" id="create-card">
+    <div class="collection-card" id="create-card" onclick="modalCreate()">
         <img src="./assets/imgs/add.png" alt="" width="42px" height="64px">
         <span>Adicionar à coleção</span>
     </div>
