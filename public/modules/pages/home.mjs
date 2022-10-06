@@ -3,7 +3,7 @@ async function dataUser(token, userId) {
     const options = {
         method: 'GET',
         headers: {
-            'x-access-token': `${token}`
+            'authorization': `${token}`
         }
     };
 
@@ -29,7 +29,7 @@ async function homeHeader(dataUser) {
     <span class="material-symbols-outlined" id="search-btn">search</span>
     </div>
     <div class="profile-container">
-    <img src="http://localhost:8000/assets/imgs/logo.png" height='36px ' width=' 36px' alt="">
+    <img src="http://localhost:8000/assets/imgs/b80d0cf09a51ab679bf8af7c08cb5bb1-1664930861590.png" height='36px ' width=' 36px' alt="">
     <div class="login-container">
         <span>${dataUser.name}</span>
         <span>${dataUser.email}</span>
