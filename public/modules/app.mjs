@@ -14,8 +14,8 @@ const searchCard = document.querySelectorAll('.search-card');
 let signUpBtn;
 
 function homePage(){
-    header.innerHTML = homeHeader;
-    main.innerHTML = homeMain;
+    header.innerHTML = homeHeader(token);
+    main.innerHTML = homeMain(token);
 }
 
 function loginPage(){
@@ -33,7 +33,7 @@ function loginPage(){
         return;
     }
     token = response;
-    console.log(token);
+    // console.log(typeof(token));
     homePage();
     });
 }
