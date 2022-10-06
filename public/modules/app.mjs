@@ -29,7 +29,7 @@ function loginPage(){
         return;
     }
     token = response;
-    console.log(token);
+    // console.log(typeof(token));
     homePage();
     });
 }

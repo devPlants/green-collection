@@ -1,12 +1,15 @@
 function homeHeader(token) {
 
-    let base64Url = token.split('.')[1];
+    const teste = token.toString();
+
+    let base64Url = teste.split('.')[1];
     let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
     let jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function (c) {
         return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
     }).join(''));
 
     const params = JSON.parse(jsonPayload);
+    console.log(params);
 
     return `<div class="logo-container">
         <img src="./assets/imgs/logo.png" height="48px" width="48px" alt="logo">
@@ -18,10 +21,10 @@ function homeHeader(token) {
         <div class="profile-container">
         <img src="./assets/imgs/User.png" height='36px ' width=' 36px' alt="">
         <div class="login-container">
-            <span>${params.userName}</span>
-            <span>${params.userEmail}</span>
+            <span>Nome</span>
+            <span>E-mail</span>
         </div>
-        </div>`
+        </div>`;
 }
 
 function homeMain(token) {
@@ -86,7 +89,7 @@ function homeMain(token) {
 
             </div>
             </section>
-            `
+            `;
 }
 
 export { homeMain, homeHeader };
