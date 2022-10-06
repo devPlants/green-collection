@@ -16,7 +16,12 @@ const searchCard = document.querySelectorAll('.search-card');
 
 async function homePage() {
     const data = await dataUser(token, userId);
-    if (data.status == 400) { return `Erro na requisição: ${data.err}` }
+
+    if (data.status == 400) {
+        console.log(`Erro na requisição: ${data.err}`);
+        return `Erro na requisição: ${data.err}`
+    }
+
     header.innerHTML = await homeHeader(data);
     main.innerHTML = homeMain(data);
 }

@@ -44,7 +44,7 @@ export async function signup(){
     method: 'POST',
     headers: {
         'Content-Type': 'multipart/form-data; boundary=---011000010111000001101001',
-        'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI3ODJjMjgzNC02YjhmLTRiMGQtOTI0OS0yZWVkYjc3NzQ3MmQiLCJpYXQiOjE2NjQ5MDc3MzIsImV4cCI6MTY2NDkxNzczMX0.pk0mqD1oFfvzRF_-lt2_o4qQknUIzgXY7ITdVcipysM'
+        'authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI3ODJjMjgzNC02YjhmLTRiMGQtOTI0OS0yZWVkYjc3NzQ3MmQiLCJpYXQiOjE2NjQ5MDc3MzIsImV4cCI6MTY2NDkxNzczMX0.pk0mqD1oFfvzRF_-lt2_o4qQknUIzgXY7ITdVcipysM'
     }
     };
 
