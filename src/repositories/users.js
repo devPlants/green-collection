@@ -64,7 +64,7 @@ const Users = {
             const client = await db;
             const getUser = await client.query(
                 `
-                SELECT id, email, password, admin FROM users WHERE email = $1 AND deleted = false;
+                SELECT id, email, password, admin, photo, name FROM users WHERE email = $1 AND deleted = false;
                 `,
                 [email]
             );
@@ -100,6 +100,8 @@ const Users = {
                 "/",
                 helpQuery.columns.slice(0, -1)
             );
+
+            console.log(sql, helpQuery.values);
 
             await client.query(sql, helpQuery.values);
 

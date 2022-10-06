@@ -41,6 +41,7 @@ const UserControllers = {
         const id = req.userId;
         const data = req.body;
 
+        data.updated_at = new Date();
         data.id = id;
 
         const update = await UserServices.updateUserId(data);

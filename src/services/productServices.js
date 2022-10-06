@@ -1,30 +1,36 @@
 const validations = require("../validations/productValidations.js");
 const products = require("../repositories/products.js");
+const collectionsServices = require("./collectionsServices.js");
 
 const ProductServices = {
-    saveProduct: async (data) => {
+    saveProduct: async (data, userId) => {
         if (!validations(data)) {
             return {
                 status: 400,
-                response: "Bad Request"
+                response: "Bad Request",
             };
         }
-        const create = await products.create(data);
+        const create = await products.create(data, userId);
 
         return create;
     },
     getProductId: async (id) => {
-        const getProduct = await products.getProductById(id);
+        const getProduct = await collectionsServices.getByProductId(id);
 
         return getProduct;
     },
-    updateProductId: async (data) => {
-        const updateProduct = await products.updateProduct(data);
+    getProducts: async (userId) => {
+        const getProduct = await products.getProducts(userId);
+
+        return getProduct;
+    },
+    updateProductId: async (data, userId) => {
+        const updateProduct = await products.updateProduct(data, userId);
 
         return updateProduct;
     },
-    deleteProduct: async (id) => {
-        const deleteProduct = await products.deleteProduct(id);
+    deleteProduct: async (id, userId) => {
+        const deleteProduct = await products.deleteProducts(id, userId);
 
         return deleteProduct;
     },
