@@ -1,33 +1,43 @@
-function homeHeader(token) {
+async function dataUser(token, userId) {
 
-    const teste = token.toString();
+    const options = {
+        method: 'GET',
+        headers: {
+            'x-access-token': `${token}`
+        }
+    };
 
-    let base64Url = teste.split('.')[1];
-    let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    let jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function (c) {
-        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-    }).join(''));
-
-    const params = JSON.parse(jsonPayload);
-    console.log(params);
-
-    return `<div class="logo-container">
-        <img src="./assets/imgs/logo.png" height="48px" width="48px" alt="logo">
-        </div>
-        <div class="searchbar-container">
-        <input type="text" id="searchbar">
-        <span class="material-symbols-outlined" id="search-btn">search</span>
-        </div>
-        <div class="profile-container">
-        <img src="./assets/imgs/User.png" height='36px ' width=' 36px' alt="">
-        <div class="login-container">
-            <span>Nome</span>
-            <span>E-mail</span>
-        </div>
-        </div>`;
+    try {
+        const response = await fetch(`http://localhost:8000/users/${userId}`, options);
+        const dataUser = await response.json();
+        return dataUser[0];
+    } catch (err) {
+        return { "status": 400, err };
+    }
 }
 
-function homeMain(token) {
+async function homeHeader(dataUser) {
+
+    console.log(dataUser.name);
+    console.log(dataUser.email);
+
+    return `<div class="logo-container">
+    <img src="./assets/imgs/logo.png" height="48px" width="48px" alt="logo">
+    </div>
+    <div class="searchbar-container">
+    <input type="text" id="searchbar">
+    <span class="material-symbols-outlined" id="search-btn">search</span>
+    </div>
+    <div class="profile-container">
+    <img src="http://localhost:8000/assets/imgs/logo.png" height='36px ' width=' 36px' alt="">
+    <div class="login-container">
+        <span>${dataUser.name}</span>
+        <span>${dataUser.email}</span>
+    </div>
+    </div>`;
+}
+
+function homeMain(dataUser) {
 
     return `<section class="title-card">
             <div class="title-container">
@@ -91,4 +101,4 @@ function homeMain(token) {
             `;
 }
 
-export { homeMain, homeHeader };
+export { homeMain, homeHeader, dataUser };

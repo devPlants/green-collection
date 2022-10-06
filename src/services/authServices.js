@@ -30,7 +30,7 @@ module.exports = authService = {
 
         return {
             status: 200,
-            response: { token: _token },
+            response: { token: _token, userId:user.response[0].id },
         };
     },
     verifyAdmin: async (admin) => {

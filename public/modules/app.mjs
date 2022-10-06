@@ -1,11 +1,12 @@
 import { loginHeader, loginMain } from "./pages/login.mjs";
-import { homeMain, homeHeader } from "./pages/home.mjs";
+import { homeMain, homeHeader, dataUser } from "./pages/home.mjs";
 import { login } from "./validation.mjs";
 import { modalCreate } from "./modal.mjs"
 import { signupMain } from "./pages/signup.mjs";
 
 let loginBtn;
 let token;
+let userId;
 
 
 const header = document.querySelector('header');
@@ -13,12 +14,14 @@ const main = document.querySelector('main');
 const searchCard = document.querySelectorAll('.search-card');
 let signUpBtn;
 
-function homePage(){
-    header.innerHTML = homeHeader(token);
-    main.innerHTML = homeMain(token);
+async function homePage() {
+    const data = await dataUser(token, userId);
+    if (data.status == 400) { return `Erro na requisição: ${data.err}` }
+    header.innerHTML = await homeHeader(data);
+    main.innerHTML = homeMain(data);
 }
 
-function loginPage(){
+function loginPage() {
     header.innerHTML = '';
     main.innerHTML = '';
 
@@ -27,18 +30,18 @@ function loginPage(){
     loginBtn = document.querySelector('#login-btn');
     loginBtn.addEventListener('click', async () => {
 
-    const response = await login();
-    if (response == 400) {
-        console.log(`Email ou senha não válidos`);
-        return;
-    }
-    token = response;
-    // console.log(typeof(token));
-    homePage();
+        const response = await login();
+        if (response == 400) {
+            console.log(`Email ou senha não válidos`);
+            return;
+        }
+        token = response.token;
+        userId = response.userId;
+        homePage();
     });
 }
 
-function signUpPage(){
+function signUpPage() {
     header.innerHTML = loginHeader;
     main.innerHTML = signupMain;
 }
