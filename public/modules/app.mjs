@@ -4,6 +4,7 @@ import { login } from "./validation.mjs";
 import { modalCreate } from "./modal.mjs";
 import { signupMain } from "./pages/signup.mjs";
 import { signup } from "./signup.mjs";
+import { addToCollection } from "./addToCollection.mjs";
 
 let loginBtn;
 let token;
@@ -20,6 +21,10 @@ export function renderHomeBySignup(_token, _userId) {
     homePage();
 }
 
+export function getToken() {
+    return { token: token, userId: userId };
+}
+
 async function homePage() {
     const data = await dataUser(token, userId);
 
@@ -30,6 +35,22 @@ async function homePage() {
 
     header.innerHTML = await homeHeader(data);
     main.innerHTML = homeMain(data);
+
+    function readImage() {
+        if (this.files && this.files[0]) {
+            const file = new FileReader();
+            file.onload = function (e) {
+                const photoContainer = document.querySelector("#add-image");
+                photoContainer.style = `background-image: url(${e.target.result});
+            background-size: cover;
+            background-position: center;`;
+            };
+            file.readAsDataURL(this.files[0]);
+        }
+    }
+    document
+        .querySelector("#add-image-btn")
+        .addEventListener("change", readImage, false);
 }
 
 function loginPage() {
@@ -81,3 +102,4 @@ window.signUpPage = signUpPage;
 window.loginPage = loginPage;
 window.modalCreate = modalCreate;
 window.signup = signup;
+window.addToCollection = addToCollection;
