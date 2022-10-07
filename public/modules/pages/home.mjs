@@ -18,9 +18,7 @@ async function dataUser(token, userId) {
 
 async function homeHeader(dataUser) {
 
-    console.log(dataUser.name);
-    console.log(dataUser.email);
-
+    console.log(dataUser.photo);
     return `<div class="logo-container">
     <img src="./assets/imgs/logo.png" height="48px" width="48px" alt="logo">
     </div>
@@ -29,7 +27,7 @@ async function homeHeader(dataUser) {
     <span class="material-symbols-outlined" id="search-btn">search</span>
     </div>
     <div class="profile-container">
-    <img src="http://localhost:8000/assets/imgs/b80d0cf09a51ab679bf8af7c08cb5bb1-1664930861590.png" height='36px ' width=' 36px' alt="">
+    <img src="http://localhost:8000/files/${dataUser.photo}" height='36px ' width=' 36px' alt="">
     <div class="login-container">
         <span>${dataUser.name}</span>
         <span>${dataUser.email}</span>
