@@ -19,8 +19,12 @@ export function renderHomeBySignup(_token, _userId){
     userId = _userId;
 
     homePage();
+}
 
+export function getToken(){
+    return{'token': token, 'userId': userId
 
+    }
 }
 
 async function homePage() {
