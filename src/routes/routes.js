@@ -31,6 +31,7 @@ router.get("/search/", collections.searchByPaginate);
 
 router.post("/exchanges", exchanges.create);
 router.get("/exchanges", exchanges.getByUser);
+router.put("/exchanges", exchanges.update);
 
 router.use(auth.authAdmin);
 router.get("/admins", admin.getCollectionPending);
