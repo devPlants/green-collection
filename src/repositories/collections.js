@@ -46,17 +46,17 @@ const collections = {
         try {
             const client = await db;
             const query = `
-                SELECT product_id, p.name as product_name, p.category, p.photo  as product_photo, 
+                SELECT products_id, p.name as product_name, p.category, p.photo  as product_photo, 
                 p.description, p.created_at, u.name as user_name, u.photo as user_photo, 
-                u.city as user_city, u.state as user_state 
+                u.city as users_city, u.state as user_state 
 
                 FROM collections c
                 INNER JOIN products p
-                ON c.product_id = p.id
+                ON c.products_id = p.id
                                
                 INNER JOIN users u
-                ON c.user_id = u.id
-                WHERE c.status != $4 AND c.user_id = $1 ORDER BY c.created_at
+                ON c.users_id = u.id
+                WHERE c.status != $4 AND c.users_id = $1 ORDER BY c.created_at
                 LIMIT $2 OFFSET $3;
                 `;
 
