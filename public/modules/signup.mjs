@@ -10,7 +10,6 @@ export async function signup(){
     const stateInput = document.querySelector('#state-input');
     const passwordInput = document.querySelector('#passwd-input');
     const confPasswordInput = document.querySelector('#confirm-passwd-input');
-    //FALTA FOTO!!
 
     const userName = nameInput.value;
     const userEmail = emailInput.value;
@@ -23,9 +22,6 @@ export async function signup(){
     const userState = stateInput.value;
     const userpassword = passwordInput.value;
     const userConfPassword = confPasswordInput.value;
-    //const userPhoto = 
-
-    ///////////
 
         const form = new FormData();
     form.append(`"name", ${userName}`);
@@ -38,7 +34,6 @@ export async function signup(){
     form.append(`"number", ${userNummber}`);
     form.append(`"city", ${userCity}`);
     form.append(`"state", ${userState}`);
-   //form.append("photo", "C:\\Users\\ozias\\Desktop\\minion.jpg");
 
     const options = {
     method: 'POST',
@@ -53,6 +48,4 @@ export async function signup(){
     const response = await fetch('http://localhost:8000/users', options)
     const data = await response.json()
     return data;
-    // .then(response => console.log(response))
-    // .catch(err => console.error(err));
 }
