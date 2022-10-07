@@ -4,11 +4,11 @@ import { login } from "./validation.mjs";
 import { modalCreate } from "./modal.mjs"
 import { signupMain } from "./pages/signup.mjs";
 import { signup } from "./signup.mjs"
+import { addToCollection } from "./addToCollection.mjs";
 
 let loginBtn;
 let token;
 let userId;
-
 
 const header = document.querySelector('header');
 const main = document.querySelector('main');
@@ -19,8 +19,10 @@ export function renderHomeBySignup(_token, _userId){
     userId = _userId;
 
     homePage();
+}
 
-
+export function getToken(){
+    return {'token': token, 'userId': userId}
 }
 
 async function homePage() {
@@ -83,3 +85,5 @@ window.signUpPage = signUpPage;
 window.loginPage = loginPage;
 window.modalCreate = modalCreate;
 window.signup = signup;
+window.addToCollection = addToCollection;
+
