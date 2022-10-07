@@ -3,7 +3,6 @@ const authServices = require("../services/authServices.js");
 
 module.exports = auth = {
     verifyAuth: (req, res, next) => {
-        //const token = req.headers["x-access-token"];
         const token = req.headers.authorization;
 
         jwt.verify(token, process.env.JWTSECRET, (err, decoded) => {
