@@ -18,6 +18,8 @@ export async function addToCollection(){
     const response = await fetch('http://localhost:8000/products', options);
     const data =  await response.json();
     console.log(data);
+    forms.reset();
+
     return data;
 
 }
