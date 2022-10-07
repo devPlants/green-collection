@@ -92,7 +92,7 @@ function signUpPage() {
 searchCard.forEach((element) => {
     element.addEventListener("click", loginPage);
 });
-
+ 
 window.signUpPage = signUpPage;
 window.loginPage = loginPage;
 window.modalCreate = modalCreate;
