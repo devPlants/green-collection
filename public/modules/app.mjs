@@ -14,15 +14,15 @@ const header = document.querySelector('header');
 const main = document.querySelector('main');
 const searchCard = document.querySelectorAll('.search-card');
 
-export function renderHomeBySignup(_token, _userId){
+export function renderHomeBySignup(_token, _userId) {
     token = _token;
     userId = _userId;
 
     homePage();
 }
 
-export function getToken(){
-    return {'token': token, 'userId': userId}
+export function getToken() {
+    return { 'token': token, 'userId': userId }
 }
 
 async function homePage() {
@@ -34,18 +34,18 @@ async function homePage() {
     }
 
     header.innerHTML = await homeHeader(data);
-    main.innerHTML = homeMain(data);
+    main.innerHTML = await homeMain(data, token);
 
-    function readImage(){
-        if(this.files && this.files[0]){
+    function readImage() {
+        if (this.files && this.files[0]) {
             const file = new FileReader();
-            file.onload = function(e){
-            const photoContainer = document.querySelector('#add-image');
-            photoContainer.style = `background-image: url(${e.target.result});
+            file.onload = function (e) {
+                const photoContainer = document.querySelector('#add-image');
+                photoContainer.style = `background-image: url(${e.target.result});
             background-size: cover;
             background-position: center;`;
             };
-        file.readAsDataURL(this.files[0]);
+            file.readAsDataURL(this.files[0]);
         }
     }
     document.querySelector('#add-image-btn').addEventListener('change', readImage, false);
@@ -74,17 +74,17 @@ function loginPage() {
 function signUpPage() {
     header.innerHTML = loginHeader;
     main.innerHTML = signupMain;
-    function readImage(){
+    function readImage() {
 
-        if(this.files && this.files[0]){
+        if (this.files && this.files[0]) {
             const file = new FileReader();
-            file.onload = function(e){
-            const photoContainer = document.querySelector('.photo-container');
-            photoContainer.style = `background-image: url(${e.target.result});
+            file.onload = function (e) {
+                const photoContainer = document.querySelector('.photo-container');
+                photoContainer.style = `background-image: url(${e.target.result});
             background-size: cover;
             background-position: center;`;
             };
-        file.readAsDataURL(this.files[0]);
+            file.readAsDataURL(this.files[0]);
         }
     }
 
