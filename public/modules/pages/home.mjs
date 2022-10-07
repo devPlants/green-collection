@@ -43,7 +43,7 @@ async function homeHeader(dataUser) {
             </div>`;
 }
 
-function homeMain(dataUser, token) {
+async function homeMain(dataUser, token) {
 
     const options = {
         method: 'GET',
@@ -52,10 +52,26 @@ function homeMain(dataUser, token) {
         }
     };
 
-    fetch('http://localhost:8000/collections/?rows=4&page=2', options)
-        .then(response => response.json())
-        .then(response => console.log(response))
-        .catch(err => console.error(err));
+    let cardsCollection = '';
+
+    try {
+        const response = await fetch('http://localhost:8000/collections/?rows=7&page=1', options);
+        const data = await response.json();
+
+        data.forEach(card => {
+
+            console.log(card);
+
+            cardsCollection += `<div class="collection-card product-card">
+                                    <div class="img-procuct-card" style='background-image: url("http://localhost:8000/files/${card.product_photo}");'></div>
+                                    <span><strong>${card.product_name}</strong> <br> ${card.users_city}, ${card.user_state}</span>
+                                </div>`
+        });
+
+    } catch (err) {
+        console.log(`Ocorreu um erro na requicição à coleção: ${err}`);
+        return 400;
+    }
 
     return `<section class="title-card">
                 <div class="title-container">
@@ -85,10 +101,12 @@ function homeMain(dataUser, token) {
                         <span>Adicionar à coleção</span>
                     </div>
 
-                    <div class="collection-card product-card">
-                        <div class="img-procuct-card"></div>
-                        <span><strong>Coqueiro</strong> <br> São Paulo, SP</span>
-                    </div>
+                    
+
+                    ${cardsCollection}
+
+
+
 
                     <div class="modal">
 
