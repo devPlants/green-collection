@@ -22,17 +22,17 @@ const collections = {
         try {
             const client = await db;
             const query = `
-                SELECT user_id, product_id, p.name as product_name, p.category, p.photo  as product_photo, 
+                SELECT users_id, products_id, p.name as product_name, p.category, p.photo  as product_photo, 
                 p.description, p.created_at, u.name as user_name, u.photo as user_photo, 
                 u.city as user_city, u.state as user_state 
 
                 FROM collections c
                 INNER JOIN products p
-                ON c.product_id = p.id
+                ON c.products_id = p.id
                                
                 INNER JOIN users u
-                ON c.user_id = u.id
-                WHERE c.product_id = $1;
+                ON c.users_id = u.id
+                WHERE c.products_id = $1;
                 `;
 
             const getCollections = await client.query(query, [id]);

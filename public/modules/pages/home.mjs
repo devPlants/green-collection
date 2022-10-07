@@ -18,23 +18,44 @@ async function dataUser(token, userId) {
 
 async function homeHeader(dataUser) {
 
+    const nameFull = dataUser.name.split(' ');
+    const name1 = nameFull[0];
+    const name2 = nameFull[1];
+    const nameEnd = (name2 == undefined ? name1 : `${name1} ${name2}`)
+
     return `<div class="logo-container">
-    <img src="./assets/imgs/logo.png" height="48px" width="48px" alt="logo">
-    </div>
-    <div class="searchbar-container">
-    <input type="text" id="searchbar">
-    <span class="material-symbols-outlined" id="search-btn">search</span>
-    </div>
-    <div class="profile-container">
-    <img src="http://localhost:8000/files/${dataUser.photo}" height='36px ' width=' 36px' alt="">
-    <div class="login-container">
-        <span>${dataUser.name}</span>
-        <span>${dataUser.email}</span>
-    </div>
-    </div>`;
+                <img src="./assets/imgs/logo.png" height="48px" width="48px" alt="logo">
+            </div>
+
+            <div class="searchbar-container">
+                <input type="text" id="searchbar">
+                <span class="material-symbols-outlined" id="search-btn">search</span>
+            </div>
+
+            <div class="profile-container">
+
+                <div id="user-header-img" style='width: 36px; height: 36px; background-size: cover; background-image: url("http://localhost:8000/files/${dataUser.photo}"); border-radius: 50%;'></div>
+
+                <div class="login-container">
+                    <span>${nameEnd}</span>
+                    <span>${dataUser.email}</span>
+                </div>
+            </div>`;
 }
 
-function homeMain(dataUser) {
+function homeMain(dataUser, token) {
+
+    const options = {
+        method: 'GET',
+        headers: {
+            authorization: `${token}`
+        }
+    };
+
+    fetch('http://localhost:8000/collections/?rows=4&page=2', options)
+        .then(response => response.json())
+        .then(response => console.log(response))
+        .catch(err => console.error(err));
 
     return `<section class="title-card">
                 <div class="title-container">

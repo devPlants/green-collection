@@ -566,9 +566,9 @@ input[type='file'] {
     color: #000;
 }
 
-user-header-img {
+/* #user-header-img {
     width: 36px;
     height: 36px;
-    background-color: red;
+    background-image: url('http://localhost:8000/files/10de81cf695aef7cf6696fe510070935-1665149503958.jpg');
     border-radius: 50%;
-}
+} */
