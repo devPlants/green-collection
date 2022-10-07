@@ -34,7 +34,7 @@ async function homePage() {
     }
 
     header.innerHTML = await homeHeader(data);
-    main.innerHTML = homeMain(data);
+    main.innerHTML = await homeMain(data, token);
 
     function readImage() {
         if (this.files && this.files[0]) {
@@ -42,15 +42,13 @@ async function homePage() {
             file.onload = function (e) {
                 const photoContainer = document.querySelector("#add-image");
                 photoContainer.style = `background-image: url(${e.target.result});
-            background-size: cover;
-            background-position: center;`;
+                                        background-size: cover;
+                                        background-position: center;`;
             };
             file.readAsDataURL(this.files[0]);
         }
     }
-    document
-        .querySelector("#add-image-btn")
-        .addEventListener("change", readImage, false);
+    document.querySelector("#add-image-btn").addEventListener("change", readImage, false);
 }
 
 function loginPage() {
@@ -79,25 +77,22 @@ function signUpPage() {
         if (this.files && this.files[0]) {
             const file = new FileReader();
             file.onload = function (e) {
-                const photoContainer =
-                    document.querySelector(".photo-container");
+                const photoContainer = document.querySelector(".photo-container");
                 photoContainer.style = `background-image: url(${e.target.result});
-            background-size: cover;
-            background-position: center;`;
+                                        background-size: cover;
+                                        background-position: center;`;
             };
             file.readAsDataURL(this.files[0]);
         }
     }
 
-    document
-        .querySelector("#photo-btn")
-        .addEventListener("change", readImage, false);
+    document.querySelector("#photo-btn").addEventListener("change", readImage, false);
 }
 
 searchCard.forEach((element) => {
     element.addEventListener("click", loginPage);
 });
-
+ 
 window.signUpPage = signUpPage;
 window.loginPage = loginPage;
 window.modalCreate = modalCreate;
