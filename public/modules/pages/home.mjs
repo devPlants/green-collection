@@ -65,30 +65,33 @@ function homeMain(dataUser) {
                     <div class="modal-create-product">
                         <span class="close-btn">&times;</span>
                         <h2>Adicionar à coleção</h2>
+                        <form id="modal-form" enctype="multipart/form-data">
                         <div class="create-product-inputs">
                             <div class="category-container">
                                 <label for="category">Categoria do item:</label>
-                                <select name="" id="">
+                                <select name="category" id="">
                                     <option value="seed">Semente</option>
                                     <option value="plant">Planta</option>
                                 </select>
                             </div>
                             <div class="pname-container">
                                 <label for="product-name">Nome do item:</label>
-                                <input type="text" id="product-name">
+                                <input type="text" id="product-name" name="name">
                             </div>
                             <div class="pdescription-container">
                                 <label for="description">Descrição:</label>
-                                <textarea name="" id="" cols="30" rows="10"></textarea>
+                                <textarea name="description" id="product-description" cols="30" rows="10"></textarea>
                             </div>
-                            <button type="button" id="add-product-btn">Adicionar</button>
+                            <button type="button" id="add-product-btn" onclick="addToCollection()">Adicionar</button>
                         </div>
                         <div class="add-image-container">
                             <div id="add-image">
 
                             </div>
-                            <button type="button" id="add-image-btn">Adicionar imagem</button>
+                            <label for="add-image-btn" class="label-for-photo-btn">Adicionar Imagem</label>
+                            <input type="file" id="add-image-btn" name="photo">
                         </div>
+                        </form>
 
 
                     </div>
