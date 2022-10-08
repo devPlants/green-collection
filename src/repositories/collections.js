@@ -76,16 +76,16 @@ const collections = {
         try {
             const client = await db;
             const query = `
-                SELECT user_id, product_id, c.status, p.name as product_name, p.category, p.photo  as product_photo, 
+                SELECT users_id, products_id, c.status, p.name as product_name, p.category, p.photo  as product_photo, 
                 p.description, u.name as user_name, u.photo as user_photo, 
                 u.city as user_city, u.state as user_state 
 
                 FROM collections c
                 INNER JOIN products p
-                ON c.product_id = p.id
+                ON c.products_id = p.id
                                
                 INNER JOIN users u
-                ON c.user_id = u.id
+                ON c.users_id = u.id
                 WHERE c.status = $1 ORDER BY p.created_at;
                 `;
 
@@ -137,25 +137,25 @@ const collections = {
 
                 FROM collections c
                 INNER JOIN products p
-                ON c.product_id = p.id
+                ON c.products_id = p.id
                                
                 INNER JOIN users u
-                ON c.user_id = u.id
+                ON c.users_id = u.id
                 WHERE c.status = $1 ${constructQuery.countSql};`;
 
             const count = await client.query(queryCount, valuesCount);
 
             const query = `
-                SELECT product_id, p.name as product_name, p.category, p.photo  as product_photo, 
+                SELECT products_id, p.name as product_name, p.category, p.photo  as product_photo, 
                 p.description, p.created_at, u.name as user_name, u.photo as user_photo, 
                 u.city as user_city, u.state as user_state 
 
                 FROM collections c
                 INNER JOIN products p
-                ON c.product_id = p.id
+                ON c.products_id = p.id
                                
                 INNER JOIN users u
-                ON c.user_id = u.id
+                ON c.users_id = u.id
                 WHERE c.status = $1 ${constructQuery.where} ORDER BY c.created_at
                 LIMIT $2 OFFSET $3;
                 `;
@@ -177,7 +177,7 @@ const collections = {
 
             const updateStatus = await client.query(
                 `
-                UPDATE collections SET status = $1 WHERE user_id= $2 AND product_id = $3;
+                UPDATE collections SET status = $1 WHERE users_id= $2 AND products_id = $3;
                 `,
                 [data.status, data.userId, data.productId]
             );
@@ -193,7 +193,7 @@ const collections = {
 
             const count = await client.query(
                 `
-                SELECT COUNT(*) FROM collections WHERE user_id= $1 AND status != $2;
+                SELECT COUNT(*) FROM collections WHERE users_id= $1 AND status != $2;
                 `,
                 [id, "rejected"]
             );
@@ -208,7 +208,7 @@ const collections = {
             const client = await db;
             const deleteCollection = await client.query(
                 `
-                DELETE collections WHERE user_id = $1 AND product_id = $2;
+                DELETE collections WHERE users_id = $1 AND products_id = $2;
                 `,
                 [data.userId, data.productId]
             );
