@@ -19,6 +19,8 @@ export async function addToCollection(){
     const data =  await response.json();
     console.log(data);
     forms.reset();
+    document.querySelector('#add-image').style = "background-image: none;";
+    document.querySelector('.modal').style.display = 'none';
 
     return data;
 
