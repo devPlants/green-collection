@@ -573,13 +573,17 @@ user-header-img {
     border-radius: 50%;
 }
 
-#menu-user-header {
+.menu-user-header {
     display: none;
 }
 
-#menu-user-header ul {
+.displayFlex{
+    display: flex;
+}
+
+.menu-user-header ul {
     position: absolute;
-    padding-top: 10px;
+    padding-top: 5px;
     top: 80px;
     list-style: none;
     font-size: 12px;
@@ -587,14 +591,15 @@ user-header-img {
     background-color: #E7DFC6;
 }
 
-#menu-user-header li {
+.menu-user-header li {
     padding: 5px;
     text-align: center;
 }
 
-#menu-user-header li:hover {
+.menu-user-header li:hover {
     background-color: #c0beb6;
     cursor: pointer;
+    transition: all .7s;
 }
 
 /* ;;;;;;;;;;
