@@ -541,34 +541,39 @@ input[type='file']{
 }
 
 /* ;;;;;;;;;;;;;;;;;;;;;;;
-    Histórico de trocas
+    Histórico de trocas/Aprovações
 ;;;;;;;;;;;;;;;;;;;;;;;;;;*/
 
-.exchanges-wrapper{
+.exchanges-wrapper,
+.approval-wrapper{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.exchanges-title-container h2{
+.exchanges-title-container h2,
+.approval-title-container h2{
     padding-top: 1em;
     font-size: 2em;
 }
 
-.exchanges-container{
+.exchanges-container,
+.approval-container{
     background-color: #ffff;
     width: 65vw;
     padding-bottom: 2em;
 }
 
-.btn-exchanges-container{
+.btn-exchanges-container,
+.btn-approval-container{
     display: flex;
     padding-top: 2em;
     padding-bottom: 1.5em;
-    width: 20%;
+    width: 15em;;
 }
 
-#pending-exchanges-btn{
+#pending-exchanges-btn,
+#pending-approval-btn{
     padding: 0.2em;
     font-weight: bold;
     width: 50%;
@@ -577,8 +582,8 @@ input[type='file']{
     cursor: pointer;
 }
 
-
-#finalized-exchanges-btn{
+#finalized-exchanges-btn,
+#finalized-approval-btn{
     padding: 0.2em;
     font-weight: bold;
     width: 50%;
@@ -587,11 +592,14 @@ input[type='file']{
     cursor: pointer;
 }
 
-#trade-wrapper{
+#trade-wrapper,
+#toApprove-wrapper{
 display: flex;
 justify-content: center;
 }
-.trade-container{
+
+.trade-container,
+.toApprove-container{
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -610,7 +618,8 @@ justify-content: center;
     width: 20em;
 }
 
-.trade-product{
+.trade-product,
+.toApprove-product{
     background: #ffff;
     height: 7em;
     width: 6em;
@@ -656,41 +665,46 @@ justify-content: center;
     align-items: center;
     height: 7em;
     width: 25em;
-
 }
 
-.trade-user{
+.trade-user,
+.toApprove-product-owner{
     width: 6em;
     height: 7em;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: center;;
 }
 
-.trade-user span:nth-child(2) {
+.toApprove-product-owner{
+    margin-left: 1.5em;
+}
+
+.trade-user span:nth-child(2),
+.toApprove-product-owner span:nth-child(2) {
     font-size: 0.75rem;
     color: #343232;
     font-weight: bold;
     padding-top: 0.5em;
 }
 
-.trade-user span:nth-child(3) {
+.trade-user span:nth-child(3),
+.toApprove-product-owner span:nth-child(3) {
     font-size: 0.75rem;
     color: #343232;
 }
 
-
-
-.user-trade-photo{
+.user-trade-photo,
+.product-owner-photo{
     border-radius: 50%;
     background-color: #ffff;
     width: 3.5em;
     height: 3.5em;
 }
 
-
-#arrow-exchanges-users{
+#arrow-exchanges-users,
+.arrow-toApprove{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -699,7 +713,8 @@ justify-content: center;
     gap:1em;
 }
 
-#arrow-exchanges-users span{
+#arrow-exchanges-users span,
+.arrow-toApprove span{
     font-size: 0.75em;
     color: #343232;
     font-weight: 600;
@@ -711,6 +726,23 @@ justify-content: center;
     justify-content: center;
 }
 
+.product-info{
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    gap: 0.5em;
+}
+
+.product-info input{
+    border: 1px #959595;
+    border-radius: 3px;
+    padding: 0.2em 0em;
+}
+
+.product-info textarea{
+    border: 1px #959595;
+    border-radius: 3px;
+}
 
     
 
