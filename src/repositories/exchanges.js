@@ -47,12 +47,12 @@ const exchanges = {
             await client.query("BEGIN;");
 
             await client.query(
-                `UPDATE collections SET user_id = $1, status = $2 WHERE user_id = $3 AND product_id = $4;`,
+                `UPDATE collections SET users_id = $1, status = $2 WHERE users_id = $3 AND products_id = $4;`,
                 [data.userId1, "approved", data.userId2, data.productId2]
             );
 
             await client.query(
-                `UPDATE collections SET user_id = $3, status = $2 WHERE user_id = $1 AND product_id = $4;`,
+                `UPDATE collections SET users_id = $3, status = $2 WHERE users_id = $1 AND products_id = $4;`,
                 [data.userId1, "approved", data.userId2, data.productId1]
             );
 
@@ -77,12 +77,12 @@ const exchanges = {
             await client.query("BEGIN;");
 
             await client.query(
-                `UPDATE collections SET status = $1 WHERE user_id = $2 AND product_id = $3;`,
+                `UPDATE collections SET status = $1 WHERE users_id = $2 AND products_id = $3;`,
                 ["approved", data.userId2, data.productId2]
             );
 
             await client.query(
-                `UPDATE collections SET status = $1 WHERE user_id = $2 AND product_id = $3;`,
+                `UPDATE collections SET status = $1 WHERE users_id = $2 AND products_id = $3;`,
                 ["approved", data.userId1, data.productId1]
             );
 
