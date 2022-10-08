@@ -72,7 +72,7 @@ input {
     display: flex;
     justify-content: center;
     align-items: center;
-
+    cursor: pointer;
     gap: 0.1em;
 }
 
@@ -573,35 +573,59 @@ user-header-img {
     border-radius: 50%;
 }
 
+#menu-user-header {
+    display: none;
+}
+
+#menu-user-header ul {
+    position: absolute;
+    padding-top: 10px;
+    top: 80px;
+    list-style: none;
+    font-size: 12px;
+    width: 150px;
+    background-color: #E7DFC6;
+}
+
+#menu-user-header li {
+    padding: 5px;
+    text-align: center;
+}
+
+#menu-user-header li:hover {
+    background-color: #c0beb6;
+    cursor: pointer;
+}
+
 /* ;;;;;;;;;;
     Trade
 /////////////  */
 
-.trade-page-section{
+.trade-page-section {
     display: flex;
     padding: 2em 0 0 0;
     justify-content: space-around;
     font-size: 0.75rem;
 }
 
-#trade-req-img{
+#trade-req-img {
     height: 250px;
     width: 200px;
     background-color: #888;
     border-radius: 1rem;
 }
 
-#trade-req-info{
+#trade-req-info {
     display: flex;
     flex-direction: column;
     gap: 0.2em;
 }
 
-.req-description-container{
+.req-description-container {
     text-align: center;
 }
 
-.offer-products-container{
+.offer-products-container {
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
@@ -609,7 +633,7 @@ user-header-img {
     min-height: 250px;
 }
 
-.trade-input-container{
+.trade-input-container {
     display: flex;
     flex-direction: column;
     gap: 1em;
@@ -618,17 +642,17 @@ user-header-img {
     padding: 6rem 0 0 0;
 }
 
-.trade-input-container > span{
+.trade-input-container>span {
     font-size: 1rem;
     font-weight: 600;
 }
 
-.trade-arrows{
+.trade-arrows {
     display: flex;
     justify-content: center;
 }
 
-.trade-input-container button{
+.trade-input-container button {
     border: none;
     color: var(--background);
     background-color: var(--green);
@@ -637,7 +661,7 @@ user-header-img {
 }
 
 
-.trade-offer-title{
+.trade-offer-title {
     font-size: 1rem;
     font-weight: 600;
     width: 100%;
@@ -645,36 +669,9 @@ user-header-img {
     padding: 0 0 0.5em 0;
 }
 
-.offer-products-ondisplay{
+.offer-products-ondisplay {
     width: 75px;
     height: 75px;
     border-radius: 0.5em;
     border: solid 2px #D9D9D9;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

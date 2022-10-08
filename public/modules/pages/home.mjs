@@ -32,15 +32,29 @@ async function homeHeader(dataUser) {
                 <span class="material-symbols-outlined" id="search-btn">search</span>
             </div>
 
+            <div id="div-login">
             <div class="profile-container">
 
-                <div id="user-header-img" style='width: 36px; height: 36px; background-size: cover; background-image: url("http://localhost:8000/files/${dataUser.photo}"); border-radius: 50%;'></div>
+                <div style='width: 36px; height: 36px; background-size: cover; background-image: url("http://localhost:8000/files/${dataUser.photo}"); border-radius: 50%;'>
+                ></div>
 
                 <div class="login-container">
                     <span>${nameEnd}</span>
                     <span>${dataUser.email}</span>
                 </div>
-            </div>`;
+
+            </div>
+
+            <div id="menu-user-header">
+                <nav>
+                    <ul>
+                        <li>Notificações</li>
+                        <li>Editar perfil</li>
+                        <li>Sair</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>`;
 }
 
 async function homeMain(dataUser, token) {
@@ -59,8 +73,6 @@ async function homeMain(dataUser, token) {
         const data = await response.json();
 
         data.forEach(card => {
-
-            console.log(card);
 
             cardsCollection += `<div class="collection-card product-card">
                                     <div class="img-procuct-card" style='background-image: url("http://localhost:8000/files/${card.product_photo}");'></div>
@@ -99,14 +111,9 @@ async function homeMain(dataUser, token) {
                     <div class="collection-card" id="create-card" onclick="modalCreate()">
                         <img src="./assets/imgs/add.png" alt="" width="42px" height="64px">
                         <span>Adicionar à coleção</span>
-                    </div>
-
-                    
+                    </div>              
 
                     ${cardsCollection}
-
-
-
 
                     <div class="modal">
 
