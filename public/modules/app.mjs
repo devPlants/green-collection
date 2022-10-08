@@ -5,6 +5,7 @@ import { modalCreate } from "./modal.mjs";
 import { signupMain } from "./pages/signup.mjs";
 import { signup } from "./signup.mjs";
 import { addToCollection } from "./addToCollection.mjs";
+import { tradeMain, getCollection } from "./pages/trade.mjs";
 
 let loginBtn;
 let token;
@@ -92,6 +93,16 @@ function signUpPage() {
 searchCard.forEach((element) => {
     element.addEventListener("click", loginPage);
 });
+
+function tradePage(){
+    main.innerHTML = tradeMain;
+}
+
+
+
+
+
+
  
 window.signUpPage = signUpPage;
 window.loginPage = loginPage;
