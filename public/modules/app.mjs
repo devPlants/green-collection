@@ -48,7 +48,9 @@ async function homePage() {
             file.readAsDataURL(this.files[0]);
         }
     }
-    document.querySelector("#add-image-btn").addEventListener("change", readImage, false);
+    document
+        .querySelector("#add-image-btn")
+        .addEventListener("change", readImage, false);
 }
 
 function loginPage() {
@@ -77,7 +79,8 @@ function signUpPage() {
         if (this.files && this.files[0]) {
             const file = new FileReader();
             file.onload = function (e) {
-                const photoContainer = document.querySelector(".photo-container");
+                const photoContainer =
+                    document.querySelector(".photo-container");
                 photoContainer.style = `background-image: url(${e.target.result});
                                         background-size: cover;
                                         background-position: center;`;
@@ -86,13 +89,15 @@ function signUpPage() {
         }
     }
 
-    document.querySelector("#photo-btn").addEventListener("change", readImage, false);
+    document
+        .querySelector("#photo-btn")
+        .addEventListener("change", readImage, false);
 }
 
 searchCard.forEach((element) => {
     element.addEventListener("click", loginPage);
 });
- 
+
 window.signUpPage = signUpPage;
 window.loginPage = loginPage;
 window.modalCreate = modalCreate;
