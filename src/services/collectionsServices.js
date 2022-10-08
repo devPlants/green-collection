@@ -22,9 +22,17 @@ const collectionsServices = {
     getByUserIdPaginate: async (id, _rows, _page) => {
         const rows = _rows;
         const page = rows * (_page - 1);
+        const count = await collections.countCollection(id);
+
+        if (count.status > 300) return count;
+
         const products = await collections.getByUserId(id, rows, page);
 
         if (products.status > 300) return products;
+
+        for (prod of products.response) {
+            prod.total = count.response[0].count;
+        }
 
         return products;
     },

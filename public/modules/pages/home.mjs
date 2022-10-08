@@ -18,23 +18,60 @@ async function dataUser(token, userId) {
 
 async function homeHeader(dataUser) {
 
+    const nameFull = dataUser.name.split(' ');
+    const name1 = nameFull[0];
+    const name2 = nameFull[1];
+    const nameEnd = (name2 == undefined ? name1 : `${name1} ${name2}`)
+
     return `<div class="logo-container">
-    <img src="./assets/imgs/logo.png" height="48px" width="48px" alt="logo">
-    </div>
-    <div class="searchbar-container">
-    <input type="text" id="searchbar">
-    <span class="material-symbols-outlined" id="search-btn">search</span>
-    </div>
-    <div class="profile-container">
-    <img src="http://localhost:8000/files/${dataUser.photo}" height='36px ' width=' 36px' alt="">
-    <div class="login-container">
-        <span>${dataUser.name}</span>
-        <span>${dataUser.email}</span>
-    </div>
-    </div>`;
+                <img src="./assets/imgs/logo.png" height="48px" width="48px" alt="logo">
+            </div>
+
+            <div class="searchbar-container">
+                <input type="text" id="searchbar">
+                <span class="material-symbols-outlined" id="search-btn">search</span>
+            </div>
+
+            <div class="profile-container">
+
+                <div id="user-header-img" style='width: 36px; height: 36px; background-size: cover; background-image: url("http://localhost:8000/files/${dataUser.photo}"); border-radius: 50%;'></div>
+
+                <div class="login-container">
+                    <span>${nameEnd}</span>
+                    <span>${dataUser.email}</span>
+                </div>
+            </div>`;
 }
 
-function homeMain(dataUser) {
+async function homeMain(dataUser, token) {
+
+    const options = {
+        method: 'GET',
+        headers: {
+            authorization: `${token}`
+        }
+    };
+
+    let cardsCollection = '';
+
+    try {
+        const response = await fetch('http://localhost:8000/collections/?rows=7&page=1', options);
+        const data = await response.json();
+
+        data.forEach(card => {
+
+            console.log(card);
+
+            cardsCollection += `<div class="collection-card product-card">
+                                    <div class="img-procuct-card" style='background-image: url("http://localhost:8000/files/${card.product_photo}");'></div>
+                                    <span><strong>${card.product_name}</strong> <br> ${card.users_city}, ${card.user_state}</span>
+                                </div>`
+        });
+
+    } catch (err) {
+        console.log(`Ocorreu um erro na requicição à coleção: ${err}`);
+        return 400;
+    }
 
     return `<section class="title-card">
                 <div class="title-container">
@@ -64,10 +101,12 @@ function homeMain(dataUser) {
                         <span>Adicionar à coleção</span>
                     </div>
 
-                    <div class="collection-card product-card">
-                        <div class="img-procuct-card"></div>
-                        <span><strong>Coqueiro</strong> <br> São Paulo, SP</span>
-                    </div>
+                    
+
+                    ${cardsCollection}
+
+
+
 
                     <div class="modal">
 
