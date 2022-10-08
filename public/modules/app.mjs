@@ -10,6 +10,7 @@ import { tradeMain, getCollection } from "./pages/trade.mjs";
 let loginBtn;
 let token;
 let userId;
+let dataUserInfo;
 
 const header = document.querySelector("header");
 const main = document.querySelector("main");
@@ -18,16 +19,18 @@ const searchCard = document.querySelectorAll(".search-card");
 export function renderHomeBySignup(_token, _userId) {
     token = _token;
     userId = _userId;
+    document.cookie = `${token}`
 
     homePage();
 }
 
 export function getToken() {
-    return { token: token, userId: userId };
+    return { token: token, userId: userId, dataUser: dataUserInfo };
 }
 
 async function homePage() {
     const data = await dataUser(token, userId);
+    dataUserInfo = data;
 
     if (data.status == 400) {
         console.log(`Erro na requisição: ${data.err}`);
@@ -53,8 +56,6 @@ async function homePage() {
 }
 
 function loginPage() {
-    header.innerHTML = "";
-    main.innerHTML = "";
 
     header.innerHTML = loginHeader;
     main.innerHTML = loginMain;
@@ -67,6 +68,7 @@ function loginPage() {
         }
         token = response.token;
         userId = response.userId;
+        document.cookie = `${token}`
         homePage();
     });
 }
