@@ -1,13 +1,13 @@
 export function loginHeaderHTML() {
-    return `<img src="./assets/imgs/name-green-collection.png" alt="" height="45vh">`;
+    return `<img onclick='renderPage.login()' src="./assets/imgs/name-green-collection.png" alt="" height="45vh" style='cursor:pointer;'>`;
 }
 
 export function homeHeaderHTML(_name, _email, _photo) {
 
-    return `<div class="logo-container">
+    return `<div class="logo-container" onclick='renderPage.home()' style='cursor:pointer;'>
                 <img src="./assets/imgs/logo.png" height="48px" width="48px" alt="logo">
             </div>
-
+            
             <div class="searchbar-container">
                 <input type="text" id="searchbar">
                 <span class="material-symbols-outlined" id="search-btn">search</span>
@@ -28,9 +28,9 @@ export function homeHeaderHTML(_name, _email, _photo) {
             <div class="menu-user-header">
                 <nav>
                     <ul>
-                        <li onclick = "pageExchanges('pending')">Notificações</li>
-                        <li onclick = 'pageUpdate()'>Editar perfil</li>
-                        <li onclick= 'loginPage()'>Sair</li>
+                        <li onclick = "renderPage.exchanges('pending')">Notificações</li>
+                        <li onclick = 'renderPage.updateUserMain()'>Editar perfil</li>
+                        <li onclick= 'renderPage.login()'>Sair</li>
                     </ul>
                 </nav>
             </div>

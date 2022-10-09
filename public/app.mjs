@@ -2,12 +2,17 @@ import { decodeToken } from "./modules/decodeToken.mjs";
 import { pagesHTML } from "./modules/services/index.mjs";
 import { modalAlert } from "./modules/modalAlert.mjs";
 import { loginToken } from "./modules/loginValidation.mjs";
+import { modalCreate } from "./modules/modal.mjs";
+import { addToCollection } from "./modules/addToCollection.mjs";
+import { renderExchanges } from "./modules/pages/exchangeP.mjs";
 
 const header = document.querySelector("header");
 const main = document.querySelector("main");
 
-let token;
-let dataUser; // {address,admin,city,cpf,email,id,name,number,phone_number,photo,state,zip_code}
+let token = '';
+let dataUser = ''; // {address,admin,city,cpf,email,id,name,number,phone_number,photo,state,zip_code}
+export function getData() { return { token, dataUser } };
+
 
 const renderPages = {
     login: () => {
@@ -18,13 +23,31 @@ const renderPages = {
     },
 
     home: async () => {
-        const response = await login();
-        if (response == 400) { return };
+        if (document.querySelector("#email-input")) {
+            const response = await login();
+            if (response == 400) { return };
+        }
 
         header.innerHTML = '';
         main.innerHTML = '';
         header.innerHTML = pagesHTML.homeHeader(dataUser);
-        main.innerHTML = await pagesHTML.homeMain(token);
+        main.innerHTML = await pagesHTML.homeMain();
+    },
+
+    updateUserMain: () => {
+        main.innerHTML = '';
+        main.innerHTML = pagesHTML.updateUserMain();
+        activeDropdown();
+    },
+
+    signupMain: () => {
+        main.innerHTML = '';
+        main.innerHTML = pagesHTML.signupMain();
+    },
+
+    exchangeMain: () => {
+        main.innerHTML = '';
+        main.innerHTML = pagesHTML.exchangeMain();
     }
 }
 
@@ -50,4 +73,9 @@ window.renderPage = {
     login: renderPages.login,
     home: renderPages.home,
     activeDropdown: activeDropdown,
+    modalCreate: modalCreate,
+    addToCollection: addToCollection,
+    updateUserMain: renderPages.updateUserMain,
+    signupMain: renderPages.signupMain,
+    exchanges: renderExchanges,
 }

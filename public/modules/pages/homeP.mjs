@@ -23,7 +23,7 @@ export function homeMainHTML(_cardsCollection) {
                 <h2>Sua coleção</h2>
                 <div class="collection-cards-container">
 
-                    <div class="collection-card" id="create-card" onclick="modalCreate()">
+                    <div class="collection-card" id="create-card" onclick="renderPage.modalCreate()">
                         <img src="./assets/imgs/add.png" alt="" width="42px" height="64px">
                         <span>Adicionar à coleção</span>
                     </div>              
@@ -57,7 +57,7 @@ export function homeMainHTML(_cardsCollection) {
                                         <label for="description">Descrição:</label>
                                         <textarea name="description" id="product-description" cols="30" rows="10"></textarea>
                                     </div>
-                                    <button type="button" id="add-product-btn" onclick="addToCollection()">Adicionar</button>
+                                    <button type="button" id="add-product-btn" onclick="renderPage.addToCollection()">Adicionar</button>
                                 </div>
 
                                 <div class="add-image-container">
