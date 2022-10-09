@@ -7,8 +7,10 @@ function modalAlert(txt, color) {
     document.querySelector('main').appendChild(div);
 
     setTimeout(() => {
-        div.parentNode.removeChild(div);
-    }, 2000);
+        if (document.querySelector('#modalNotification')) {
+            div.parentNode.removeChild(div);
+        }
+    }, 4000);
 
 }
 
