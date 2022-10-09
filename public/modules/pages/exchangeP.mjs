@@ -13,7 +13,7 @@ export const exchange = () => {
                     <p style="font-size: 20pt; text-align: center;">Você ainda não possúi nunhuma solicitação de troca :(</p>                   
                 </div>
             </div>
-        </section>
+        </section> 
     `;
 };
 
