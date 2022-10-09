@@ -33,10 +33,9 @@ async function homeHeader(dataUser) {
             </div>
 
             <div id="div-login">
-            <div class="profile-container">
+            <div class="profile-container" onclick="activeDropdown()">
 
-                <div style='width: 36px; height: 36px; background-size: cover; background-image: url("http://localhost:8000/files/${dataUser.photo}"); border-radius: 50%;'>
-                ></div>
+                <div style='width: 36px; height: 36px; background-size: cover; background-image: url("http://localhost:8000/files/${dataUser.photo}"); border-radius: 50%;'></div>
 
                 <div class="login-container">
                     <span>${nameEnd}</span>
@@ -45,12 +44,12 @@ async function homeHeader(dataUser) {
 
             </div>
 
-            <div id="menu-user-header">
+            <div class="menu-user-header">
                 <nav>
                     <ul>
-                        <li>Notificações</li>
-                        <li>Editar perfil</li>
-                        <li>Sair</li>
+                        <li onclick = 'pageExchanges()'>Notificações</li>
+                        <li onclick = 'pageUpdate()'>Editar perfil</li>
+                        <li onclick= 'loginPage()'>Sair</li>
                     </ul>
                 </nav>
             </div>

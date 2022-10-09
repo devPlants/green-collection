@@ -5,6 +5,8 @@ import { modalCreate } from "./modal.mjs";
 import { signupMain } from "./pages/signup.mjs";
 import { signup } from "./signup.mjs";
 import { addToCollection } from "./addToCollection.mjs";
+import { pageExchanges } from "./pages/exchanges.mjs";
+import { pageUpdate } from "./pages/pageUpdate.mjs";
 
 let loginBtn;
 let token;
@@ -36,6 +38,9 @@ async function homePage() {
         return `Erro na requisição: ${data.err}`;
     }
 
+    header.innerHTML = '';
+    main.innerHTML = '';
+
     header.innerHTML = await homeHeader(data);
     main.innerHTML = await homeMain(data, token);
 
@@ -56,7 +61,26 @@ async function homePage() {
         .addEventListener("change", readImage, false);
 }
 
+function activeDropdown() {
+    const dropDown = document.querySelector('.menu-user-header');
+    dropDown.classList.toggle('displayFlex');
+}
+
+function generateExchanges() {
+    main.innerHTML = '';
+    main.innerHTML = pageExchanges();
+    activeDropdown();
+}
+
+function generateUpdate() {
+    main.innerHTML = '';
+    main.innerHTML = pageUpdate();
+    activeDropdown();
+}
+
 function loginPage() {
+    header.innerHTML = '';
+    main.innerHTML = '';
 
     header.innerHTML = loginHeader;
     main.innerHTML = loginMain;
@@ -105,3 +129,6 @@ window.loginPage = loginPage;
 window.modalCreate = modalCreate;
 window.signup = signup;
 window.addToCollection = addToCollection;
+window.activeDropdown = activeDropdown;
+window.pageExchanges = generateExchanges;
+window.pageUpdate = generateUpdate;
