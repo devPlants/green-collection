@@ -24,7 +24,7 @@ async function homeHeader(dataUser) {
     const name2 = nameFull[1];
     const nameEnd = name2 == undefined ? name1 : `${name1} ${name2}`;
 
-    return `<div class="logo-container">
+    return `<div class="logo-container" onclick="homePage()">
                 <img src="./assets/imgs/logo.png" height="48px" width="48px" alt="logo">
             </div>
 
