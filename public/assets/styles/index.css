@@ -35,7 +35,7 @@ header {
     background-color: var(--beage);
     min-height: 13vh;
     width: 100%;
-    z-index: 100;
+    z-index: 9999;
     position: fixed;
 
 }
@@ -685,9 +685,21 @@ user-header-img {
 
 .search-page-card{
     display: flex;
-    justify-content: center; 
-    width: 20ch;    
+    justify-content: end; 
+    width: 100%;
+    padding: 8em 10em;    
 
+}
+
+.search-title-card{
+    z-index: 9999;
+    color: #ffff;
+        display: flex;
+        justify-content: end;
+    background-size: contain;
+        background-repeat: no-repeat;
+        background-position: left top;
+        height: 70vh
 }
 
 
@@ -706,7 +718,7 @@ user-header-img {
 .search-results-section {
     display: flex;
     justify-content: center;
-    padding: 2em 3em 0 3em;
+    padding: 1em 3em 0 3em;
     min-height: 30em;
 }
 
@@ -717,4 +729,6 @@ user-header-img {
 
 .search-title-container{
     z-index: 2;
+    width: 20ch;
 }
+

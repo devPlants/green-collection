@@ -137,6 +137,31 @@ function tradePage(){
 }
 
 
+function plantsSearchMain(){
+    main.innerHTML = '';
+    main.innerHTML = searchPlantsPage();
+    window.scrollTo(0,0);
+}
+function seedsSearchMain(){
+    main.innerHTML = '';
+    main.innerHTML = searchSeedsPage();
+    window.scrollTo(0,0);
+}
+function usersSearchMain(){
+    main.innerHTML = '';
+    main.innerHTML = searchUsersPage();
+    window.scrollTo(0,0);
+}
+function localizationSearchMain(){
+    main.innerHTML = '';
+    main.innerHTML = searchLocationPage();
+    window.scrollTo(0,0);
+}
+
+
+
+
+
 window.signUpPage = signUpPage;
 window.loginPage = loginPage;
 window.modalCreate = modalCreate;
@@ -146,3 +171,7 @@ window.activeDropdown = activeDropdown;
 window.pageExchanges = generateExchanges;
 window.pageUpdate = generateUpdate;
 window.responseExchanges = finallyExchange;
+window.plantsSearchMain = plantsSearchMain;
+window.seedsSearchMain = seedsSearchMain;
+window.usersSearchMain = usersSearchMain;
+window.localizationSearchMain = localizationSearchMain;
