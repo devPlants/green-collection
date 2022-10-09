@@ -17,16 +17,15 @@
 
 <body>
     <header>
-        <div class="logo-container">
-            <img src="./assets/imgs/logo.png"
-                height="48px" width="48px" alt="logo">
+        <div class="logo-container" onclick='renderPage.login()' style="cursor:pointer;">
+            <img src="./assets/imgs/logo.png" height="48px" width="48px" alt="logo">
         </div>
-        <div class="logo-container">
+        <div class="logo-container" onclick='renderPage.login()' style="cursor:pointer;">
             <img src="./assets/imgs/name-green-collection.png" alt="" height="45vh">
         </div>
-        <div class="profile-container">
+        <div class="profile-container" onclick="renderPage.login()">
             <img src="./assets/imgs/User.png" height='36px' width='36px' alt="">
-            <div class="login-container" onclick="renderPage.login()">
+            <div class="login-container">
                 <span>Login</span>
                 <span>seuemail@email.com</span>
             </div>
@@ -61,6 +60,6 @@
             <a href=""><img src="./assets/imgs/icon-gmail.png" alt="" class="socialmedia-icons"></a>
         </div>
     </footer>
-    <script src="./modules/app.mjs" type="module"></script>
+    <script src="./app.mjs" type="module"></script>
 
 </html>
