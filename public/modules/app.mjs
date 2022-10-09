@@ -5,6 +5,8 @@ import { modalCreate } from "./modal.mjs";
 import { signupMain } from "./pages/signup.mjs";
 import { signup } from "./signup.mjs";
 import { addToCollection } from "./addToCollection.mjs";
+import { tradeMain, getCollection } from "./pages/trade.mjs";
+import { searchUsersPage, searchPlantsPage, searchLocationPage, searchSeedsPage } from "./pages/searchPages.mjs";
 import { pageUpdate } from "./pages/pageUpdate.mjs";
 import { renderExchanges } from "./pages/exchange.mjs";
 import { updateExchanges } from "./updateExchanges.mjs";
@@ -129,6 +131,11 @@ function signUpPage() {
 searchCard.forEach((element) => {
     element.addEventListener("click", loginPage);
 });
+
+function tradePage(){
+    main.innerHTML = tradeMain;
+}
+
 
 window.signUpPage = signUpPage;
 window.loginPage = loginPage;
