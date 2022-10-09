@@ -1,11 +1,11 @@
 import { homeMainHTML } from "../pages/homeP.mjs";
 
-export async function homeMainS(_token) {
+export async function homeMainS() {
 
     const options = {
         method: "GET",
         headers: {
-            authorization: `${_token}`,
+            authorization: `${document.cookie}`,
         },
     };
 
