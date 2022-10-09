@@ -5,8 +5,11 @@ import { modalCreate } from "./modal.mjs";
 import { signupMain } from "./pages/signup.mjs";
 import { signup } from "./signup.mjs";
 import { addToCollection } from "./addToCollection.mjs";
-import { pageExchanges } from "./pages/exchanges.mjs";
+import { tradeMain, getCollection } from "./pages/trade.mjs";
+import { searchUsersPage, searchPlantsPage, searchLocationPage, searchSeedsPage } from "./pages/searchPages.mjs";
 import { pageUpdate } from "./pages/pageUpdate.mjs";
+import { renderExchanges } from "./pages/exchange.mjs";
+import { updateExchanges } from "./updateExchanges.mjs";
 
 let loginBtn;
 let token;
@@ -20,7 +23,7 @@ const searchCard = document.querySelectorAll(".search-card");
 export function renderHomeBySignup(_token, _userId) {
     token = _token;
     userId = _userId;
-    document.cookie = `${token}`
+    document.cookie = `${token}`;
 
     homePage();
 }
@@ -38,8 +41,8 @@ async function homePage() {
         return `Erro na requisição: ${data.err}`;
     }
 
-    header.innerHTML = '';
-    main.innerHTML = '';
+    header.innerHTML = "";
+    main.innerHTML = "";
 
     header.innerHTML = await homeHeader(data);
     main.innerHTML = await homeMain(data, token);
@@ -56,29 +59,36 @@ async function homePage() {
             file.readAsDataURL(this.files[0]);
         }
     }
-    document.querySelector("#add-image-btn").addEventListener("change", readImage, false);
+    document
+        .querySelector("#add-image-btn")
+        .addEventListener("change", readImage, false);
 }
 
 function activeDropdown() {
-    const dropDown = document.querySelector('.menu-user-header');
-    dropDown.classList.toggle('displayFlex');
+    const dropDown = document.querySelector(".menu-user-header");
+    dropDown.classList.toggle("displayFlex");
 }
 
-function generateExchanges() {
-    main.innerHTML = '';
-    main.innerHTML = pageExchanges();
+function generateExchanges(status) {
+    main.innerHTML = "";
+    renderExchanges(status);
+    activeDropdown();
     activeDropdown();
 }
 
 function generateUpdate() {
-    main.innerHTML = '';
+    main.innerHTML = "";
     main.innerHTML = pageUpdate();
     activeDropdown();
 }
 
+function finallyExchange(productId1, productId2, status, id) {
+    updateExchanges(productId1, productId2, status, id);
+}
+
 function loginPage() {
-    header.innerHTML = '';
-    main.innerHTML = '';
+    header.innerHTML = "";
+    main.innerHTML = "";
 
     header.innerHTML = loginHeader;
     main.innerHTML = loginMain;
@@ -91,7 +101,7 @@ function loginPage() {
         }
         token = response.token;
         userId = response.userId;
-        document.cookie = `${token}`
+        document.cookie = `${token}`;
         homePage();
     });
 }
@@ -103,7 +113,8 @@ function signUpPage() {
         if (this.files && this.files[0]) {
             const file = new FileReader();
             file.onload = function (e) {
-                const photoContainer = document.querySelector(".photo-container");
+                const photoContainer =
+                    document.querySelector(".photo-container");
                 photoContainer.style = `background-image: url(${e.target.result});
                                         background-size: cover;
                                         background-position: center;`;
@@ -112,12 +123,44 @@ function signUpPage() {
         }
     }
 
-    document.querySelector("#photo-btn").addEventListener("change", readImage, false);
+    document
+        .querySelector("#photo-btn")
+        .addEventListener("change", readImage, false);
 }
 
 searchCard.forEach((element) => {
     element.addEventListener("click", loginPage);
 });
+
+function tradePage(){
+    main.innerHTML = tradeMain;
+}
+
+
+function plantsSearchMain(){
+    main.innerHTML = '';
+    main.innerHTML = searchPlantsPage();
+    window.scrollTo(0,0);
+}
+function seedsSearchMain(){
+    main.innerHTML = '';
+    main.innerHTML = searchSeedsPage();
+    window.scrollTo(0,0);
+}
+function usersSearchMain(){
+    main.innerHTML = '';
+    main.innerHTML = searchUsersPage();
+    window.scrollTo(0,0);
+}
+function localizationSearchMain(){
+    main.innerHTML = '';
+    main.innerHTML = searchLocationPage();
+    window.scrollTo(0,0);
+}
+
+
+
+
 
 window.signUpPage = signUpPage;
 window.loginPage = loginPage;
@@ -127,3 +170,8 @@ window.addToCollection = addToCollection;
 window.activeDropdown = activeDropdown;
 window.pageExchanges = generateExchanges;
 window.pageUpdate = generateUpdate;
+window.responseExchanges = finallyExchange;
+window.plantsSearchMain = plantsSearchMain;
+window.seedsSearchMain = seedsSearchMain;
+window.usersSearchMain = usersSearchMain;
+window.localizationSearchMain = localizationSearchMain;

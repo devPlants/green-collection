@@ -1,9 +1,7 @@
-export async function login() {
-    const emailInput = document.querySelector("#email-input");
-    const passwdInput = document.querySelector("#passwd-input");
+export async function loginToken() {
 
-    const userEmail = emailInput.value;
-    const userPasswd = passwdInput.value;
+    const userEmail = document.querySelector("#email-input").value;
+    const userPasswd = document.querySelector("#passwd-input").value;
 
     const options = {
         method: "POST",
@@ -15,12 +13,14 @@ export async function login() {
         try {
             const response = await fetch("/login", options);
             if (response.status >= 300) {
+                window.renderPage.modalAlert('Email incorreto ou senha inválida, tente novamente ou faça seu cadastro!', 'red');
                 return 400;
             }
             const data = await response.json();
             return data;
-        } catch (error) {
-            console.log(`Erro na requisição: ${error}`);
+        } catch (err) {
+            window.renderPage.modalAlert(`Ocorreu um erro na requisição, recarrege a página e tente novamente ou contacte o administrador! Erro: ${err}`, 'red');
+            return 400;
         }
     }
     const token = await requisition();

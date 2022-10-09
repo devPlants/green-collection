@@ -1,27 +1,28 @@
 async function dataUser(token, userId) {
-
     const options = {
-        method: 'GET',
+        method: "GET",
         headers: {
-            'authorization': `${token}`
-        }
+            authorization: `${token}`,
+        },
     };
 
     try {
-        const response = await fetch(`http://localhost:8000/users/${userId}`, options);
+        const response = await fetch(
+            `http://localhost:8000/users/${userId}`,
+            options
+        );
         const dataUser = await response.json();
         return dataUser[0];
     } catch (err) {
-        return { "status": 400, err };
+        return { status: 400, err };
     }
 }
 
 async function homeHeader(dataUser) {
-
-    const nameFull = dataUser.name.split(' ');
+    const nameFull = dataUser.name.split(" ");
     const name1 = nameFull[0];
     const name2 = nameFull[1];
-    const nameEnd = (name2 == undefined ? name1 : `${name1} ${name2}`)
+    const nameEnd = name2 == undefined ? name1 : `${name1} ${name2}`;
 
     return `<div class="logo-container">
                 <img src="./assets/imgs/logo.png" height="48px" width="48px" alt="logo">
@@ -47,7 +48,7 @@ async function homeHeader(dataUser) {
             <div class="menu-user-header">
                 <nav>
                     <ul>
-                        <li onclick = 'pageExchanges()'>Notificações</li>
+                        <li onclick = "pageExchanges('pending')">Notificações</li>
                         <li onclick = 'pageUpdate()'>Editar perfil</li>
                         <li onclick= 'loginPage()'>Sair</li>
                     </ul>
@@ -57,28 +58,28 @@ async function homeHeader(dataUser) {
 }
 
 async function homeMain(dataUser, token) {
-
     const options = {
-        method: 'GET',
+        method: "GET",
         headers: {
-            authorization: `${token}`
-        }
+            authorization: `${token}`,
+        },
     };
 
-    let cardsCollection = '';
+    let cardsCollection = "";
 
     try {
-        const response = await fetch('http://localhost:8000/collections/?rows=7&page=1', options);
+        const response = await fetch(
+            "http://localhost:8000/collections/?rows=7&page=1",
+            options
+        );
         const data = await response.json();
 
-        data.forEach(card => {
-
+        data.forEach((card) => {
             cardsCollection += `<div class="collection-card product-card">
                                     <div class="img-procuct-card" style='background-image: url("http://localhost:8000/files/${card.product_photo}");'></div>
                                     <span><strong>${card.product_name}</strong> <br> ${card.users_city}, ${card.user_state}</span>
-                                </div>`
+                                </div>`;
         });
-
     } catch (err) {
         console.log(`Ocorreu um erro na requicição à coleção: ${err}`);
         return 400;
@@ -95,10 +96,10 @@ async function homeMain(dataUser, token) {
                     <h2>Busque por</h2>
                 </div>
                 <div class="search-cards-container">
-                    <div class="search-card"></div>
-                    <div class="search-card"></div>
-                    <div class="search-card"></div>
-                    <div class="search-card"></div>
+                    <div class="search-card" id="search-plants-card" onclick="plantsSearchMain()"></div>
+                    <div class="search-card" id="search-seeds-card" onclick="seedsSearchMain()"></div>
+                    <div class="search-card" id="search-users-card" onclick="usersSearchMain()"></div>
+                    <div class="search-card" id="search-locations-card" onclick="localizationSearchMain()"></div>
                     <img src="./assets/imgs/logo.png" alt="" width="30px" height="30px" id="cards-logo">
                 </div>
             </section>
