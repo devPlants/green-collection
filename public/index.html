@@ -20,7 +20,7 @@
 <body>
     <header>
         <div class="logo-container">
-            <img onclick="alertModal('Esta é uma mensagem de teste!','green')" src="./assets/imgs/logo.png"
+            <img src="./assets/imgs/logo.png"
                 height="48px" width="48px" alt="logo">
         </div>
         <div class="logo-container">
@@ -28,7 +28,7 @@
         </div>
         <div class="profile-container">
             <img src="./assets/imgs/User.png" height='36px' width='36px' alt="">
-            <div class="login-container" onclick="loginPage()">
+            <div class="login-container" onclick="renderPage.login()">
                 <span>Login</span>
                 <span>seuemail@email.com</span>
             </div>
@@ -45,10 +45,10 @@
                 <h2>Busque por</h2>
             </div>
             <div class="search-cards-container">
-                <div class="search-card"></div>
-                <div class="search-card"></div>
-                <div class="search-card"></div>
-                <div class="search-card"></div>
+                <div class="search-card" onclick="renderPage.login()"></div>
+                <div class="search-card" onclick="renderPage.login()"></div>
+                <div class="search-card" onclick="renderPage.login()"></div>
+                <div class="search-card" onclick="renderPage.login()"></div>
                 <img src="./assets/imgs/logo.png" alt="" width="30px" height="30px" id="cards-logo">
             </div>
         </section>

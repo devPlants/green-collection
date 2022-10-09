@@ -1,4 +1,4 @@
-import { homeMainHTML } from "../pages/home.mjs";
+import { homeMainHTML } from "../pages/homeP.mjs";
 
 export async function homeMainS(_token) {
 
