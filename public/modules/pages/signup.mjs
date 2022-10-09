@@ -46,7 +46,7 @@ const signupMain = ` <div class="singup-title-container">
                 <input type="text" name="city">
             </div>
             <div class="state-container label">
-                <label for="state">Cidade:</label>
+                <label for="state">Estado:</label>
                 <input type="text" name="state">
             </div>
         </div>
