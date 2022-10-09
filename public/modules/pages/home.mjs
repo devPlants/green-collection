@@ -96,10 +96,10 @@ async function homeMain(dataUser, token) {
                     <h2>Busque por</h2>
                 </div>
                 <div class="search-cards-container">
-                    <div class="search-card"></div>
-                    <div class="search-card"></div>
-                    <div class="search-card"></div>
-                    <div class="search-card"></div>
+                    <div class="search-card" id="search-plants-card"></div>
+                    <div class="search-card" id="search-seeds-card"></div>
+                    <div class="search-card" id="search-users-card"></div>
+                    <div class="search-card" id="search-locations-card"></div>
                     <img src="./assets/imgs/logo.png" alt="" width="30px" height="30px" id="cards-logo">
                 </div>
             </section>

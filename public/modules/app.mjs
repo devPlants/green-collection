@@ -6,6 +6,7 @@ import { signupMain } from "./pages/signup.mjs";
 import { signup } from "./signup.mjs";
 import { addToCollection } from "./addToCollection.mjs";
 import { tradeMain, getCollection } from "./pages/trade.mjs";
+import { searchUsersPage, searchPlantsPage, searchLocationPage, searchSeedsPage } from "./pages/searchPages.mjs";
 
 let loginBtn;
 let token;
@@ -101,11 +102,6 @@ function tradePage(){
 }
 
 
-
-
-
-
- 
 window.signUpPage = signUpPage;
 window.loginPage = loginPage;
 window.modalCreate = modalCreate;
