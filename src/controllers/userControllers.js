@@ -12,7 +12,15 @@ const UserControllers = {
             });
         }
 
-        res.status(201).json({ id: createUser.response });
+        res.cookie("token", createUser.token, {
+            maxAge: 900000,
+            httpOnly: true,
+        });
+
+        res.status(201).json({
+            id: createUser.response,
+            token: createUser.token,
+        });
     },
     getAll: async (req, res) => {
         const users = await UserServices.getAllUsers();
