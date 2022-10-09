@@ -40,9 +40,14 @@ async function login() {
     return 200;
 }
 
+function activeDropdown() {
+    const dropDown = document.querySelector(".menu-user-header");
+    dropDown.classList.toggle("displayFlex");
+}
 
 window.renderPage = {
     modalAlert: modalAlert,
     login: renderPages.login,
     home: renderPages.home,
+    activeDropdown: activeDropdown,
 }
