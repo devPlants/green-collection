@@ -10,7 +10,7 @@ const exchangesServices = {
 
         if (userId2.status > 300) return userId2;
 
-        data.userId2 = userId2.response[0].user_id;
+        data.userId2 = userId2.response[0].users_id;
 
         if (!validations(data)) {
             return {
