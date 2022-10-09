@@ -82,8 +82,8 @@ function generateUpdate() {
     activeDropdown();
 }
 
-function finallyExchange(status) {
-    updateExchanges(status);
+function finallyExchange(productId1, productId2, status, id) {
+    updateExchanges(productId1, productId2, status, id);
 }
 
 function loginPage() {
