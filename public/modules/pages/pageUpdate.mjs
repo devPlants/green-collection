@@ -4,14 +4,15 @@ function pageUpdate() {
                 <h2 id="update-title">Informações de usuário</h2>
             </div>
             <section class="update-section">
-                <form id="form-update" enctype="multipart/form-data" class="update-wrapper">
-                    <div class="inputs-container">
+                <form id="form-update" enctype="multipart/form-data">
+                <div class="update-wrapper">
+                    <div class="update-inputs-container">
                         <div class="first-input-container">
                             <div class="name-container  label">
                                 <label for="name">Nome:</label>
                                 <input type="text" name="name">
                             </div>
-                            <div class="email-container label">
+                            <div class="update-email-container label">
                                 <label for="email">E-mail:</label>
                                 <input type="text" name="email">
                             </div>
@@ -48,12 +49,12 @@ function pageUpdate() {
                                 <input type="text" name="city">
                             </div>
                             <div class="state-container label">
-                                <label for="state">Cidade:</label>
+                                <label for="state">Estado:</label>
                                 <input type="text" name="state">
                             </div>
                         </div>
                         <div class="fifth-input-container">
-                            <div class="passwd-container label">
+                            <div class="update-passwd-container label">
                                 <label for="passwd">Senha:</label>
                                 <input type="text" name="password">
                             </div>
@@ -66,13 +67,16 @@ function pageUpdate() {
                     <div class="photo-wrapper">
                         <div class="photo-container">
                         </div>
-                        <input id="photo-btn" name="photo" type="file">Alterar imagem</button>
+                        <label for='photo-btn' class="label-for-photo-btn"> Alterar Foto</label>
+                        <input id="photo-btn" type="file" name="photo">
                     </div>
-                    <div class="btn-container">
-                        <button id="signup-btn" onclick="update()" type="button">ATUALIZAR</button>
-                    </div>
-                </form>
-            </section>`;
+                </div>
+                <div class="btn-container">
+                    <button id="update-btn" type="button" onclick="update()">Atualizar</button>
+                </div>
+            </form>
+            </section>
+            `;
 }
 
 export {pageUpdate};
