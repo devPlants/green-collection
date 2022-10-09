@@ -57,6 +57,7 @@ const exchangesServices = {
             if (user2.status > 300) return user2;
 
             allExchanges.push({
+                id: change.id,
                 user1: user1.response[0],
                 user2: user2.response[0],
                 status: change.status,
@@ -72,7 +73,7 @@ const exchangesServices = {
 
         if (userId2.status > 300) return userId2;
 
-        data.userId2 = userId2.response[0].user_id;
+        data.userId2 = userId2.response[0].users_id;
 
         if (data.status === "rejected") {
             const rejected = await exchanges.updateRejected(data);
