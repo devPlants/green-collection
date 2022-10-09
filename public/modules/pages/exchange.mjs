@@ -66,7 +66,7 @@ export const renderExchanges = async (status) => {
         const options = {
             method: "GET",
             headers: {
-                authorization: `${getToken().token}`,
+                authorization: `${document.cookie}`,
             },
         };
         const response = await fetch(
@@ -97,8 +97,18 @@ export const renderExchanges = async (status) => {
                 userCity2: trade.user2.user_city,
                 userState1: trade.user1.user_state,
                 userState2: trade.user2.user_state,
-                res: `<button id="accept-btn" onclick="responseExchanges('pending')">Aceitar</button>
-                <button id="reject-btn">Rejeitar</button>`,
+                res: `<button id="accept-btn" onclick="responseExchanges(
+                    '${trade.user1.products_id}', 
+                    '${trade.user2.products_id}', 
+                    'approved', 
+                    '${trade.id}'
+                    )">Aceitar</button>
+                <button id="reject-btn" onclick="responseExchanges(
+                    '${trade.user1.products_id}', 
+                    '${trade.user2.products_id}', 
+                    'rejected', 
+                    '${trade.id}'
+                    )">Rejeitar</button>`,
             };
 
             if (status != "pending") {
