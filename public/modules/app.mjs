@@ -132,30 +132,30 @@ searchCard.forEach((element) => {
     element.addEventListener("click", loginPage);
 });
 
-function tradePage(){
+function tradePage() {
     main.innerHTML = tradeMain;
 }
 
 
-function plantsSearchMain(){
+function plantsSearchMain() {
     main.innerHTML = '';
     main.innerHTML = searchPlantsPage();
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
 }
-function seedsSearchMain(){
+function seedsSearchMain() {
     main.innerHTML = '';
     main.innerHTML = searchSeedsPage();
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
 }
-function usersSearchMain(){
+function usersSearchMain() {
     main.innerHTML = '';
     main.innerHTML = searchUsersPage();
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
 }
-function localizationSearchMain(){
+function localizationSearchMain() {
     main.innerHTML = '';
     main.innerHTML = searchLocationPage();
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
 }
 
 

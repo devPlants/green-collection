@@ -4,16 +4,16 @@ export const exchange = () => {
     return `
     <section class="exchanges-section">
         <div onclick='renderPage.home()' style='cursor:pointer; display:flex; padding:20px;'>&larr;</div>   
-            <div class="exchanges-wrapper">
-                <div class="exchanges-title-container">
-                    <h2 id="exchanges-title">Histórico de trocas</h2>
-                </div>
-                <div id="exchanges-container" class="exchanges-container">
-                    <div class="btn-exchanges-container"></div>
-                    <p style="font-size: 20pt; text-align: center;">Você ainda não possúi nunhuma solicitação de troca :(</p>                   
-                </div>
+        <div class="exchanges-wrapper">
+            <div class="exchanges-title-container">
+                <h2 id="exchanges-title">Histórico de trocas</h2>
             </div>
-        </section> 
+            <div id="exchanges-container" class="exchanges-container">
+                <div class="btn-exchanges-container"></div>
+                <p style="font-size: 20pt; text-align: center;">Você ainda não possúi nunhuma solicitação de troca :(</p>                   
+            </div>
+        </div>
+    </section> 
     `;
 };
 
@@ -59,7 +59,8 @@ const exchangeList = (data) => {
 };
 
 export const renderExchanges = async (status) => {
-    window.renderPage.activeDropdown();
+    // window.renderPage.activeDropdown();
+    document.querySelector(".menu-user-header").classList.remove('displayFlex');
     const main = document.querySelector("main");
     main.innerHTML = exchange();
     const divExchanges = document.querySelector("#exchanges-container");
@@ -81,8 +82,8 @@ export const renderExchanges = async (status) => {
 
         divExchanges.innerHTML = `
             <div class="btn-exchanges-container">
-                <button id="pending-exchanges-btn" onclick="pageExchanges('pending')">Pendentes</button>
-                <button id="finalized-exchanges-btn" onclick="pageExchanges('finish')">Finalizados</button>
+                <button id="pending-exchanges-btn" onclick="renderPage.exchanges('pending')">Pendentes</button>
+                <button id="finalized-exchanges-btn" onclick="renderPage.exchanges('finish')">Finalizados</button>
             </div>`;
 
         for (const trade of data) {
