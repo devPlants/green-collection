@@ -1,5 +1,25 @@
+export function initialHeaderHTML() {
+
+    return `<div class="logo-container" onclick='renderPage.login()' style="cursor:pointer;">
+                <img src="./assets/imgs/logo.png" height="48px" width="48px" alt="logo">
+            </div>
+
+            <div class="logo-container" onclick='renderPage.login()' style="cursor:pointer;">
+                <img src="./assets/imgs/name-green-collection.png" alt="" height="45vh">
+            </div>
+
+            <div class="profile-container" onclick="renderPage.login()">
+                <img src="./assets/imgs/User.png" height='36px' width='36px' alt="">
+                <div class="login-container">
+                    <span>Login</span>
+                    <span>seuemail@email.com</span>
+                </div>
+            </div>`;
+}
+
 export function loginHeaderHTML() {
-    return `<img onclick='renderPage.login()' src="./assets/imgs/name-green-collection.png" alt="" height="45vh" style='cursor:pointer;'>`;
+
+    return `<img onclick='renderPage.homeInitial()' src="./assets/imgs/name-green-collection.png" alt="" height="45vh" style='cursor:pointer;'>`;
 }
 
 export function homeHeaderHTML(_name, _email, _photo) {

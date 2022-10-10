@@ -45,13 +45,13 @@ const exchangesServices = {
 
         for (change of getExchanges.response) {
             const user1 = await collectionsServices.getByProductId(
-                change.product_id1
+                change.products_id1
             );
 
             if (user1.status > 300) return user1;
 
             const user2 = await collectionsServices.getByProductId(
-                change.product_id2
+                change.products_id2
             );
 
             if (user2.status > 300) return user2;

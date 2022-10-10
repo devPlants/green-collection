@@ -11,10 +11,38 @@ export function homeMainHTML(_cardsCollection) {
                     <h2>Busque por</h2>
                 </div>
                 <div class="search-cards-container">
+<<<<<<< HEAD
                     <div class="search-card" onclick="plantsSearchMain()"></div>
                     <div class="search-card" onclick="seedsSearchMain()"></div>
                     <div class="search-card" onclick="usersSearchMain()"></div>
                     <div class="search-card" onclick="localizationSearchMain()"></div>
+=======
+
+                    <div class="search-card" onclick="renderPage.searchPlantsPage()">
+                        <div class="title-serch-card">
+                            <h2>Planta</h2>
+                        </div>
+                    </div>
+
+                    <div class="search-card" onclick="renderPage.searchSeedsPage()">
+                        <div class="title-serch-card">
+                            <h2>Semente</h2>
+                        </div>
+                    </div>
+
+                    <div class="search-card" onclick="renderPage.searchUsersPage()">
+                        <div class="title-serch-card">
+                            <h2>Usuário</h2>
+                        </div>
+                    </div>
+
+                    <div class="search-card" onclick="renderPage.searchLocationPage()">
+                        <div class="title-serch-card">
+                            <h2>Localização</h2>
+                        </div>
+                    </div>
+
+>>>>>>> 704bd7de55b4e6def798092cdf5d5ecad46115a4
                     <img src="./assets/imgs/logo.png" alt="" width="30px" height="30px" id="cards-logo">
                 </div>
             </section>

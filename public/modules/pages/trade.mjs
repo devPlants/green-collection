@@ -50,7 +50,7 @@ function tradeMain() {
 </section>`
 }
 
-async function getCollection(){
+async function getCollection() {
     const collectionOnDisplay = document.querySelectorAll('.offer-products-ondisplay');
 
     const options = {
@@ -68,7 +68,7 @@ async function getCollection(){
         return 400;
     }
 
-    collectionOnDisplay.forEach(element =>{
+    collectionOnDisplay.forEach(element => {
         element.style.backgroundImage = `url(${data.user_photo})`;
     })
 }
