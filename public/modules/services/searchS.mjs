@@ -33,12 +33,16 @@ export const searchS = async (data) => {
             pageSearch += cards({
                 image: card.product_photo,
                 name: card.product_name,
+                userName: card.user_name,
                 city: card.user_city,
                 state: card.user_state,
             });
         }
 
-        return { cards: pageSearch, total: response[0].total };
+        return {
+            cards: pageSearch,
+            total: !response[0].total ? false : response[0].total,
+        };
     } catch (err) {
         console.log("Erro na requisição do searchS: ", err);
     }
