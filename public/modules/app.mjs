@@ -142,9 +142,9 @@ function tradePage() {
     main.innerHTML = tradeMain;
 }
 
-async function plantsSearchMain(page, word) {
+function plantsSearchMain() {
     main.innerHTML = "";
-    main.innerHTML = await searchPlantsPage(page, word);
+    main.innerHTML = searchPlantsPage();
     window.scrollTo(0, 0);
 }
 function seedsSearchMain() {

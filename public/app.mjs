@@ -5,6 +5,9 @@ import { loginToken } from "./modules/loginValidation.mjs";
 import { modalCreate } from "./modules/modal.mjs";
 import { addToCollection } from "./modules/addToCollection.mjs";
 import { renderExchanges } from "./modules/pages/exchangeP.mjs";
+import { updateExchanges } from "./modules/updateExchanges.mjs";
+import { printImg } from "./modules/printImg.mjs";
+import { signup } from "./modules/signup.mjs";
 
 const header = document.querySelector("header");
 const main = document.querySelector("main");
@@ -40,17 +43,20 @@ const renderPages = {
 
         main.innerHTML = '';
         main.innerHTML = await pagesHTML.homeMain();
+        printImg('#add-image', '#add-image-btn');
     },
 
     updateUserMain: () => {
         main.innerHTML = '';
         main.innerHTML = pagesHTML.updateUserMain();
         activeDropdown();
+        printImg('.photo-container', '#photo-btn');
     },
 
     signupMain: () => {
         main.innerHTML = '';
         main.innerHTML = pagesHTML.signupMain();
+        printImg('.photo-container', '#photo-btn');
     },
 
     exchangeMain: () => {
@@ -80,7 +86,19 @@ const renderPages = {
         main.innerHTML = '';
         main.innerHTML = pagesHTML.searchLocationPage();
         window.scrollTo(0, 0);
-    }
+    },
+}
+
+export async function renderHomeBySignup(_token, _userId) {
+    token = _token;
+    document.cookie = `${token}`;
+    dataUser = await decodeToken(token, _userId);
+    renderPages.home();
+    window.renderPage.modalAlert(`Olá ${dataUser.name}, seu cadastro foi realizado com sucesso. Bem vindo ao Green Collection!`, 'green');
+}
+
+function finallyExchange(productId1, productId2, status, id) {
+    updateExchanges(productId1, productId2, status, id);
 }
 
 async function login() {
@@ -106,6 +124,7 @@ window.renderPage = {
     modalCreate: modalCreate,
     addToCollection: addToCollection,
     exchanges: renderExchanges,
+    signup: signup,
 
     login: renderPages.login,
     homeInitial: renderPages.homeInitial,

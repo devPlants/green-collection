@@ -19,6 +19,7 @@ const pagesHTML = {
     searchSeedsPage: () => { return searchSeedsPageS() },
     searchUsersPage: () => { return searchUsersPageS() },
     searchLocationPage: () => { return searchLocationPageS() },
+    
 }
 
 export { pagesHTML };
