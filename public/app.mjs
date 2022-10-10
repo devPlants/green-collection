@@ -8,12 +8,14 @@ import { renderExchanges } from "./modules/pages/exchangeP.mjs";
 import { updateExchanges } from "./modules/updateExchanges.mjs";
 import { printImg } from "./modules/printImg.mjs";
 import { signup } from "./modules/signup.mjs";
+import { searchBtn, typesSearch } from "./modules/services/searchBtn.js";
 
 const header = document.querySelector("header");
 const main = document.querySelector("main");
 
 let token = "";
 let dataUser = ""; // {address,admin,city,cpf,email,id,name,number,phone_number,photo,state,zip_code}
+
 export function getData() {
     return { token, dataUser };
 }
@@ -66,27 +68,31 @@ const renderPages = {
         main.innerHTML = pagesHTML.exchangeMain();
     },
 
-    searchPlantsPage: () => {
+    searchPlantsPage: async (page, word) => {
+        typesSearch("plant");
         main.innerHTML = "";
-        main.innerHTML = pagesHTML.searchPlantsPage();
+        main.innerHTML = await pagesHTML.searchPlantsPage(page, word);
         window.scrollTo(0, 0);
     },
 
-    searchSeedsPage: () => {
+    searchSeedsPage: async (page, word) => {
+        typesSearch("seed");
         main.innerHTML = "";
-        main.innerHTML = pagesHTML.searchSeedsPage();
+        main.innerHTML = await pagesHTML.searchSeedsPage(page, word);
         window.scrollTo(0, 0);
     },
 
-    searchUsersPage: () => {
+    searchUsersPage: async (page, word) => {
+        typesSearch("users");
         main.innerHTML = "";
-        main.innerHTML = pagesHTML.searchUsersPage();
+        main.innerHTML = await pagesHTML.searchUsersPage(page, word);
         window.scrollTo(0, 0);
     },
 
-    searchLocationPage: () => {
+    searchLocationPage: async (page, word) => {
+        typesSearch("local");
         main.innerHTML = "";
-        main.innerHTML = pagesHTML.searchLocationPage();
+        main.innerHTML = await pagesHTML.searchLocationPage(page, word);
         window.scrollTo(0, 0);
     },
 };
@@ -131,6 +137,7 @@ window.renderPage = {
     addToCollection: addToCollection,
     exchanges: renderExchanges,
     signup: signup,
+    searchBtn: searchBtn,
 
     login: renderPages.login,
     homeInitial: renderPages.homeInitial,

@@ -102,14 +102,15 @@ const collections = {
         const values = ["approved", data.rows, data.page, wordSearch];
         const valuesCount = ["approved", wordSearch];
 
-        if (typeof data.search != "string") data.by = "";
+        //if (typeof data.search != "string") data.by = "";
 
         switch (data.by) {
             case "products":
                 constructQuery.where = `AND p.category = $5 AND p.name ILIKE $4`;
-                constructQuery.countSql = `AND p.category = $2 AND p.name ILIKE $3`;
+                constructQuery.countSql = `AND p.category = $3 AND p.name ILIKE $2`;
 
                 values.push(data.category);
+                valuesCount.push(data.category);
 
                 break;
             case "users":
