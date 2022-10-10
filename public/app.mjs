@@ -13,7 +13,6 @@ let token = '';
 let dataUser = ''; // {address,admin,city,cpf,email,id,name,number,phone_number,photo,state,zip_code}
 export function getData() { return { token, dataUser } };
 
-
 const renderPages = {
     login: () => {
         header.innerHTML = '';
@@ -22,15 +21,24 @@ const renderPages = {
         main.innerHTML = pagesHTML.loginMain();
     },
 
-    home: async () => {
-        if (document.querySelector("#email-input")) {
-            const response = await login();
-            if (response == 400) { return };
-        }
+    homeInitial: async () => {
 
         header.innerHTML = '';
         main.innerHTML = '';
-        header.innerHTML = pagesHTML.homeHeader(dataUser);
+        header.innerHTML = pagesHTML.initialHeader();
+        main.innerHTML = pagesHTML.homeInitialMain();
+    },
+
+    home: async () => {
+
+        if (document.querySelector("#email-input")) {
+            const response = await login();
+            header.innerHTML = '';
+            header.innerHTML = pagesHTML.homeHeader(dataUser);
+            if (response == 400) { return };
+        }
+
+        main.innerHTML = '';
         main.innerHTML = await pagesHTML.homeMain();
     },
 
@@ -48,6 +56,30 @@ const renderPages = {
     exchangeMain: () => {
         main.innerHTML = '';
         main.innerHTML = pagesHTML.exchangeMain();
+    },
+
+    searchPlantsPage: () => {
+        main.innerHTML = '';
+        main.innerHTML = pagesHTML.searchPlantsPage();
+        window.scrollTo(0, 0);
+    },
+
+    searchSeedsPage: () => {
+        main.innerHTML = '';
+        main.innerHTML = pagesHTML.searchSeedsPage();
+        window.scrollTo(0, 0);
+    },
+
+    searchUsersPage: () => {
+        main.innerHTML = '';
+        main.innerHTML = pagesHTML.searchUsersPage();
+        window.scrollTo(0, 0);
+    },
+
+    searchLocationPage: () => {
+        main.innerHTML = '';
+        main.innerHTML = pagesHTML.searchLocationPage();
+        window.scrollTo(0, 0);
     }
 }
 
@@ -70,12 +102,18 @@ function activeDropdown() {
 
 window.renderPage = {
     modalAlert: modalAlert,
-    login: renderPages.login,
-    home: renderPages.home,
     activeDropdown: activeDropdown,
     modalCreate: modalCreate,
     addToCollection: addToCollection,
+    exchanges: renderExchanges,
+
+    login: renderPages.login,
+    homeInitial: renderPages.homeInitial,
+    home: renderPages.home,
     updateUserMain: renderPages.updateUserMain,
     signupMain: renderPages.signupMain,
-    exchanges: renderExchanges,
+    searchPlantsPage: renderPages.searchPlantsPage,
+    searchSeedsPage: renderPages.searchSeedsPage,
+    searchUsersPage: renderPages.searchUsersPage,
+    searchLocationPage: renderPages.searchLocationPage,
 }

@@ -14,16 +14,17 @@ export async function addToCollection() {
     const response = await fetch('http://localhost:8000/products', options);
     const data = await response.json();
 
-    if (data.collection == 'collections created') {
-        window.renderPage.modalAlert('Produto adicionado com sucesso!', 'green');
-    } else {
-        window.renderPage.modalAlert('Falha ao adicionar produto à coleção, recarregue e tente novamente!', 'red');
-    }
-    
     forms.reset();
     document.querySelector('#add-image').style = "background-image: none;";
     document.querySelector('.modal').style.display = 'none';
 
+    if (data.collection == 'collections created') {
+        setTimeout(() => { window.renderPage.modalAlert('Produto adicionado com sucesso!', 'green'); }, 500);
+    } else {
+        setTimeout(() => { window.renderPage.modalAlert('Falha ao adicionar produto à coleção, recarregue e tente novamente!', 'red'); }, 500);
+    }
+
     window.renderPage.home();
+
     return data;
 }

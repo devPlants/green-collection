@@ -1,4 +1,9 @@
-import { loginHeaderHTML, homeHeaderHTML } from "../pages/headersP.mjs";
+import { initialHeaderHTML, loginHeaderHTML, homeHeaderHTML } from "../pages/headersP.mjs";
+
+export function initialHeaderS() {
+
+    return initialHeaderHTML();
+}
 
 export function loginHeaderS() {
 
