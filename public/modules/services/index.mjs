@@ -5,6 +5,7 @@ import { homeMainS } from "./homeS.mjs";
 import { updateUserMainS } from "./userUpdateS.mjs";
 import { signupMainS } from "./signupS.mjs";
 import { searchPlantsPageS, searchSeedsPageS, searchUsersPageS, searchLocationPageS } from "./searchPagesS.mjs";
+import {} from '.'
 
 const pagesHTML = {
     initialHeader: () => { return initialHeaderS() },

@@ -11,12 +11,6 @@ export function homeMainHTML(_cardsCollection) {
                     <h2>Busque por</h2>
                 </div>
                 <div class="search-cards-container">
-<<<<<<< HEAD
-                    <div class="search-card" onclick="plantsSearchMain()"></div>
-                    <div class="search-card" onclick="seedsSearchMain()"></div>
-                    <div class="search-card" onclick="usersSearchMain()"></div>
-                    <div class="search-card" onclick="localizationSearchMain()"></div>
-=======
 
                     <div class="search-card" onclick="renderPage.searchPlantsPage()">
                         <div class="title-serch-card">
@@ -42,7 +36,6 @@ export function homeMainHTML(_cardsCollection) {
                         </div>
                     </div>
 
->>>>>>> 704bd7de55b4e6def798092cdf5d5ecad46115a4
                     <img src="./assets/imgs/logo.png" alt="" width="30px" height="30px" id="cards-logo">
                 </div>
             </section>
