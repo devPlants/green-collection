@@ -19,3 +19,4 @@ export function searchLocationPageS() {
 
     return searchLocationPageHTML();
 }
+
