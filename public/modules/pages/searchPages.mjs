@@ -1,27 +1,50 @@
+import { searchS } from "../services/searchS.mjs";
 
-function searchPlantsPage(){
+async function searchPlantsPage(_page, _word) {
+    //const inpSearch = document.querySelector("#searchbar");
 
+    const optionsSearch = {
+        page: _page,
+        search: !_word ? "" : _word,
+        category: "",
+        by: "",
+    };
 
+    const results = await searchS(optionsSearch);
 
+    console.log(optionsSearch);
 
-    return ` <main>
+    let plants = "";
+    const indices =
+        parseInt(results.total / 8) < 1 ? 1 : parseInt(results.total / 8);
+
+    for (let i = 1; i <= indices; i++) {
+        plants += `<span style="font-weight: bold; text-decoration: underline; cursor: pointer;" onclick="plantsSearchMain(${i})">${i}</span>`;
+    }
+
+    const searchPlants = `
     <section class="search-title-card search-page-card">
         <div class="search-title-container">
             <h2>Plantas</h2>
             <p>Digite o nome da planta que deseja no campo de busca para filtra-la por nome.</p>
         </div>
+    </section> 
+    <section class="collection-section">
+        <h2>Resultado da buscar por plantas</h2>
+        <div class="collection-cards-container">
+        ${results.cards}         
+        </div>
+        <div style="text-align: center; margin-bottom: 15px">
+                ${plants}
+        </div>
+        
     </section>
+`;
 
-    <section class="search-results-section">
-        <span>Resultado da buscar por plantas</span>
-        <div id="search-result-container"></div>
-    </section>
-</main>`
+    return searchPlants;
 }
 
-function searchSeedsPage(){
-
-
+function searchSeedsPage() {
     return `<main>
     <section class="search-title-card search-page-card">
         <div class="search-title-container">
@@ -40,13 +63,10 @@ function searchSeedsPage(){
         background-image: url(./assets/imgs/background-search-seeds.png)
     }
 
-</style>`
+</style>`;
 }
 
-
-function searchUsersPage(){
-
-
+function searchUsersPage() {
     return `<main>
     <section class="search-title-card search-page-card">
         <div class="search-title-container">
@@ -65,13 +85,10 @@ function searchUsersPage(){
         background-image: url(./assets/imgs/background-search-users.png)
     }
 
-</style>`
+</style>`;
 }
 
-
-function searchLocationPage(){
-
-
+function searchLocationPage() {
     return `<main>
     <section class="search-title-card search-page-card">
         <div class="search-title-container">
@@ -91,7 +108,12 @@ function searchLocationPage(){
     }
 
 </style>
-`
+`;
 }
 
-export { searchLocationPage, searchSeedsPage, searchPlantsPage, searchUsersPage }
+export {
+    searchLocationPage,
+    searchSeedsPage,
+    searchPlantsPage,
+    searchUsersPage,
+};
