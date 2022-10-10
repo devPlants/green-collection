@@ -368,6 +368,7 @@ input {
 
 .modal-create-product {
     margin: 5% auto;
+    margin-top: 100px;
     background-color: #fff;
     padding: 1rem 1.5rem;
     width: 45rem;
