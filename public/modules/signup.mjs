@@ -7,7 +7,7 @@ export async function signup() {
     const forms = document.querySelector('#form-signup')
 
     const form = new FormData(forms);
-
+ 
     if (
         form.get('name').length < 3 ||
         form.get('email').length < 3 ||
@@ -30,7 +30,7 @@ export async function signup() {
         return;
     }
 
-    return;
+    // return;
 
     const options = {
         method: 'POST'
