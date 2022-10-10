@@ -183,7 +183,7 @@ const collections = {
                 [data.status, data.userId, data.productId]
             );
 
-            return { status: 201, response: "collections created" };
+            return { status: 201, response: "collections updated" };
         } catch (err) {
             return { status: 500, response: err };
         }
