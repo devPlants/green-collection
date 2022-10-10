@@ -1,9 +1,8 @@
 import { searchS } from "../services/searchS.mjs";
 
-async function searchPlantsPage(_page, _word) {    
-
+async function searchPlantsPage(_page, _word) {
     const optionsSearch = {
-        page: _page,
+        page: !_page ? 1 : _page,
         search: !_word ? "" : _word,
         category: "plant",
         by: "products",

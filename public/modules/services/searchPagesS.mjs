@@ -1,22 +1,22 @@
-import { searchPlantsPageHTML, searchSeedsPageHTML, searchUsersPageHTML, searchLocationPageHTML } from "../pages/searchPagesP.mjs";
+import {
+    searchPlantsPageHTML,
+    searchSeedsPageHTML,
+    searchUsersPageHTML,
+    searchLocationPageHTML,
+} from "../pages/searchPagesP.mjs";
 
-export function searchPlantsPageS() {
-
-    return searchPlantsPageHTML();
+export async function searchPlantsPageS(page, word) {
+    return await searchPlantsPageHTML(page, word);
 }
 
-export function searchSeedsPageS() {
-
-    return searchSeedsPageHTML();
+export async function searchSeedsPageS(page, word) {
+    return await searchSeedsPageHTML(page, word);
 }
 
-export function searchUsersPageS() {
-
-    return searchUsersPageHTML();
+export async function searchUsersPageS(page, word) {
+    return await searchUsersPageHTML(page, word);
 }
 
-export function searchLocationPageS() {
-
-    return searchLocationPageHTML();
+export async function searchLocationPageS(page, word) {
+    return await searchLocationPageHTML(page, word);
 }
-

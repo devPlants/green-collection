@@ -1,5 +1,4 @@
 export function initialHeaderHTML() {
-
     return `<div class="logo-container" onclick='renderPage.login()' style="cursor:pointer;">
                 <img src="./assets/imgs/logo.png" height="48px" width="48px" alt="logo">
             </div>
@@ -18,19 +17,17 @@ export function initialHeaderHTML() {
 }
 
 export function loginHeaderHTML() {
-
     return `<img onclick='renderPage.homeInitial()' src="./assets/imgs/name-green-collection.png" alt="" height="45vh" style='cursor:pointer;'>`;
 }
 
 export function homeHeaderHTML(_name, _email, _photo) {
-
     return `<div class="logo-container" onclick='renderPage.home()' style='cursor:pointer;'>
                 <img src="./assets/imgs/logo.png" height="48px" width="48px" alt="logo">
             </div>
             
             <div class="searchbar-container">
                 <input type="text" id="searchbar">
-                <span class="material-symbols-outlined" id="search-btn">search</span>
+                <span class="material-symbols-outlined" id="search-btn" onclick='renderPage.searchBtn()'>search</span>
             </div>
 
             <div id="div-login">
@@ -55,5 +52,4 @@ export function homeHeaderHTML(_name, _email, _photo) {
                 </nav>
             </div>
         </div>`;
-
 }
