@@ -1,18 +1,15 @@
 import { searchS } from "../services/searchS.mjs";
 
-async function searchPlantsPage(_page, _word) {
-    //const inpSearch = document.querySelector("#searchbar");
+async function searchPlantsPage(_page, _word) {    
 
     const optionsSearch = {
         page: _page,
         search: !_word ? "" : _word,
-        category: "",
-        by: "",
+        category: "plant",
+        by: "products",
     };
 
     const results = await searchS(optionsSearch);
-
-    console.log(optionsSearch);
 
     let plants = "";
     const indices =
