@@ -1,7 +1,0 @@
-PORT=8000
-DBUSER=iulrabxb
-DBPASSWORD=TQHtnKTVzBE4yCCfz8Yf_8KXMgY40jto
-DBHOST=babar.db.elephantsql.com
-DBPORT=5432
-DBNAME=iulrabxb
-JWTSECRET=f5562087beebd41d299
