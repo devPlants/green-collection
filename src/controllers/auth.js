@@ -3,7 +3,8 @@ const authServices = require("../services/authServices.js");
 
 module.exports = auth = {
     verifyAuth: (req, res, next) => {
-        const token = req.headers["x-access-token"];
+        const token = req.headers.authorization;
+
         jwt.verify(token, process.env.JWTSECRET, (err, decoded) => {
             if (err) return res.status(401).end();
 
@@ -33,8 +34,13 @@ module.exports = auth = {
             return res.status(user.status).json({ message: user.response });
         }
 
+        res.cookie("token", user.response.token, {
+            maxAge: 900000,
+            httpOnly: true,
+        });
+
         res.status(200).json({
-            userId: user.response.id,
+            userId: user.response.userId,
             token: user.response.token,
         });
     },

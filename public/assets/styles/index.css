@@ -33,15 +33,15 @@ header {
     justify-content: space-around;
     align-items: center;
     background-color: var(--beage);
-    min-height: 13vh;
+    height: 85px;
     width: 100%;
-    z-index: 1;
+    z-index: 9999;
     position: fixed;
 
 }
 
 main {
-    padding: 13vh 0 13vh 0vh;
+    padding: 85px 0 85px 0vh;
     min-height: 100%;
 }
 
@@ -63,6 +63,9 @@ input {
     outline: none;
 }
 
+.logo-container{
+    cursor: pointer;
+}
 
 .searchbar-container {
     height: fit-content;
@@ -72,7 +75,7 @@ input {
     display: flex;
     justify-content: center;
     align-items: center;
-
+    cursor: pointer;
     gap: 0.1em;
 }
 
@@ -102,6 +105,7 @@ input {
     padding: 0.10em;
     border-radius: 0 0.5em 0.5em 0;
     float: right;
+    cursor: pointer;
 }
 
 .footer-text-container {
@@ -127,7 +131,7 @@ input {
     display: flex;
     justify-content: end;
     background-image: url(../imgs/title-background.png);
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: left top;
     height: 70vh
@@ -157,7 +161,7 @@ input {
 
 .search-cards-title {
     display: flex;
-    margin-bottom: 2em;
+    margin: 2em 0;
 
 }
 
@@ -176,7 +180,39 @@ input {
     height: 320px;
     background-size: cover;
     cursor: pointer;
+    transition: transform .5s ease-in-out;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
 }
+
+.search-card:hover{
+    filter: brightness(70%);
+    transform: scale(1.02);
+}
+
+.search-card:hover > .title-serch-card{
+    filter: brightness(100%)
+}
+
+.title-serch-card{
+    width: 100%;
+    height: 100%;
+    padding-top: 2rem;
+    opacity: 0;
+}
+
+.title-serch-card:hover{
+    opacity: 1;
+}
+
+.title-serch-card h2 {
+    text-align: center;
+    color: white;
+}
+
+
+
+
+
 
 .search-card:nth-child(1) {
     background-image: url(../imgs/search-plants.png);
@@ -185,12 +221,12 @@ input {
 
 .search-card:nth-child(2) {
     background-image: url(../imgs/search-seeds.png);
-    border-radius: 0 1.75rem 0 0;
+    border-radius: 0 1.75rem 0 1.75rem;
 }
 
 .search-card:nth-child(3) {
     background-image: url(../imgs/search-users.png);
-    border-radius: 0 1.75rem 0 0;
+    border-radius: 0 1.75rem 0 1.75rem;
 }
 
 .search-card:nth-child(4) {
@@ -217,10 +253,10 @@ input {
 .collection-cards-container {
     display: flex;
     flex-wrap: wrap;
-
+    justify-content: flex-start;
     width: 925px;
-    padding: 0 0 3em 0;
-    gap: 1em;
+    padding: 0 0 3em 2.75em;
+    gap: 2em;
 
 }
 
@@ -323,15 +359,16 @@ input {
     position: fixed;
     z-index: 999;
     left: 0;
-    top:0;
+    top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgb(0,0,0);
+    background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-create-product {
     margin: 5% auto;
+    margin-top: 100px;
     background-color: #fff;
     padding: 1rem 1.5rem;
     width: 45rem;
@@ -348,24 +385,26 @@ input {
     cursor: pointer;
 }
 
-.create-product-inputs{
+.create-product-inputs {
     display: flex;
     flex-direction: column;
     gap: 1em;
 }
 
-.category-container, .pname-container, .pdescription-container{
+.category-container,
+.pname-container,
+.pdescription-container {
     display: flex;
     flex-direction: column;
     max-width: 24rem;
 }
 
-textarea{
+textarea {
     resize: none;
     outline: none;
 }
 
-.modal select{
+.modal select {
     color: var(--background);
     border: none;
     height: 2em;
@@ -374,7 +413,7 @@ textarea{
     background-color: var(--green);
 }
 
-.modal button{
+.modal button {
     border-radius: 0.4em;
     border: none;
     width: 15ch;
@@ -382,12 +421,12 @@ textarea{
     cursor: pointer
 }
 
-#add-product-btn{
+#add-product-btn {
     color: var(--background);
     background-color: var(--black);
 }
 
-.add-image-container{
+.add-image-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -398,19 +437,583 @@ textarea{
     position: absolute;
 }
 
-#add-image{
+#add-image {
     background-color: #d9d9d9;
     width: 200px;
     height: 200px;
 }
 
-#add-image-btn{
+#add-image-btn {
     background-color: var(--blue);
     color: var(--background);
     width: 18ch;
 }
 
-/* ;;;;;;;;;;;;
-    Cadastro
-;;;;;;;;;;;;;;*/
+/* ;;;;;;;;;;;;;;;;;;
+    Signup/Update
+;;;;;;;;;;;;;;;;;;;;;*/
+
+.singup-section,
+.update-section {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 1rem;
+}
+
+
+.singup-wrapper,
+.update-wrapper {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    width: 40vw;
+}
+
+#singup-title,
+#update-title{
+    text-align: center;
+    padding: 1em 0;
+    font-size: 2rem;
+
+}
+
+.signup-inputs-container,
+.update-inputs-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    width: 100%;
+}
+
+.singup-section,
+.update-section {
+    display: flex;
+}
+
+.label {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.75rem;
+}
+
+.first-input-container,
+.second-input-container,
+.third-input-container,
+.fourth-input-container,
+.fifth-input-container,
+.zipcode-input-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.name-container,
+.signup-email-container,
+.update-email-container,
+.cpf-container,
+.phone-container,
+.city-container,
+.state-container,
+.signup-passwd-container,
+.update-passwd-container,
+.confirm-passwd-container,
+.zipcode-container {
+    width: 49%;
+}
+
+.address-container {
+    width: 80%;
+}
+
+.number-container {
+    width: 14%;
+}
+
+.photo-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    padding: 2em 0 0 3em;
+
+}
+
+.photo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 150px;
+    height: 170px;
+    background-color: #D9D9D9;
+    gap: 1em;
+}
+
+#signup-btn,
+#update-btn{
+    background-color: var(--black);
+    color: #ffffff;
+    padding: 0.6;
+    border-radius: 0.4em;
+    border: none;
+    width: 15ch;
+    height: 2em;
+    cursor: pointer;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 4vh;
+}
+
+input[type='file'] {
+    display: none;
+}
+
+.label-for-photo-btn {
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--blue);
+    color: #ffffff;
+    padding: 0.6;
+    border-radius: 0.4em;
+    border: none;
+    width: 15ch;
+    height: 1.5em;
+    cursor: pointer;
+}
+
+/* ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    Collection Cards home page
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;*/
+
+.img-procuct-card {
+    padding: 0;
+    width: 90%;
+    height: 170px;
+    background-size: cover;
+    margin-top: 10px;
+}
+
+.product-card span {
+    width: 80%;
+    color: #979797;
+    font-size: 12px;
+}
+
+.product-card strong {
+    font-size: 15px;
+    color: #000;
+}
+
+user-header-img {
+    width: 36px;
+    height: 36px;
+    background-color: red;
+    border-radius: 50%;
+}
+
+.menu-user-header {
+    display: none;
+}
+
+.displayFlex{
+    display: flex;
+}
+
+.menu-user-header ul {
+    position: absolute;
+    padding-top: 5px;
+    top: 80px;
+    list-style: none;
+    font-size: 12px;
+    width: 150px;
+    background-color: #E7DFC6;
+}
+
+.menu-user-header li {
+    padding: 5px;
+    text-align: center;
+}
+
+.menu-user-header li:hover {
+    background-color: #c0beb6;
+    cursor: pointer;
+    transition: all .7s;
+}
+
+/* ;;;;;;;;;;
+    Trade
+/////////////  */
+
+.trade-page-section {
+    display: flex;
+    padding: 2em 0 0 0;
+    justify-content: space-around;
+    font-size: 0.75rem;
+}
+
+#trade-req-img {
+    height: 250px;
+    width: 200px;
+    background-color: #888;
+    border-radius: 1rem;
+}
+
+#trade-req-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2em;
+}
+
+.req-description-container {
+    text-align: center;
+}
+
+.offer-products-container {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    width: 250px;
+    min-height: 250px;
+}
+
+.trade-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    align-items: center;
+
+    padding: 6rem 0 0 0;
+}
+
+.trade-input-container>span {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.trade-arrows {
+    display: flex;
+    justify-content: center;
+}
+
+.trade-input-container button {
+    border: none;
+    color: var(--background);
+    background-color: var(--green);
+    padding: 0.75em 0.5em;
+    border-radius: 0.5em;
+}
+
+
+.trade-offer-title {
+    font-size: 1rem;
+    font-weight: 600;
+    width: 100%;
+    text-align: center;
+    padding: 0 0 0.5em 0;
+}
+
+.offer-products-ondisplay {
+    width: 75px;
+    height: 75px;
+    border-radius: 0.5em;
+    border: solid 2px #D9D9D9;
+}
+
+/* ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    Histórico de trocas/Aprovações
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;*/
+
+.exchanges-wrapper,
+.approval-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.exchanges-title-container h2,
+.approval-title-container h2{
+    padding-top: 1em;
+    font-size: 2em;
+}
+
+.exchanges-container,
+.approval-container{
+    background-color: #ffff;
+    width: 65vw;
+    padding-bottom: 2em;
+}
+
+.btn-exchanges-container,
+.btn-approval-container{
+    display: flex;
+    padding-top: 2em;
+    padding-bottom: 1.5em;
+    width: 15em;;
+}
+
+#pending-exchanges-btn,
+#pending-approval-btn{
+    padding: 0.2em;
+    font-weight: bold;
+    width: 50%;
+    background-color: #ffff;
+    border: 1px solid #959595;
+    cursor: pointer;
+}
+
+#finalized-exchanges-btn,
+#finalized-approval-btn{
+    padding: 0.2em;
+    font-weight: bold;
+    width: 50%;
+    background-color: #D9D9D9;
+    border: 1px solid #959595;
+    cursor: pointer;
+}
+
+#trade-wrapper,
+#toApprove-wrapper{
+display: flex;
+justify-content: center;
+}
+
+.trade-container,
+.toApprove-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 7px;
+    display: flex;
+    width: 95%;
+    height: 8em;;
+    background-color: #D9D9D9;
+}
+
+#trade-products-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 7em;
+    width: 20em;
+}
+
+.trade-product,
+.toApprove-product{
+    background: #ffff;
+    height: 7em;
+    width: 6em;
+    border-radius: 7px;
+}
+
+#arrow-exchanges{
+    display: flex;
+    flex-direction: column;
+    width: 3em;
+}
+
+#exchanges-options-btn{
+    width: 8em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+#accept-btn{
+    cursor: pointer;
+    background-color: #01760D;
+    padding: 0.5em;
+    color:#ffff;
+    border: none;
+    border-radius: 7px;
+    font-weight: bold;
+}
+
+#reject-btn{
+    cursor: pointer;
+    background-color: #e73131;
+    padding: 0.5em;
+    color:#ffff;
+    border: none;
+    border-radius: 7px;
+    font-weight: bold;
+}
+
+#trade-users-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 7em;
+    width: 25em;
+}
+
+.trade-user,
+.toApprove-product-owner{
+    width: 6em;
+    height: 7em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;;
+}
+
+.toApprove-product-owner{
+    margin-left: 1.5em;
+}
+
+.trade-user span:nth-child(2),
+.toApprove-product-owner span:nth-child(2) {
+    font-size: 0.75rem;
+    color: #343232;
+    font-weight: bold;
+    padding-top: 0.5em;
+}
+
+.trade-user span:nth-child(3),
+.toApprove-product-owner span:nth-child(3) {
+    font-size: 0.75rem;
+    color: #343232;
+}
+
+.user-trade-photo,
+.product-owner-photo{
+    border-radius: 50%;
+    background-color: #ffff;
+    width: 3.5em;
+    height: 3.5em;
+}
+
+#arrow-exchanges-users,
+.arrow-toApprove{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 12em;
+    gap:1em;
+}
+
+#arrow-exchanges-users span,
+.arrow-toApprove span{
+    font-size: 0.75em;
+    color: #343232;
+    font-weight: 600;
+}
+
+#arrow-users{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.product-info{
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    gap: 0.5em;
+}
+
+.product-info input{
+    border: 1px #959595;
+    border-radius: 3px;
+    padding: 0.2em 0em;
+}
+
+.product-info textarea{
+    border: 1px #959595;
+    border-radius: 3px;
+}
+
+/* ;;;;;;;;;;;
+    Search
+;;;;;;;;;;;;*/
+
+.search-page-card{
+    display: flex;
+    justify-content: end; 
+    width: 100%;
+    padding: 8em 10em;    
+
+}
+
+.search-title-card{
+    z-index: 9999;
+    color: #ffff;
+        display: flex;
+        justify-content: end;
+    background-size: contain;
+        background-repeat: no-repeat;
+        background-position: left top;
+        height: 70vh
+}
+
+
+.search-page-card::after{
+    content: "";
+    background-image: url(../imgs/background-search-users.png);
+    background-size: cover;
+    height: 80vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    filter: brightness(70%)
+}
+
+.search-results-section {
+    display: flex;
+    justify-content: center;
+    padding: 1em 3em 0 3em;
+    min-height: 30em;
+}
+
+.search-results-section>span {
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.search-title-container{
+    z-index: 2;
+    width: 20ch;
+}
+
+/* ;;;;;;;;;;;;;;;;;;;
+   Modal Alert
+;;;;;;;;;;;;;;;;;;; */
+
+#modalNotification {
+    width: 200px;
+    min-height: 100px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    position: fixed;
+    left: calc(50vw - 100px);
+    top: calc(50vh - 50px);
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+    padding: 5px;
+    z-index: 2;
+    border-radius: 20px;
+    background-color: #e8e8e8;
+    transition: all .4s;
+}
+
+.modalNotfRed {
+    border: solid 2px #ff000095;
+    box-shadow: red 0 0 10px;
+    transition: all .4s;
+}
+
+.modalNotfGreen {
+    border: solid 2px #00ff2695;
+    box-shadow: #00ff2f 0 0 10px;
+    transition: all .4s;
+}
 
