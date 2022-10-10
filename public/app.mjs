@@ -94,8 +94,9 @@ const renderPages = {
 export async function renderHomeBySignup(_token, _userId) {
     token = _token;
     document.cookie = `${token}`;
-    dataUser = await decodeToken(token, _userId);
+    dataUser = await decodeToken(_token, _userId);
     renderPages.home();
+    // window.renderPage.home();
     window.renderPage.modalAlert(
         `Olá ${dataUser.name}, seu cadastro foi realizado com sucesso. Bem vindo ao Green Collection!`,
         "green"

@@ -73,7 +73,7 @@ export function signupMainHTML() {
                         </div>
                     </div>
                     <div class="btn-container">
-                        <button id="signup-btn" type="button" onclick="signup()">Cadastrar</button>
+                        <button id="signup-btn" type="button" onclick='renderPage.signup()'>Cadastrar</button>
                     </div>
                 </form>
                 </section> `;

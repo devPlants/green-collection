@@ -80,8 +80,6 @@ export const renderExchanges = async (status) => {
 
         const data = await response.json();
 
-        console.log(data);
-
         if (data.length < 1) return;
 
         divExchanges.innerHTML = `
@@ -92,7 +90,7 @@ export const renderExchanges = async (status) => {
 
         for (const trade of data) {
             const id = getData().dataUser.id;
-            // console.log(trade.user1);
+
             const dataExchanges = {
                 userName1: trade.user1.user_name,
                 userName2: trade.user2.user_name,
