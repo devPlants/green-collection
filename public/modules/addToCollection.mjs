@@ -11,7 +11,7 @@ export async function addToCollection() {
 
     options.body = form;
 
-    const response = await fetch('http://localhost:8000/products', options);
+    const response = await fetch('/products', options);
     const data = await response.json();
 
     forms.reset();
