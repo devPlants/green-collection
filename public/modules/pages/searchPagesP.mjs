@@ -10,12 +10,22 @@ export async function searchPlantsPageHTML(_page, _word) {
 
     const results = await searchS(optionsSearch);
 
+    if (!results) {
+        return `
+        <section class="collection-section">
+        <h3 style="margin-top: 60px">Nenhum resultado encontrado para essa pesquisa</h3>        
+        </section>
+        
+        `;
+    }
+
     let plants = "";
+
     const indices =
         Math.ceil(results.total / 8) < 1 ? 1 : Math.ceil(results.total / 8);
 
     for (let i = 1; i <= indices; i++) {
-        plants += `<span style="font-weight: bold; text-decoration: underline; cursor: pointer; onclick="renderPage.searchPlantsPage(${i}, ${optionsSearch.search})">${i}</span>`;
+        plants += `<span style="font-weight: bold; cursor: pointer;" onclick="renderPage.searchPlantsPage('${i}', '${optionsSearch.search}')"> ${i}  </span>`;
     }
 
     const searchPlants = `
@@ -26,7 +36,7 @@ export async function searchPlantsPageHTML(_page, _word) {
         </div>
     </section> 
     <section class="collection-section">
-        <h2>Resultado da buscar por plantas</h2>
+        <h2 style="margin-top: 25px">Resultado da buscar por plantas</h2>
         <div class="collection-cards-container">
         ${results.cards}         
         </div>
@@ -35,10 +45,10 @@ export async function searchPlantsPageHTML(_page, _word) {
         </div>        
     </section>
     <style>
-                .search-page-card::after{
-                    background-image: url(./assets/imgs/background-search-location.png)
-                }
-            </style>
+        .search-page-card::after{
+            background-image: url(./assets/imgs/background-search-location.png)
+        }
+     </style>
 `;
 
     return searchPlants;
@@ -54,12 +64,21 @@ export async function searchSeedsPageHTML(_page, _word) {
 
     const results = await searchS(optionsSearch);
 
+    if (!results) {
+        return `
+        <section class="collection-section">
+        <h3 style="margin-top: 60px">Nenhum resultado encontrado para essa pesquisa</h3>        
+        </section>
+        
+        `;
+    }
+
     let plants = "";
     const indices =
         Math.ceil(results.total / 8) < 1 ? 1 : Math.ceil(results.total / 8);
 
     for (let i = 1; i <= indices; i++) {
-        plants += `<span style="font-weight: bold; text-decoration: underline; cursor: pointer; onclick="renderPage.searchPlantsPage(${i}, ${optionsSearch.search})">${i}</span>`;
+        plants += `<span style="font-weight: bold; cursor: pointer;" onclick="renderPage.searchSeedsPage('${i}', '${optionsSearch.search}')"> ${i}  </span>`;
     }
     const searchSeeds = `
                 <section class="search-title-card search-page-card">
@@ -70,7 +89,7 @@ export async function searchSeedsPageHTML(_page, _word) {
                 </section>
 
                 <section class="collection-section">
-                    <h2>Resultado da buscar por sementes</h2>
+                    <h2 style="margin-top: 25px">Resultado da buscar por sementes</h2>
                     <div class="collection-cards-container">
                         ${results.cards}         
                     </div>
@@ -81,7 +100,7 @@ export async function searchSeedsPageHTML(_page, _word) {
                 </section>
                 <style>
                 .search-page-card::after{
-                    background-image: url(./assets/imgs/background-search-seeds.png)
+                    background-image: url(./assets/imgs/background-search-seeds.png);                    
                 }
 
             </style>        
@@ -100,12 +119,21 @@ export async function searchUsersPageHTML(_page, _word) {
 
     const results = await searchS(optionsSearch);
 
+    if (!results) {
+        return `
+        <section class="collection-section">
+        <h3 style="margin-top: 60px">Nenhum resultado encontrado para essa pesquisa</h3>        
+        </section>
+        
+        `;
+    }
+
     let plants = "";
     const indices =
         Math.ceil(results.total / 8) < 1 ? 1 : Math.ceil(results.total / 8);
 
     for (let i = 1; i <= indices; i++) {
-        plants += `<span style="font-weight: bold; text-decoration: underline; cursor: pointer; onclick="renderPage.searchPlantsPage(${i}, ${optionsSearch.search})">${i}</span>`;
+        plants += `<span style="font-weight: bold; cursor: pointer;" onclick="renderPage.searchUsersPage('${i}', '${optionsSearch.search}')"> ${i}  </span>`;
     }
 
     const searchUsers = `
@@ -117,7 +145,7 @@ export async function searchUsersPageHTML(_page, _word) {
                 </section>
 
                 <section class="collection-section">
-                    <h2>Resultado da buscar por usuarios</h2>
+                    <h2 style="margin-top: 25px">Resultado da buscar por usuarios</h2>
                     <div class="collection-cards-container">
                         ${results.cards}         
                     </div>
@@ -145,12 +173,21 @@ export async function searchLocationPageHTML(_page, _word) {
 
     const results = await searchS(optionsSearch);
 
+    if (!results) {
+        return `
+        <section class="collection-section">
+        <h3 style="margin-top: 60px">Nenhum resultado encontrado para essa pesquisa</h3>        
+        </section>
+        
+        `;
+    }
+
     let plants = "";
     const indices =
         Math.ceil(results.total / 8) < 1 ? 1 : Math.ceil(results.total / 8);
 
     for (let i = 1; i <= indices; i++) {
-        plants += `<span style="font-weight: bold; text-decoration: underline; cursor: pointer; onclick="renderPage.searchPlantsPage(${i}, ${optionsSearch.search})">${i}</span>`;
+        plants += `<span style="font-weight: bold; cursor: pointer;" onclick="renderPage.searchLocationPage('${i}', '${optionsSearch.search}')"> ${i} </span>`;
     }
 
     const searchLocal = `
@@ -162,7 +199,7 @@ export async function searchLocationPageHTML(_page, _word) {
                 </section>
 
                 <section class="collection-section">
-                    <h2>Resultado da buscar por localidade</h2>
+                    <h2 style="margin-top: 25px">Resultado da buscar por localidade</h2>
                     <div class="collection-cards-container">
                         ${results.cards}         
                     </div>
