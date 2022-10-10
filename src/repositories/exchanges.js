@@ -12,7 +12,7 @@ const exchanges = {
             const client = await db;
             const createExchanges = await client.query(
                 `
-                INSERT INTO exchanges (user_id1, product_id1, user_id2, product_id2)
+                INSERT INTO exchanges (users_id1, products_id1, users_id2, products_id2)
                 VALUES ($1, $2, $3, $4);
                 `,
                 values
@@ -28,7 +28,7 @@ const exchanges = {
             const client = await db;
             const getExchanges = await client.query(
                 `
-                SELECT * FROM exchanges WHERE user_id1 = $1 OR user_id2 = $1;
+                SELECT * FROM exchanges WHERE users_id1 = $1 OR users_id2 = $1;
                 `,
                 [id]
             );

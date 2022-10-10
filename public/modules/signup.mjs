@@ -30,7 +30,7 @@ export async function signup() {
         return;
     }
 
-    return;
+    // return;
 
     const options = {
         method: 'POST'

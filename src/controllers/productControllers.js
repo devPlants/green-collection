@@ -31,6 +31,7 @@ const ProductControllers = {
         res.status(200).json(product.response);
     },
     getAll: async (req, res) => {
+        req.userId(req.userId)
         const products = await ProductServices.getProducts(req.userId);
 
         if (products.status > 300) {
