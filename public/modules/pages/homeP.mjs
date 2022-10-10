@@ -11,10 +11,10 @@ export function homeMainHTML(_cardsCollection) {
                     <h2>Busque por</h2>
                 </div>
                 <div class="search-cards-container">
-                    <div class="search-card"></div>
-                    <div class="search-card"></div>
-                    <div class="search-card"></div>
-                    <div class="search-card"></div>
+                    <div class="search-card" onclick="plantsSearchMain()"></div>
+                    <div class="search-card" onclick="seedsSearchMain()"></div>
+                    <div class="search-card" onclick="usersSearchMain()"></div>
+                    <div class="search-card" onclick="localizationSearchMain()"></div>
                     <img src="./assets/imgs/logo.png" alt="" width="30px" height="30px" id="cards-logo">
                 </div>
             </section>
