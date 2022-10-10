@@ -1,23 +1,67 @@
-export function searchPlantsPageHTML() {
+import { searchS } from "../services/searchS.mjs";
 
-    return ` <main>
-                <section class="search-title-card search-page-card">
-                    <div class="search-title-container">
-                        <h2>Plantas</h2>
-                        <p>Digite o nome da planta que deseja no campo de busca para filtra-la por nome.</p>
-                    </div>
-                </section>
+export async function searchPlantsPageHTML(_page, _word) {
+    const optionsSearch = {
+        page: !parseInt(_page) ? 1 : parseInt(_page),
+        search: !_word ? "a" : _word,
+        category: "plant",
+        by: "products",
+    };
 
-                <section class="search-results-section">
-                    <span>Resultado da buscar por plantas</span>
-                    <div id="search-result-container"></div>
-                </section>
-            </main>`;
+    const results = await searchS(optionsSearch);
+
+    let plants = "";
+    const indices =
+        Math.ceil(results.total / 8) < 1 ? 1 : Math.ceil(results.total / 8);
+
+    for (let i = 1; i <= indices; i++) {
+        plants += `<span style="font-weight: bold; text-decoration: underline; cursor: pointer; onclick="renderPage.searchPlantsPage(${i}, ${optionsSearch.search})">${i}</span>`;
+    }
+
+    const searchPlants = `
+    <section class="search-title-card search-page-card">
+        <div class="search-title-container">
+            <h2>Plantas</h2>
+            <p>Digite o nome da planta que deseja no campo de busca para filtra-la por nome.</p>
+        </div>
+    </section> 
+    <section class="collection-section">
+        <h2>Resultado da buscar por plantas</h2>
+        <div class="collection-cards-container">
+        ${results.cards}         
+        </div>
+        <div style="text-align: center; margin-bottom: 30px; margin-top: -20px"">
+                ${plants}
+        </div>        
+    </section>
+    <style>
+                .search-page-card::after{
+                    background-image: url(./assets/imgs/background-search-location.png)
+                }
+            </style>
+`;
+
+    return searchPlants;
 }
 
-export function searchSeedsPageHTML() {
+export async function searchSeedsPageHTML(_page, _word) {
+    const optionsSearch = {
+        page: !parseInt(_page) ? 1 : parseInt(_page),
+        search: !_word ? "a" : _word,
+        category: "seed",
+        by: "products",
+    };
 
-    return `<main>
+    const results = await searchS(optionsSearch);
+
+    let plants = "";
+    const indices =
+        Math.ceil(results.total / 8) < 1 ? 1 : Math.ceil(results.total / 8);
+
+    for (let i = 1; i <= indices; i++) {
+        plants += `<span style="font-weight: bold; text-decoration: underline; cursor: pointer; onclick="renderPage.searchPlantsPage(${i}, ${optionsSearch.search})">${i}</span>`;
+    }
+    const searchSeeds = `
                 <section class="search-title-card search-page-card">
                     <div class="search-title-container">
                         <h2>Sementes</h2>
@@ -25,22 +69,46 @@ export function searchSeedsPageHTML() {
                     </div>
                 </section>
 
-                <section class="search-results-section">
-                    <span>Resultado da buscar por sementes</span>
-                    <div id="search-result-container"></div>
+                <section class="collection-section">
+                    <h2>Resultado da buscar por sementes</h2>
+                    <div class="collection-cards-container">
+                        ${results.cards}         
+                    </div>
+                    <div style="text-align: center; margin-bottom: 30px; margin-top: -20px"">
+                        ${plants}
+                    </div>
+                    
                 </section>
-            </main>
-            <style>
+                <style>
                 .search-page-card::after{
                     background-image: url(./assets/imgs/background-search-seeds.png)
                 }
 
-            </style>`
-};
+            </style>        
+            `;
 
-export function searchUsersPageHTML() {
+    return searchSeeds;
+}
 
-    return `<main>
+export async function searchUsersPageHTML(_page, _word) {
+    const optionsSearch = {
+        page: !parseInt(_page) ? 1 : parseInt(_page),
+        search: !_word ? "a" : _word,
+        category: "",
+        by: "users",
+    };
+
+    const results = await searchS(optionsSearch);
+
+    let plants = "";
+    const indices =
+        Math.ceil(results.total / 8) < 1 ? 1 : Math.ceil(results.total / 8);
+
+    for (let i = 1; i <= indices; i++) {
+        plants += `<span style="font-weight: bold; text-decoration: underline; cursor: pointer; onclick="renderPage.searchPlantsPage(${i}, ${optionsSearch.search})">${i}</span>`;
+    }
+
+    const searchUsers = `
                 <section class="search-title-card search-page-card">
                     <div class="search-title-container">
                         <h2>Usuários</h2>
@@ -48,22 +116,44 @@ export function searchUsersPageHTML() {
                     </div>
                 </section>
 
-                <section class="search-results-section">
-                    <span>Resultado da buscar por usuários</span>
-                    <div id="search-result-container"></div>
+                <section class="collection-section">
+                    <h2>Resultado da buscar por usuarios</h2>
+                    <div class="collection-cards-container">
+                        ${results.cards}         
+                    </div>
+                    <div style="text-align: center; margin-bottom: 30px; margin-top: -20px"">
+                        ${plants}
+                    </div>
+                    
                 </section>
-            </main>
 
             <style>
                 .search-page-card::after{
                     background-image: url(./assets/imgs/background-search-users.png)
                 }
-            </style>`
-};
+            </style>`;
+    return searchUsers;
+}
 
-export function searchLocationPageHTML() {
+export async function searchLocationPageHTML(_page, _word) {
+    const optionsSearch = {
+        page: !parseInt(_page) ? 1 : parseInt(_page),
+        search: !_word ? "a" : _word,
+        category: "",
+        by: "local",
+    };
 
-    return `<main>
+    const results = await searchS(optionsSearch);
+
+    let plants = "";
+    const indices =
+        Math.ceil(results.total / 8) < 1 ? 1 : Math.ceil(results.total / 8);
+
+    for (let i = 1; i <= indices; i++) {
+        plants += `<span style="font-weight: bold; text-decoration: underline; cursor: pointer; onclick="renderPage.searchPlantsPage(${i}, ${optionsSearch.search})">${i}</span>`;
+    }
+
+    const searchLocal = `
                 <section class="search-title-card search-page-card">
                     <div class="search-title-container">
                         <h2>Localização</h2>
@@ -71,16 +161,22 @@ export function searchLocationPageHTML() {
                     </div>
                 </section>
 
-                <section class="search-results-section">
-                    <span>Resultado da buscar por localização</span>
-                    <div id="search-result-container"></div>
+                <section class="collection-section">
+                    <h2>Resultado da buscar por localidade</h2>
+                    <div class="collection-cards-container">
+                        ${results.cards}         
+                    </div>
+                    <div style="text-align: center; margin-bottom: 30px; margin-top: -20px"">
+                        ${plants}
+                    </div>
+                    
                 </section>
-            </main>
 
             <style>
                 .search-page-card::after{
-                    background-image: url(./assets/imgs/background-search-location.png)
+                    background-image: url(./assets/imgs/background-search-plants.png)
                 }
 
-            </style>`
-};
+            </style>`;
+    return searchLocal;
+}
