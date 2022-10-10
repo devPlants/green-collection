@@ -59,7 +59,6 @@ const exchangeList = (data) => {
 };
 
 export const renderExchanges = async (status) => {
-    // window.renderPage.activeDropdown();
     document.querySelector(".menu-user-header").classList.remove('displayFlex');
     const main = document.querySelector("main");
     main.innerHTML = exchange();
@@ -72,10 +71,14 @@ export const renderExchanges = async (status) => {
                 authorization: `${document.cookie}`,
             },
         };
-        const response = await fetch(
-            "http://localhost:8000/exchanges",
-            options
-        );
+        const response = await fetch("/exchanges", options);
+        console.log(response);
+
+        if (!response.ok) {
+            window.renderPage.modalAlert('Não foi possível consultar suas trocas!','red');
+            return;
+        }
+
         const data = await response.json();
 
         if (data.length < 1) return;
