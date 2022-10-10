@@ -30,7 +30,7 @@ async function homeHeader(dataUser) {
 
             <div class="searchbar-container">
                 <input type="text" id="searchbar">
-                <span class="material-symbols-outlined" id="search-btn">search</span>
+                <span class="material-symbols-outlined" id="search-btn" onclick="searchBtn()" >search</span>
             </div>
 
             <div id="div-login">
@@ -96,7 +96,7 @@ async function homeMain(dataUser, token) {
                     <h2>Busque por</h2>
                 </div>
                 <div class="search-cards-container">
-                    <div class="search-card" id="search-plants-card" onclick="plantsSearchMain()"></div>
+                    <div class="search-card" id="search-plants-card" onclick="plantsSearchMain(1)"></div>
                     <div class="search-card" id="search-seeds-card" onclick="seedsSearchMain()"></div>
                     <div class="search-card" id="search-users-card" onclick="usersSearchMain()"></div>
                     <div class="search-card" id="search-locations-card" onclick="localizationSearchMain()"></div>

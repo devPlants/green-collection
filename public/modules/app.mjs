@@ -6,10 +6,16 @@ import { signupMain } from "./pages/signup.mjs";
 import { signup } from "./signup.mjs";
 import { addToCollection } from "./addToCollection.mjs";
 import { tradeMain, getCollection } from "./pages/trade.mjs";
-import { searchUsersPage, searchPlantsPage, searchLocationPage, searchSeedsPage } from "./pages/searchPages.mjs";
+import {
+    searchUsersPage,
+    searchPlantsPage,
+    searchLocationPage,
+    searchSeedsPage,
+} from "./pages/searchPages.mjs";
 import { pageUpdate } from "./pages/pageUpdate.mjs";
 import { renderExchanges } from "./pages/exchange.mjs";
 import { updateExchanges } from "./updateExchanges.mjs";
+import { searchBtn } from "./services/searchBtn.js";
 
 let loginBtn;
 let token;
@@ -132,35 +138,30 @@ searchCard.forEach((element) => {
     element.addEventListener("click", loginPage);
 });
 
-function tradePage(){
+function tradePage() {
     main.innerHTML = tradeMain;
 }
 
-
-function plantsSearchMain(){
-    main.innerHTML = '';
-    main.innerHTML = searchPlantsPage();
-    window.scrollTo(0,0);
+async function plantsSearchMain(page, word) {
+    main.innerHTML = "";
+    main.innerHTML = await searchPlantsPage(page, word);
+    window.scrollTo(0, 0);
 }
-function seedsSearchMain(){
-    main.innerHTML = '';
+function seedsSearchMain() {
+    main.innerHTML = "";
     main.innerHTML = searchSeedsPage();
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
 }
-function usersSearchMain(){
-    main.innerHTML = '';
+function usersSearchMain() {
+    main.innerHTML = "";
     main.innerHTML = searchUsersPage();
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
 }
-function localizationSearchMain(){
-    main.innerHTML = '';
+function localizationSearchMain() {
+    main.innerHTML = "";
     main.innerHTML = searchLocationPage();
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
 }
-
-
-
-
 
 window.signUpPage = signUpPage;
 window.loginPage = loginPage;
@@ -175,3 +176,4 @@ window.plantsSearchMain = plantsSearchMain;
 window.seedsSearchMain = seedsSearchMain;
 window.usersSearchMain = usersSearchMain;
 window.localizationSearchMain = localizationSearchMain;
+window.searchBtn = searchBtn;
