@@ -25,8 +25,6 @@ export async function signup() {
         return;
     }
 
-
-
     if (form.get('cpf').length != 11) {
         window.renderPage.modalAlert('O CPF precisa conter 11 caracteres (Somente números)', 'red');
         return;
@@ -47,8 +45,6 @@ export async function signup() {
         return;
     }
 
-    return;
-
     const options = {
         method: 'POST'
     };
@@ -61,8 +57,8 @@ export async function signup() {
         return 400;
     }
     const data = await response.json()
-    const token = await getToken(emailUser.value, passwordUser.value);
-    renderHomeBySignup(token.token, token.userId);
+    const responseUser = await getToken(emailUser.value, passwordUser.value);
+    renderHomeBySignup(responseUser.token, responseUser.userId);
     return true;
 
     async function getToken(_email, _password) {
