@@ -7,7 +7,9 @@ const cookieParser = require("cookie-parser");
  
 app.use(express.static("public"));
 app.use(cors());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({extended: true}));
+// app.use(bodyParser.urlencoded({limit: '50mb', extended: true , parameterLimit:50000 }));
+
 app.use(cookieParser());
 app.use(express.json());
 app.use(routes);

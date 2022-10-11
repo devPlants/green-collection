@@ -9,6 +9,7 @@ import { updateExchanges } from "./modules/updateExchanges.mjs";
 import { printImg } from "./modules/printImg.mjs";
 import { signup } from "./modules/signup.mjs";
 import { searchBtn, typesSearch } from "./modules/services/searchBtn.js";
+import { update } from "./modules/update.mjs";
 
 const header = document.querySelector("header");
 const main = document.querySelector("main");
@@ -40,7 +41,6 @@ const renderPages = {
             const response = await login();
             header.innerHTML = "";
 
-            console.log(dataUser.admin);
             if (dataUser.admin == true) {
                 header.innerHTML = pagesHTML.homeHeaderAdmin(dataUser);
             } else {
@@ -155,6 +155,7 @@ window.renderPage = {
     exchanges: renderExchanges,
     signup: signup,
     searchBtn: searchBtn,
+    update: update,
 
     login: renderPages.login,
     homeInitial: renderPages.homeInitial,

@@ -79,6 +79,7 @@ const Users = {
         }
     },
     updateUser: async (data) => {
+        console.log(data);  
         try {
             const client = await db;
             const helpQuery = {
@@ -94,6 +95,7 @@ const Users = {
                 }
                 helpQuery.values.push(data[column]);
             }
+
 
             const queryReplace = `UPDATE users SET/ WHERE id=$${helpQuery.count};`;
             const sql = queryReplace.replace(
