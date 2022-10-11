@@ -2,7 +2,7 @@ export function updateMainHTML(dataUser) {
 
     return `<div class="update-title-container">
     <div style='display:flex; padding: 2rem 0 0 2rem; position:absolute;'>
-    <span onclick='renderPage.login()' style='cursor:pointer;'> &larr;
+    <span onclick='renderPage.home()' style='cursor:pointer;'> &larr;
     </span></div>   
                 <h2 id="update-title">Informações de usuário</h2>
             </div>

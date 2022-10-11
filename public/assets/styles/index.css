@@ -7,6 +7,7 @@
     --beage: #e7dfc6;
     --blue: #79addc;
     --background: #f5f5f5;
+    --red: #e73131;
 }
 
 * {
@@ -990,37 +991,88 @@ user-header-img {
 ;;;;;;;;;;;;;;;;;;; */
 
 #modalNotification {
-    width: 200px;
-    min-height: 100px;
-    box-sizing: border-box;
+    width: 20rem;
+    min-height: 10rem;
     display: flex;
     justify-content: center;
     text-align: center;
-    align-items: center;
     position: fixed;
-    left: calc(50vw - 100px);
-    top: calc(50vh - 50px);
-    font-size: 16px;
+    left: 35%;
+    top: 35%;
+    font-size: 0.8rem;
     font-weight: bold;
     color: #000;
-    padding: 5px;
+    padding: 3em 1em 0 1em;
+    border-radius: 5px;
     z-index: 2;
-    border-radius: 20px;
     background-color: #fff;
-    transition: all 0.4s;
 }
 
 .modalNotfRed {
-    border: solid 2px #ff000095;
-    box-shadow: red 0 0 10px;
+    border: solid 0px var(--red);
     transition: all 0.4s;
+    pointer-events: none;
+}
+
+.modalNotfRed::after{
+    content: 'Fechar';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 300;
+    width: 100%;
+    position: absolute;
+    background-color: var(--red);
+    height: 25%;
+    bottom: 0;
+    border-radius: 0 0 5px 5px;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.modalNotfRed::before{
+    content: url(../imgs/alert-error.png);
+    top: -40px;
+    width: 100%;
+    position: absolute;
+    height: 15%;
+    
 }
 
 .modalNotfGreen {
-    border: solid 2px #00ff2695;
-    box-shadow: #00ff2f 0 0 10px;
+    border: solid 0px var(--green);
     transition: all 0.4s;
+    pointer-events: none;
 }
+
+.modalNotfGreen::after{
+    content: 'Fechar';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 300;
+    width: 100%;
+    position: absolute;
+    background-color: var(--green);
+    height: 25%;
+    bottom: 0;
+    border-radius: 0 0 5px 5px;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+
+.modalNotfGreen::before{
+    content: url(../imgs/alert-sucess.png);
+    top: -40px;
+    width: 100%;
+    position: absolute;
+    height: 15%;
+    
+}
+
 
 #trade-status {
     text-align: center;
