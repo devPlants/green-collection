@@ -24,7 +24,6 @@ export async function decodeToken(_token, _userId) {
             state: dataUser[0].state,
             zip_code: dataUser[0].zip_code
         }
-        dataUser[0];
     } catch (err) {
         return { status: 400, err };
     }
