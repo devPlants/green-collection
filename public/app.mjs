@@ -112,11 +112,11 @@ export async function renderHomeBySignup(_token, _userId) {
     renderPages.home();
     window.renderPage.modalAlert(`Olá ${dataUser.name}, seu cadastro foi realizado com sucesso. Bem vindo ao Green Collection!`, "green");
 }
-
+ 
 function finallyExchange(productId1, productId2, status, id) {
     updateExchanges(productId1, productId2, status, id);
 }
-
+ 
 async function login() {
     const response = await loginToken();
     if (response == 400) {
