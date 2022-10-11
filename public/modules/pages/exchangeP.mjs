@@ -3,7 +3,11 @@ import { getData } from "../../app.mjs";
 export const exchange = () => {
     return `
     <section class="exchanges-section">
-        <div onclick='renderPage.home()' style='cursor:pointer; display:flex; padding:20px;'>&larr;</div>   
+        <div style='display:flex; padding:20px;'>
+       <span onclick='renderPage.home()' style='cursor:pointer;'> &larr;
+       </span>
+        
+        </div>   
         <div class="exchanges-wrapper">
             <div class="exchanges-title-container">
                 <h2 id="exchanges-title">Histórico de trocas</h2>
