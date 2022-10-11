@@ -70,10 +70,10 @@ export function signupMainHTML() {
                             </div>
                             <label for='photo-btn' class="label-for-photo-btn"> Adicionar Foto</label>
                             <input id="photo-btn" type="file" name="photo">
-                        </div>
+                        </div> 
                     </div>
                     <div class="btn-container">
-                        <button id="signup-btn" type="button" onclick="signup()">Cadastrar</button>
+                        <button id="signup-btn" type="button" onclick="renderPage.signup()">Cadastrar</button>
                     </div>
                 </form>
                 </section> `;

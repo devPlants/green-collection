@@ -1,4 +1,4 @@
-import { renderHomeBySignup } from "./app.mjs";
+import { renderHomeBySignup } from "../app.mjs";
 
 export async function signup() {
     const emailUser = document.querySelector("#email-input");
@@ -7,7 +7,7 @@ export async function signup() {
     const forms = document.querySelector('#form-signup')
 
     const form = new FormData(forms);
- 
+
     if (
         form.get('name').length < 3 ||
         form.get('email').length < 3 ||
@@ -21,7 +21,19 @@ export async function signup() {
         form.get('password').length < 3 ||
         form.get('confirm-passwd').length < 3
     ) {
-        window.renderPage.modalAlert('Preencha todos os campos corretamente!', 'red');
+        window.renderPage.modalAlert('Todos os campos são de preenchimento obrigatório!', 'red');
+        return;
+    }
+
+
+
+    if (form.get('cpf').length != 11) {
+        window.renderPage.modalAlert('O CPF precisa conter 11 caracteres (Somente números)', 'red');
+        return;
+    }
+
+    if (form.get('zipCode').length != 8) {
+        window.renderPage.modalAlert('O CEP precisa conter 8 caracteres (Somente números)', 'red');
         return;
     }
 
@@ -30,7 +42,12 @@ export async function signup() {
         return;
     }
 
-    // return;
+    if (form.get('photo').name == '') {
+        window.renderPage.modalAlert('Adicione sua foto!', 'red');
+        return;
+    }
+
+    return;
 
     const options = {
         method: 'POST'

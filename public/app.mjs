@@ -101,17 +101,22 @@ export async function renderHomeBySignup(_token, _userId) {
     token = _token;
     document.cookie = `${token}`;
     dataUser = await decodeToken(token, _userId);
-    renderPages.home();
-    window.renderPage.modalAlert(
-        `Olá ${dataUser.name}, seu cadastro foi realizado com sucesso. Bem vindo ao Green Collection!`,
-        "green"
-    );
-}
 
+    if (dataUser.status == 400) {
+        window.renderPage.modalAlert(`Ocorreu um erro na requisição do usuário!`, "red");
+        return;
+    }
+
+    header.innerHTML = "";
+    header.innerHTML = pagesHTML.homeHeader(dataUser);
+    renderPages.home();
+    window.renderPage.modalAlert(`Olá ${dataUser.name}, seu cadastro foi realizado com sucesso. Bem vindo ao Green Collection!`, "green");
+}
+ 
 function finallyExchange(productId1, productId2, status, id) {
     updateExchanges(productId1, productId2, status, id);
 }
-
+ 
 async function login() {
     const response = await loginToken();
     if (response == 400) {
