@@ -1,4 +1,4 @@
-import { renderHomeBySignup } from "./app.mjs";
+import { renderHomeBySignup } from "../app.mjs";
 
 export async function signup() {
     const emailUser = document.querySelector("#email-input");

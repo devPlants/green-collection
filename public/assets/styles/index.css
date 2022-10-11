@@ -1,12 +1,12 @@
-@import url('https://rsms.me/inter/inter.css');
+@import url("https://rsms.me/inter/inter.css");
 
 :root {
-    --font: 'Inter';
+    --font: "Inter";
     --black: #343232;
-    --green: #01760D;
-    --beage: #E7DFC6;
-    --blue: #79ADDC;
-    --background: #F5F5F5;
+    --green: #01760d;
+    --beage: #e7dfc6;
+    --blue: #79addc;
+    --background: #f5f5f5;
 }
 
 * {
@@ -37,7 +37,6 @@ header {
     width: 100%;
     z-index: 9999;
     position: fixed;
-
 }
 
 main {
@@ -63,7 +62,7 @@ input {
     outline: none;
 }
 
-.logo-container{
+.logo-container {
     cursor: pointer;
 }
 
@@ -86,9 +85,8 @@ input {
 
 .login-container span:nth-child(2) {
     font-size: 0.6rem;
-    color: #6B6A6A;
+    color: #6b6a6a;
 }
-
 
 #searchbar {
     border: none;
@@ -101,8 +99,8 @@ input {
 
 #search-btn {
     font-size: 1.25rem;
-    background-color: #EAEAEA;
-    padding: 0.10em;
+    background-color: #eaeaea;
+    padding: 0.1em;
     border-radius: 0 0.5em 0.5em 0;
     float: right;
     cursor: pointer;
@@ -116,8 +114,6 @@ input {
     display: flex;
     gap: 1.5em;
     padding: 0 2em 0 0;
-
-
 }
 
 .socialmedia-icons {
@@ -134,10 +130,8 @@ input {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: left top;
-    height: 70vh
+    height: 70vh;
 }
-
-
 
 .title-container {
     text-align: center;
@@ -147,9 +141,8 @@ input {
 }
 
 .title-container h2 {
-    text-shadow: 2px 2px #6B6A6A;
+    text-shadow: 2px 2px #6b6a6a;
 }
-
 
 .search-cards-section {
     display: flex;
@@ -162,7 +155,6 @@ input {
 .search-cards-title {
     display: flex;
     margin: 2em 0;
-
 }
 
 .search-cards-container {
@@ -172,7 +164,6 @@ input {
     justify-content: center;
     gap: 25px;
     position: relative;
-
 }
 
 .search-card {
@@ -180,27 +171,27 @@ input {
     height: 320px;
     background-size: cover;
     cursor: pointer;
-    transition: transform .5s ease-in-out;
+    transition: transform 0.5s ease-in-out;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
 }
 
-.search-card:hover{
+.search-card:hover {
     filter: brightness(70%);
     transform: scale(1.02);
 }
 
-.search-card:hover > .title-serch-card{
-    filter: brightness(100%)
+.search-card:hover > .title-serch-card {
+    filter: brightness(100%);
 }
 
-.title-serch-card{
+.title-serch-card {
     width: 100%;
     height: 100%;
     padding-top: 2rem;
     opacity: 0;
 }
 
-.title-serch-card:hover{
+.title-serch-card:hover {
     opacity: 1;
 }
 
@@ -208,11 +199,6 @@ input {
     text-align: center;
     color: white;
 }
-
-
-
-
-
 
 .search-card:nth-child(1) {
     background-image: url(../imgs/search-plants.png);
@@ -257,9 +243,7 @@ input {
     width: 925px;
     padding: 0 0 3em 2.75em;
     gap: 2em;
-
 }
-
 
 .collection-card {
     display: flex;
@@ -270,16 +254,14 @@ input {
 
     min-height: 256px;
     width: 189px;
-    padding: 0 0 2rem 0;
+    padding: 0 0 0.3rem 0;
 
     cursor: pointer;
     font-size: 1rem;
     font-weight: 600;
-    border: solid #7E7E7E 1px;
+    border: solid #7e7e7e 1px;
     background-color: #fff;
-
 }
-
 
 /* ///////////
     Login
@@ -290,9 +272,8 @@ input {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    gap: 2rem
+    gap: 2rem;
 }
-
 
 .login-wrapper {
     display: flex;
@@ -304,7 +285,6 @@ input {
 #login-title {
     text-align: center;
     font-size: 2rem;
-
 }
 
 .inputs-container {
@@ -418,7 +398,7 @@ textarea {
     border: none;
     width: 15ch;
     height: 2em;
-    cursor: pointer
+    cursor: pointer;
 }
 
 #add-product-btn {
@@ -461,7 +441,6 @@ textarea {
     gap: 1rem;
 }
 
-
 .singup-wrapper,
 .update-wrapper {
     display: flex;
@@ -471,11 +450,10 @@ textarea {
 }
 
 #singup-title,
-#update-title{
+#update-title {
     text-align: center;
     padding: 1em 0;
     font-size: 2rem;
-
 }
 
 .signup-inputs-container,
@@ -535,7 +513,6 @@ textarea {
     align-items: center;
     gap: 1em;
     padding: 2em 0 0 3em;
-
 }
 
 .photo-container {
@@ -544,12 +521,12 @@ textarea {
     align-items: center;
     width: 150px;
     height: 170px;
-    background-color: #D9D9D9;
+    background-color: #d9d9d9;
     gap: 1em;
 }
 
 #signup-btn,
-#update-btn{
+#update-btn {
     background-color: var(--black);
     color: #ffffff;
     padding: 0.6;
@@ -566,7 +543,7 @@ textarea {
     margin-top: 4vh;
 }
 
-input[type='file'] {
+input[type="file"] {
     display: none;
 }
 
@@ -619,7 +596,7 @@ user-header-img {
     display: none;
 }
 
-.displayFlex{
+.displayFlex {
     display: flex;
 }
 
@@ -630,7 +607,7 @@ user-header-img {
     list-style: none;
     font-size: 12px;
     width: 150px;
-    background-color: #E7DFC6;
+    background-color: #e7dfc6;
 }
 
 .menu-user-header li {
@@ -641,7 +618,7 @@ user-header-img {
 .menu-user-header li:hover {
     background-color: #c0beb6;
     cursor: pointer;
-    transition: all .7s;
+    transition: all 0.7s;
 }
 
 /* ;;;;;;;;;;
@@ -689,7 +666,7 @@ user-header-img {
     padding: 6rem 0 0 0;
 }
 
-.trade-input-container>span {
+.trade-input-container > span {
     font-size: 1rem;
     font-weight: 600;
 }
@@ -707,7 +684,6 @@ user-header-img {
     border-radius: 0.5em;
 }
 
-
 .trade-offer-title {
     font-size: 1rem;
     font-weight: 600;
@@ -720,7 +696,7 @@ user-header-img {
     width: 75px;
     height: 75px;
     border-radius: 0.5em;
-    border: solid 2px #D9D9D9;
+    border: solid 2px #d9d9d9;
 }
 
 /* ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -728,35 +704,35 @@ user-header-img {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;*/
 
 .exchanges-wrapper,
-.approval-wrapper{
+.approval-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .exchanges-title-container h2,
-.approval-title-container h2{
+.approval-title-container h2 {
     padding-top: 1em;
     font-size: 2em;
 }
 
 .exchanges-container,
-.approval-container{
+.approval-container {
     background-color: #ffff;
     width: 65vw;
     padding-bottom: 2em;
 }
 
 .btn-exchanges-container,
-.btn-approval-container{
+.btn-approval-container {
     display: flex;
     padding-top: 2em;
     padding-bottom: 1.5em;
-    width: 15em;;
+    width: 15em;
 }
 
 #pending-exchanges-btn,
-#pending-approval-btn{
+#pending-approval-btn {
     padding: 0.2em;
     font-weight: bold;
     width: 50%;
@@ -766,34 +742,35 @@ user-header-img {
 }
 
 #finalized-exchanges-btn,
-#finalized-approval-btn{
+#finalized-approval-btn {
     padding: 0.2em;
     font-weight: bold;
     width: 50%;
-    background-color: #D9D9D9;
+    background-color: #d9d9d9;
     border: 1px solid #959595;
     cursor: pointer;
 }
 
 #trade-wrapper,
-#toApprove-wrapper{
-display: flex;
-justify-content: center;
+#toApprove-wrapper {
+    display: flex;
+    justify-content: center;
 }
 
 .trade-container,
-.toApprove-container{
+.toApprove-container {
     display: flex;
     justify-content: space-around;
     align-items: center;
     border-radius: 7px;
     display: flex;
-    width: 95%;
-    height: 8em;;
-    background-color: #D9D9D9;
+    width: 100%;
+    height: 8em;
+    background-color: #d9d9d9;
+    margin-bottom: 10px;
 }
 
-#trade-products-container{
+#trade-products-container {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -802,47 +779,50 @@ justify-content: center;
 }
 
 .trade-product,
-.toApprove-product{
+.toApprove-product {
     background: #ffff;
     height: 7em;
     width: 6em;
     border-radius: 7px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
-#arrow-exchanges{
+#arrow-exchanges {
     display: flex;
     flex-direction: column;
     width: 3em;
 }
 
-#exchanges-options-btn{
+#exchanges-options-btn {
     width: 8em;
     display: flex;
     flex-direction: column;
     gap: 0.5em;
 }
 
-#accept-btn{
+#accept-btn {
     cursor: pointer;
-    background-color: #01760D;
+    background-color: #01760d;
     padding: 0.5em;
-    color:#ffff;
+    color: #ffff;
     border: none;
     border-radius: 7px;
     font-weight: bold;
 }
 
-#reject-btn{
+#reject-btn {
     cursor: pointer;
     background-color: #e73131;
     padding: 0.5em;
-    color:#ffff;
+    color: #ffff;
     border: none;
     border-radius: 7px;
     font-weight: bold;
 }
 
-#trade-users-container{
+#trade-users-container {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -851,16 +831,16 @@ justify-content: center;
 }
 
 .trade-user,
-.toApprove-product-owner{
+.toApprove-product-owner {
     width: 6em;
     height: 7em;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;;
+    align-items: center;
 }
 
-.toApprove-product-owner{
+.toApprove-product-owner {
     margin-left: 1.5em;
 }
 
@@ -879,50 +859,53 @@ justify-content: center;
 }
 
 .user-trade-photo,
-.product-owner-photo{
+.product-owner-photo {
     border-radius: 50%;
     background-color: #ffff;
     width: 3.5em;
     height: 3.5em;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #arrow-exchanges-users,
-.arrow-toApprove{
+.arrow-toApprove {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 12em;
-    gap:1em;
+    gap: 1em;
 }
 
 #arrow-exchanges-users span,
-.arrow-toApprove span{
+.arrow-toApprove span {
     font-size: 0.75em;
     color: #343232;
     font-weight: 600;
 }
 
-#arrow-users{
+#arrow-users {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.product-info{
+.product-info {
     display: flex;
     flex-direction: column;
-    align-items:flex-start;
+    align-items: flex-start;
     gap: 0.5em;
 }
 
-.product-info input{
+.product-info input {
     border: 1px #959595;
     border-radius: 3px;
     padding: 0.2em 0em;
 }
 
-.product-info textarea{
+.product-info textarea {
     border: 1px #959595;
     border-radius: 3px;
 }
@@ -931,27 +914,25 @@ justify-content: center;
     Search
 ;;;;;;;;;;;;*/
 
-.search-page-card{
+.search-page-card {
     display: flex;
-    justify-content: end; 
+    justify-content: end;
     width: 100%;
-    padding: 8em 10em;    
-
+    padding: 8em 10em;
 }
 
-.search-title-card{
+.search-title-card {
     z-index: 9999;
     color: #ffff;
-        display: flex;
-        justify-content: end;
+    display: flex;
+    justify-content: end;
     background-size: contain;
-        background-repeat: no-repeat;
-        background-position: left top;
-        height: 70vh
+    background-repeat: no-repeat;
+    background-position: left top;
+    height: 70vh;
 }
 
-
-.search-page-card::after{
+.search-page-card::after {
     content: "";
     background-image: url(../imgs/background-search-users.png);
     background-size: cover;
@@ -960,7 +941,7 @@ justify-content: center;
     top: 0;
     left: 0;
     width: 100%;
-    filter: brightness(70%)
+    filter: brightness(70%);
 }
 
 .search-results-section {
@@ -970,12 +951,12 @@ justify-content: center;
     min-height: 30em;
 }
 
-.search-results-section>span {
+.search-results-section > span {
     font-weight: 600;
     font-size: 1.2rem;
 }
 
-.search-title-container{
+.search-title-container {
     z-index: 2;
     width: 20ch;
 }
@@ -1002,18 +983,26 @@ justify-content: center;
     z-index: 2;
     border-radius: 20px;
     background-color: #e8e8e8;
-    transition: all .4s;
+    transition: all 0.4s;
 }
 
 .modalNotfRed {
     border: solid 2px #ff000095;
     box-shadow: red 0 0 10px;
-    transition: all .4s;
+    transition: all 0.4s;
 }
 
 .modalNotfGreen {
     border: solid 2px #00ff2695;
     box-shadow: #00ff2f 0 0 10px;
-    transition: all .4s;
+    transition: all 0.4s;
 }
 
+#trade-status {
+    text-align: center;
+    font-size: 11pt;
+    background-color: rgb(253, 253, 77);
+    padding: 4px;
+    border-radius: 4px;
+    font-weight: bold;
+}

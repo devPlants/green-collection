@@ -1,5 +1,4 @@
 export function homeMainHTML(_cardsCollection) {
-
     return `<section class="title-card">
                 <div class="title-container">
                     <h2>Encontre as plantas que sua coleção precisa</h2>
@@ -12,25 +11,25 @@ export function homeMainHTML(_cardsCollection) {
                 </div>
                 <div class="search-cards-container">
 
-                    <div class="search-card" onclick="renderPage.searchPlantsPage()">
+                    <div class="search-card" onclick="renderPage.searchPlantsPage('1')">
                         <div class="title-serch-card">
                             <h2>Planta</h2>
                         </div>
                     </div>
 
-                    <div class="search-card" onclick="renderPage.searchSeedsPage()">
+                    <div class="search-card" onclick="renderPage.searchSeedsPage('1')">
                         <div class="title-serch-card">
                             <h2>Semente</h2>
                         </div>
                     </div>
 
-                    <div class="search-card" onclick="renderPage.searchUsersPage()">
+                    <div class="search-card" onclick="renderPage.searchUsersPage('1')">
                         <div class="title-serch-card">
                             <h2>Usuário</h2>
                         </div>
                     </div>
 
-                    <div class="search-card" onclick="renderPage.searchLocationPage()">
+                    <div class="search-card" onclick="renderPage.searchLocationPage('1')">
                         <div class="title-serch-card">
                             <h2>Localização</h2>
                         </div>

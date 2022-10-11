@@ -1,7 +1,6 @@
 import { cards } from "../cards.mjs";
 
 export const searchS = async (data) => {
-    console.log("entrou aqui");
     let url = "";
 
     if (data.by) {
@@ -12,13 +11,9 @@ export const searchS = async (data) => {
         url = `&by=${data.by}&category=${data.category}`;
     }
 
-    url = `&by=${data.by}&category=${data.category}`;
-
     if (data.search) {
         url += `&search=${data.search}`;
     }
-
-    console.log(`http://localhost:8000/search/?rows=8&page=${data.page}${url}`);
 
     try {
         const options = {
@@ -33,16 +28,21 @@ export const searchS = async (data) => {
         );
         const response = await search.json();
         let pageSearch = "";
+
         for (const card of response) {
             pageSearch += cards({
                 image: card.product_photo,
                 name: card.product_name,
+                userName: card.user_name,
                 city: card.user_city,
                 state: card.user_state,
             });
         }
 
-        return { cards: pageSearch, total: response[0].total };
+        return {
+            cards: pageSearch,
+            total: !response[0].total ? false : response[0].total,
+        };
     } catch (err) {
         console.log("Erro na requisição do searchS: ", err);
     }
