@@ -10,6 +10,7 @@ import { printImg } from "./modules/printImg.mjs";
 import { signup } from "./modules/signup.mjs";
 import { searchBtn, typesSearch } from "./modules/services/searchBtn.js";
 import { update } from "./modules/update.mjs";
+import { approvalAdmin } from "./modules/services/adminS.mjs";
 
 const header = document.querySelector("header");
 const main = document.querySelector("main");
@@ -37,7 +38,10 @@ const renderPages = {
     },
 
     home: async () => {
-        if (document.querySelector("#email-input") && !document.querySelector("#singup-title")) {
+        if (
+            document.querySelector("#email-input") &&
+            !document.querySelector("#singup-title")
+        ) {
             const response = await login();
             header.innerHTML = "";
 
@@ -46,7 +50,9 @@ const renderPages = {
             } else {
                 header.innerHTML = pagesHTML.homeHeader(dataUser);
             }
-            if (response == 400) { return }
+            if (response == 400) {
+                return;
+            }
         }
 
         main.innerHTML = "";
@@ -99,6 +105,12 @@ const renderPages = {
         main.innerHTML = await pagesHTML.searchLocationPage(page, word);
         window.scrollTo(0, 0);
     },
+
+    admin: async () => {
+        main.innerHTML = "";
+        main.innerHTML = await pagesHTML.adminPage();
+        activeDropdown();
+    },
 };
 
 export async function renderHomeBySignup(_token, _userId) {
@@ -107,7 +119,10 @@ export async function renderHomeBySignup(_token, _userId) {
     dataUser = await decodeToken(token, _userId);
 
     if (dataUser.status == 400) {
-        window.renderPage.modalAlert(`Ocorreu um erro na requisição do usuário! Tente fazer login ou contacte o administrador.`, "red");
+        window.renderPage.modalAlert(
+            `Ocorreu um erro na requisição do usuário! Tente fazer login ou contacte o administrador.`,
+            "red"
+        );
         return;
     }
 
@@ -121,7 +136,10 @@ export async function renderHomeBySignup(_token, _userId) {
 
     renderPages.home();
     setTimeout(() => {
-        window.renderPage.modalAlert(`Olá ${dataUser.name}, seu cadastro foi realizado com sucesso. Bem vindo ao Green Collection!`, "green");
+        window.renderPage.modalAlert(
+            `Olá ${dataUser.name}, seu cadastro foi realizado com sucesso. Bem vindo ao Green Collection!`,
+            "green"
+        );
     }, 1000);
 }
 
@@ -156,6 +174,7 @@ window.renderPage = {
     signup: signup,
     searchBtn: searchBtn,
     update: update,
+    approvalAdmin: approvalAdmin,
 
     login: renderPages.login,
     homeInitial: renderPages.homeInitial,
@@ -166,4 +185,5 @@ window.renderPage = {
     searchSeedsPage: renderPages.searchSeedsPage,
     searchUsersPage: renderPages.searchUsersPage,
     searchLocationPage: renderPages.searchLocationPage,
+    admin: renderPages.admin,
 };
