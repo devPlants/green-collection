@@ -1,6 +1,6 @@
 import { updateMainHTML } from "../pages/updateUserP.mjs";
 
-export function updateUserMainS() {
+export function updateUserMainS(dataUser) {
 
-    return updateMainHTML();
+    return updateMainHTML(dataUser);
 }

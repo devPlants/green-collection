@@ -28,8 +28,8 @@ const pagesHTML = {
     homeMain: () => {
         return homeMainS();
     },
-    updateUserMain: () => {
-        return updateUserMainS();
+    updateUserMain: (dataUser) => {
+        return updateUserMainS(dataUser);
     },
     signupMain: () => {
         return signupMainS();
