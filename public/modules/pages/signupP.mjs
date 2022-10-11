@@ -33,13 +33,13 @@ export function signupMainHTML() {
                                 <div class="zipcode-input-container">
                                     <div class="zipcode-container label">
                                         <label for="zipcode">CEP:</label>
-                                        <input type="text" name="zipCode">
+                                        <input id ="cepInputUser" onfocusout = "renderPage.searchCep()" type="text" name="zipCode">
                                     </div>
                                 </div>
                                 <div class="third-input-container">
                                     <div class="address-container label">
                                         <label for="address">Endereço:</label>
-                                        <input type="text" name="address">
+                                        <input id ="addressInputUser" type="text" name="address">
                                     </div>
                                     <div class="number-container label">
                                         <label for="number">Nº:</label>
@@ -49,11 +49,11 @@ export function signupMainHTML() {
                                 <div class="fourth-input-container">
                                     <div class="city-container label">
                                         <label for="city">Cidade:</label>
-                                        <input type="text" name="city">
+                                        <input id ="cityInputUser" type="text" name="city">
                                     </div>
                                     <div class="state-container label">
                                         <label for="state">Estado:</label>
-                                        <input type="text" name="state">
+                                        <input id ="stateInputUser" type="text" name="state">
                                     </div>
                                 </div>
                                 <div class="fifth-input-container">

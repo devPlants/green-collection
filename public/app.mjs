@@ -7,7 +7,7 @@ import { addToCollection } from "./modules/addToCollection.mjs";
 import { renderExchanges } from "./modules/pages/exchangeP.mjs";
 import { updateExchanges } from "./modules/updateExchanges.mjs";
 import { printImg } from "./modules/printImg.mjs";
-import { signup } from "./modules/signup.mjs";
+import { signup, searchCep } from "./modules/signup.mjs";
 import { searchBtn, typesSearch } from "./modules/services/searchBtn.js";
 import { updateUser } from "./modules/updateUser.mjs";
 import { approvalAdmin } from "./modules/services/adminS.mjs";
@@ -157,7 +157,7 @@ export async function renderHomeBySignup(_token, _userId) {
     renderPages.home();
     setTimeout(() => {
         window.renderPage.modalAlert(
-            `Olá ${dataUser.name.split(" ")[0]}, bem vindo ao Green Collection :)`, "green");
+            `Olá ${dataUser.name.split(" ")[0]}, bem vindo(a) ao Green Collection :)`, "green");
     }, 1000);
 }
 
@@ -193,6 +193,7 @@ window.renderPage = {
     searchBtn: searchBtn,
     approvalAdmin: approvalAdmin,
     closeDropDown: closeDropDown,
+    searchCep: searchCep,
 
     updateUser: renderPages.updateUser,
     login: renderPages.login,
