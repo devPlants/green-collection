@@ -24,67 +24,68 @@ export function homeHeaderHTML(_name, _email, _photo) {
     return `<div class="logo-container" onclick='renderPage.home()' style='cursor:pointer;'>
                 <img src="./assets/imgs/logo.png" height="48px" width="48px" alt="logo">
             </div>
-            
+                
             <div class="searchbar-container">
                 <input type="text" id="searchbar">
                 <span class="material-symbols-outlined" id="search-btn" onclick='renderPage.searchBtn()'>search</span>
             </div>
 
             <div id="div-login">
-            <div class="profile-container" onclick="renderPage.activeDropdown()">
+                <div class="profile-container" onclick="renderPage.activeDropdown()">
 
-                <div style='width: 36px; height: 36px; background-size: cover; background-image: url("http://localhost:8000/files/${_photo}"); border-radius: 50%;'></div>
+                    <div style='width: 36px; height: 36px; background-size: cover; background-image: url("http://localhost:8000/files/${_photo}"); border-radius: 50%;'></div>
 
-                <div class="login-container">
-                    <span>${_name}</span>
-                    <span>${_email}</span>
+                    <div class="login-container">
+                        <span>${_name}</span>
+                        <span>${_email}</span>
+                    </div>
+
                 </div>
 
-            </div>
-
-            <div class="menu-user-header">
-                <nav>
-                    <ul>
-                        <li onclick = "renderPage.exchanges('pending')">Minhas trocas</li>
-                        <li onclick = 'renderPage.updateUserMain()'>Editar perfil</li>
-                        <li onclick= 'renderPage.login()'>Sair</li>
-                    </ul>
-                </nav>
-            </div>
-        </div>`;
+                <div class="menu-user-header">
+                    <nav>
+                        <ul>
+                            <li onclick = "renderPage.exchanges('pending')">Minhas trocas</li>
+                            <li onclick = 'renderPage.updateUserMain()'>Editar perfil</li>
+                            <li onclick= 'renderPage.login()'>Sair</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>`;
 }
 
 export function homeHeaderAdminHTML(_name, _email, _photo) {
     return `<div class="logo-container" onclick='renderPage.home()' style='cursor:pointer;'>
-                <img src="./assets/imgs/logo.png" height="48px" width="48px" alt="logo">
-            </div>
-            
-            <div class="searchbar-container">
-                <input type="text" id="searchbar">
-                <span class="material-symbols-outlined" id="search-btn" onclick='renderPage.searchBtn()'>search</span>
-            </div>
-
-            <div id="div-login">
-            <div class="profile-container" onclick="renderPage.activeDropdown()">
-
-                <div style='width: 36px; height: 36px; background-size: cover; background-image: url("http://localhost:8000/files/${_photo}"); border-radius: 50%;'></div>
-
-                <div class="login-container">
-                    <span>${_name}</span>
-                    <span>${_email}</span>
+                    <img src="./assets/imgs/logo.png" height="48px" width="48px" alt="logo">
+                </div>
+                
+                <div class="searchbar-container">
+                    <input type="text" id="searchbar">
+                    <span class="material-symbols-outlined" id="search-btn" onclick='renderPage.searchBtn()'>search</span>
                 </div>
 
-            </div>
+                <div id="div-login">
+                <div class="profile-container" onclick="renderPage.activeDropdown()">
 
-            <div class="menu-user-header">
-                <nav>
-                    <ul>
-                        <li onclick = "renderPage.admin()">Aprovações</li>
-                        <li onclick = "renderPage.exchanges('pending')">Minhas trocas</li>
-                        <li onclick = 'renderPage.updateUserMain()'>Editar perfil</li>
-                        <li onclick= 'renderPage.login()'>Sair</li>
-                    </ul>
-                </nav>
-            </div>
-        </div>`;
+                    <div style='width: 36px; height: 36px; background-size: cover; background-image: url("http://localhost:8000/files/${_photo}"); border-radius: 50%;'></div>
+
+                    <div class="login-container">
+                        <span>${_name}</span>
+                        <span>${_email}</span>
+                    </div>
+
+                </div>
+
+                <div class="menu-user-header">
+                    <nav>
+                        <ul>
+                            <li onclick = "renderPage.admin()">Aprovações</li>
+                            <li onclick = "renderPage.exchanges('pending')">Minhas trocas</li>
+                            <li onclick = 'renderPage.updateUserMain()'>Editar perfil</li>
+                            <li onclick= 'renderPage.login()'>Sair</li>
+                        </ul>
+                    </nav>
+                </div>
+                
+            </div>`;
 }

@@ -38,9 +38,8 @@ const renderPages = {
     },
 
     home: async () => {
-        if (document.querySelector(".menu-user-header")) {
-            document.querySelector(".menu-user-header").classList.remove('displayFlex');
-        }
+        closeDropDown();
+
         if (
             document.querySelector("#email-input") &&
             !document.querySelector("#singup-title")
@@ -193,6 +192,7 @@ window.renderPage = {
     signup: signup,
     searchBtn: searchBtn,
     approvalAdmin: approvalAdmin,
+    closeDropDown: closeDropDown,
 
     updateUser: renderPages.updateUser,
     login: renderPages.login,
@@ -206,3 +206,9 @@ window.renderPage = {
     searchLocationPage: renderPages.searchLocationPage,
     admin: renderPages.admin,
 };
+
+function closeDropDown() {
+    if (document.querySelector(".menu-user-header")) {
+        document.querySelector(".menu-user-header").classList.remove('displayFlex');
+    }
+}
