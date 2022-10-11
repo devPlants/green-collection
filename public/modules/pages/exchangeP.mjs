@@ -14,7 +14,7 @@ export const exchange = () => {
             </div>
             <div id="exchanges-container" class="exchanges-container">
                 <div class="btn-exchanges-container"></div>
-                <p style="font-size: 20pt; text-align: center;">Você ainda não possúi nunhuma solicitação de troca :(</p>                   
+                <p style="font-size: 20pt; text-align: center;">Você ainda não possui nenhuma solicitação de troca :(</p>                   
             </div>
         </div>
     </section> 
