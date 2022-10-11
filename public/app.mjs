@@ -56,7 +56,7 @@ const renderPages = {
 
     updateUserMain: () => {
         main.innerHTML = "";
-        main.innerHTML = pagesHTML.updateUserMain();
+        main.innerHTML = pagesHTML.updateUserMain(dataUser);
         activeDropdown();
         printImg(".photo-container", "#photo-btn");
     },
