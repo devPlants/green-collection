@@ -9,7 +9,7 @@ import { updateExchanges } from "./modules/updateExchanges.mjs";
 import { printImg } from "./modules/printImg.mjs";
 import { signup } from "./modules/signup.mjs";
 import { searchBtn, typesSearch } from "./modules/services/searchBtn.js";
-import { update } from "./modules/update.mjs";
+import { updateUser } from "./modules/updateUser.mjs";
 import { approvalAdmin } from "./modules/services/adminS.mjs";
 
 const header = document.querySelector("header");
@@ -38,6 +38,9 @@ const renderPages = {
     },
 
     home: async () => {
+        if (document.querySelector(".menu-user-header")) {
+            document.querySelector(".menu-user-header").classList.remove('displayFlex');
+        }
         if (
             document.querySelector("#email-input") &&
             !document.querySelector("#singup-title")
@@ -111,6 +114,24 @@ const renderPages = {
         main.innerHTML = await pagesHTML.adminPage();
         activeDropdown();
     },
+
+    updateUser: async () => {
+
+        const response = await updateUser();
+        if (response == 400) { return };
+
+        dataUser = await decodeToken(document.cookie, dataUser.id);
+
+        header.innerHTML = "";
+        main.innerHTML = "";
+
+        if (dataUser.admin == true) {
+            header.innerHTML = pagesHTML.homeHeaderAdmin(dataUser);
+        } else { header.innerHTML = pagesHTML.homeHeader(dataUser); }
+
+        main.innerHTML = await pagesHTML.homeMain();
+        printImg("#add-image", "#add-image-btn");
+    },
 };
 
 export async function renderHomeBySignup(_token, _userId) {
@@ -137,9 +158,7 @@ export async function renderHomeBySignup(_token, _userId) {
     renderPages.home();
     setTimeout(() => {
         window.renderPage.modalAlert(
-            `Olá ${dataUser.name}, seu cadastro foi realizado com sucesso. Bem vindo ao Green Collection!`,
-            "green"
-        );
+            `Olá ${dataUser.name.split(" ")[0]}, bem vindo ao Green Collection :)`, "green");
     }, 1000);
 }
 
@@ -173,9 +192,9 @@ window.renderPage = {
     exchanges: renderExchanges,
     signup: signup,
     searchBtn: searchBtn,
-    update: update,
     approvalAdmin: approvalAdmin,
 
+    updateUser: renderPages.updateUser,
     login: renderPages.login,
     homeInitial: renderPages.homeInitial,
     home: renderPages.home,
