@@ -50,6 +50,7 @@ const UserControllers = {
         const data = req.body;
 
         data.updated_at = new Date();
+        data.photo = req.file.filename;
         data.id = id;
 
         const update = await UserServices.updateUserId(data);

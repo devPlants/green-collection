@@ -17,7 +17,7 @@ export function signupMainHTML() {
                                     </div>
                                     <div class="signup-email-container label">
                                         <label for="email">E-mail:</label>
-                                        <input type="text" id ="email-input" name="email">
+                                        <input type="email" id ="email-input" name="email">
                                     </div>
                                 </div>
                                 <div class="second-input-container">

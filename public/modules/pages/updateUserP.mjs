@@ -17,23 +17,23 @@ export function updateMainHTML(dataUser) {
                             </div>
                             <div class="update-email-container label">
                                 <label for="email">E-mail:</label>
-                                <input type="text" name="email" value="${dataUser.email}" disabled="">
+                                <input type="email" value="${dataUser.email}" disabled="">
                             </div>
                         </div>
                         <div class="second-input-container">
                             <div class="cpf-container label">
                                 <label for="cpf">CPF:</label>
-                                <input type="text" name="cpf" value="${dataUser.cpf}" disabled="">
+                                <input type="text" value="${dataUser.cpf}" disabled="">
                             </div>
                             <div class="phone-container label">
                                 <label for="phone">Telefone:</label>
-                                <input type="text" name="phoneNumber" value="${dataUser.phone_number}">
+                                <input type="text" name="phone_number" value="${dataUser.phone_number}">
                             </div>
                         </div>
                         <div class="zipcode-input-container">
                             <div class="zipcode-container label">
                                 <label for="zipcode">CEP:</label>
-                                <input type="text" name="zipCode" value="${dataUser.zip_code}">
+                                <input type="text" name="zip_code" value="${dataUser.zip_code}">
                             </div>
                         </div>
                         <div class="third-input-container">
@@ -56,16 +56,7 @@ export function updateMainHTML(dataUser) {
                                 <input type="text" name="state" value="${dataUser.state}">
                             </div>
                         </div>
-                        <div class="fifth-input-container">
-                            <div class="update-passwd-container label">
-                                <label for="passwd">Senha:</label>
-                                <input type="text" name="password">
-                            </div>
-                            <div class="confirm-passwd-container label">
-                                <label for="confirm-passwd">Confirme sua senha:</label>
-                                <input type="text" name="confirm-passwd">
-                            </div>
-                        </div>
+
                     </div>
                     <div class="photo-wrapper">
                         <div class="photo-container">
@@ -75,7 +66,7 @@ export function updateMainHTML(dataUser) {
                     </div>
                 </div>
                 <div class="btn-container">
-                    <button id="update-btn" type="button" onclick="update()">Atualizar</button>
+                    <button id="update-btn" type="button" onclick="renderPage.update()">Atualizar</button>
                 </div>
             </form>
             </section>

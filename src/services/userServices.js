@@ -39,6 +39,7 @@ const UserServices = {
         return getUser;
     },
     updateUserId: async (data) => {
+        console.log(data);
         const updateUser = await users.updateUser(data);
 
         return updateUser;
