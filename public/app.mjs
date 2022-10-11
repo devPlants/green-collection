@@ -101,11 +101,16 @@ export async function renderHomeBySignup(_token, _userId) {
     token = _token;
     document.cookie = `${token}`;
     dataUser = await decodeToken(token, _userId);
+
+    if (dataUser.status == 400) {
+        window.renderPage.modalAlert(`Ocorreu um erro na requisição do usuário!`, "red");
+        return;
+    }
+
+    header.innerHTML = "";
+    header.innerHTML = pagesHTML.homeHeader(dataUser);
     renderPages.home();
-    window.renderPage.modalAlert(
-        `Olá ${dataUser.name}, seu cadastro foi realizado com sucesso. Bem vindo ao Green Collection!`,
-        "green"
-    );
+    window.renderPage.modalAlert(`Olá ${dataUser.name}, seu cadastro foi realizado com sucesso. Bem vindo ao Green Collection!`, "green");
 }
 
 function finallyExchange(productId1, productId2, status, id) {
