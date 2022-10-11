@@ -1,17 +1,14 @@
 import { renderHomeBySignup } from "../app.mjs";
 
-const completeAddress = (address) =>{
-    document.getElementById("addressInputUser").value = address.logradouro;
-    document.getElementById("cityInputUser").value = address.localidade;
-    document.getElementById("stateInputUser").value = address.uf;
-}
-
 export async function searchCep(){
     const cep =  document.getElementById("cepInputUser").value;
     const url = `http://viacep.com.br/ws/${cep}/json/`;
     const data = await fetch(url);
     const address = await data.json();
-    completeAddress(address);   
+    
+    document.getElementById("addressInputUser").value = address.logradouro;
+    document.getElementById("cityInputUser").value = address.localidade;
+    document.getElementById("stateInputUser").value = address.uf;
 }
 
 
