@@ -1,10 +1,21 @@
-import { initialHeaderS, loginHeaderS, homeHeaderS, homeHeaderAdminS } from "./headersS.mjs";
+import {
+    initialHeaderS,
+    loginHeaderS,
+    homeHeaderS,
+    homeHeaderAdminS,
+} from "./headersS.mjs";
 import { loginMainS } from "./loginS.mjs";
 import { homeInitialMainS } from "./homeInitialS.mjs";
 import { homeMainS } from "./homeS.mjs";
 import { updateUserMainS } from "./userUpdateS.mjs";
 import { signupMainS } from "./signupS.mjs";
-import { searchPlantsPageS, searchSeedsPageS, searchUsersPageS, searchLocationPageS, } from "./searchPagesS.mjs";
+import {
+    searchPlantsPageS,
+    searchSeedsPageS,
+    searchUsersPageS,
+    searchLocationPageS,
+} from "./searchPagesS.mjs";
+import { adminS } from "./adminS.mjs";
 
 const pagesHTML = {
     initialHeader: () => {
@@ -45,6 +56,9 @@ const pagesHTML = {
     },
     searchLocationPage: async (page, word) => {
         return await searchLocationPageS(page, word);
+    },
+    adminPage: async () => {
+        return await adminS();
     },
 };
 
