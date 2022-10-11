@@ -1,7 +1,9 @@
 export function signupMainHTML() {
 
     return ` <div class="singup-title-container">
-                <div onclick='renderPage.login()' style='cursor:pointer; display:flex; padding:20px;'>&larr;</div>   
+                <div style='display:flex; padding: 2rem 0 0 2rem; position:absolute '>
+                <span onclick='renderPage.login()' style='cursor:pointer;'> &larr;
+                </span></div>
                 <h2 id="singup-title">Cadastro</h2>
                 </div>
                 <section class="singup-section">
