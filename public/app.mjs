@@ -62,9 +62,9 @@ const renderPages = {
         printImg("#add-image", "#add-image-btn");
     },
 
-    updateUserMain: () => {
+    updateUserMain: async () => {
         main.innerHTML = "";
-        main.innerHTML = pagesHTML.updateUserMain(dataUser);
+        main.innerHTML = await pagesHTML.updateUserMain(dataUser);
         activeDropdown();
         printImg(".photo-container", "#photo-btn");
     },

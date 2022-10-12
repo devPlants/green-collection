@@ -39,8 +39,8 @@ const pagesHTML = {
     homeMain: () => {
         return homeMainS();
     },
-    updateUserMain: (dataUser) => {
-        return updateUserMainS(dataUser);
+    updateUserMain: async (dataUser) => {
+        return await updateUserMainS(dataUser);
     },
     signupMain: () => {
         return signupMainS();
