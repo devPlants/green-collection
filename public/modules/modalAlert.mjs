@@ -17,7 +17,6 @@ function modalAlert(txt, color) {
             div.parentNode.removeChild(div);
         }
     })
-
 }
 
 export { modalAlert };
