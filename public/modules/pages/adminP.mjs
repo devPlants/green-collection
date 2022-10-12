@@ -29,8 +29,8 @@ export const approvalList = (data) => {
             <div class="toApprove-product" style="background-image: url(http://localhost:8000/files/${data.productPhoto});">
             </div>
             <div class="product-info">
-                <input type="text" id="name-product" name="product" style="padding-left: 10px;" value="${data.productName}">
-                <textarea id="description-produt" name="description" rows="5" cols="20" style="padding-left: 10px; padding-top: 10px">${data.description}</textarea>
+                <input type="text" id="name-product" name="product" style="padding-left: 10px;" value="${data.productName}" disabled>
+                <textarea id="description-produt" name="description" rows="5" cols="20" style="padding-left: 10px; padding-top: 10px" disabled>${data.description}</textarea>
                 
             </div>
             <div id="approval-options-btn">

@@ -42,8 +42,16 @@ const collections = {
             return { status: 500, response: err };
         }
     },
-    getByUserId: async (id, rows, page) => {
+    getByUserId: async (id, rows, page, _status) => {
         try {
+            let status = "";
+            const values = [id, rows, page, "rejected"];
+
+            if (_status) {
+                status = ` AND c.status = $5 `;
+                values.push(_status);
+            }
+
             const client = await db;
             const query = `
                 SELECT products_id, p.name as product_name, p.category, p.photo  as product_photo, 
@@ -56,16 +64,11 @@ const collections = {
                                
                 INNER JOIN users u
                 ON c.users_id = u.id
-                WHERE c.status != $4 AND c.users_id = $1 ORDER BY c.created_at
+                WHERE c.status != $4 AND c.users_id = $1 ${status} ORDER BY c.created_at
                 LIMIT $2 OFFSET $3;
                 `;
 
-            const getCollections = await client.query(query, [
-                id,
-                rows,
-                page,
-                "rejected",
-            ]);
+            const getCollections = await client.query(query, values);
 
             return { status: 200, response: getCollections.rows };
         } catch (err) {
@@ -188,15 +191,23 @@ const collections = {
             return { status: 500, response: err };
         }
     },
-    countCollection: async (id) => {
+    countCollection: async (id, _status) => {
+        let status = "";
+        const values = [id, "rejected"];
+
+        if (_status) {
+            status = `AND status = $3`;
+            values.push(_status);
+        }
+
         try {
             const client = await db;
 
             const count = await client.query(
                 `
-                SELECT COUNT(*) FROM collections WHERE users_id= $1 AND status != $2;
+                SELECT COUNT(*) FROM collections WHERE users_id= $1 AND status != $2 ${status};
                 `,
-                [id, "rejected"]
+                values
             );
 
             return { status: 200, response: count.rows };

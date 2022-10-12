@@ -656,6 +656,9 @@ user-header-img {
     width: 200px;
     background-color: #888;
     border-radius: 1rem;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 #trade-req-info {
@@ -716,6 +719,16 @@ user-header-img {
     height: 75px;
     border-radius: 0.5em;
     border: solid 2px #d9d9d9;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition-duration: 0.5s;
+}
+
+.offer-products-ondisplay:hover {
+    transform: scale(1.15);
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.25);
 }
 
 /* ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1164,4 +1177,12 @@ xxxxxxxxxxxxxxxxx*/
     border-radius: 50%;
     transform: translateX(60px);
     background-color: green;
+}
+
+#detail-paginate {
+    width: 100%;
+    display: flex;
+    align-self: flex-end;
+    justify-content: center;
+    gap: 0.5rem;
 }

@@ -1,12 +1,6 @@
 import { getToken } from "../app.mjs";
 
-
-
-
-
-
 function tradeMain() {
-
     return `<section class="trade-page-section">
 <div class="trade-req-container">
     <div id="trade-req-img"></div>
@@ -47,20 +41,25 @@ function tradeMain() {
         
     </div>
 </div>
-</section>`
+</section>`;
 }
 
 async function getCollection() {
-    const collectionOnDisplay = document.querySelectorAll('.offer-products-ondisplay');
+    const collectionOnDisplay = document.querySelectorAll(
+        ".offer-products-ondisplay"
+    );
 
     const options = {
-        method: 'GET',
+        method: "GET",
         header: {
-            authorization: `${getToken().token}`
-        }
-    }
+            authorization: `${getToken().token}`,
+        },
+    };
     try {
-        const response = await fetch('http://localhost:8000/collections/?rows=9&page=1', options);
+        const response = await fetch(
+            "http://localhost:8000/collections/?rows=9&page=1",
+            options
+        );
         const data = await response.json();
         console.log(data);
     } catch (error) {
@@ -68,9 +67,9 @@ async function getCollection() {
         return 400;
     }
 
-    collectionOnDisplay.forEach(element => {
+    collectionOnDisplay.forEach((element) => {
         element.style.backgroundImage = `url(${data.user_photo})`;
-    })
+    });
 }
 
-export { getCollection, tradeMain }
+export { getCollection, tradeMain };

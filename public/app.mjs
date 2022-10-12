@@ -11,6 +11,8 @@ import { signup, searchCep } from "./modules/signup.mjs";
 import { searchBtn, typesSearch } from "./modules/services/searchBtn.js";
 import { updateUser } from "./modules/updateUser.mjs";
 import { approvalAdmin } from "./modules/services/adminS.mjs";
+import { askTrade, selectProduct } from "./modules/services/tradeRequest.mjs";
+import { tradePagination } from "./modules/services/tradeS.mjs";
 
 const header = document.querySelector("header");
 const main = document.querySelector("main");
@@ -129,7 +131,12 @@ const renderPages = {
         } else { header.innerHTML = pagesHTML.homeHeader(dataUser); }
 
         main.innerHTML = await pagesHTML.homeMain();
-        printImg("#add-image", "#add-image-btn");
+        printImg("#add-image", "#add-image-btn")
+    },
+    
+    trade: async (productId) => {
+        main.innerHTML = "";
+        main.innerHTML = await pagesHTML.tradePage(productId);
     },
 };
 
@@ -194,6 +201,10 @@ window.renderPage = {
     approvalAdmin: approvalAdmin,
     closeDropDown: closeDropDown,
     searchCep: searchCep,
+    selectProduct: selectProduct,
+    askTrade: askTrade,
+    tradePagination: tradePagination,
+    responseExchanges: updateExchanges,
 
     updateUser: renderPages.updateUser,
     login: renderPages.login,
@@ -206,6 +217,7 @@ window.renderPage = {
     searchUsersPage: renderPages.searchUsersPage,
     searchLocationPage: renderPages.searchLocationPage,
     admin: renderPages.admin,
+    trade: renderPages.trade,
 };
 
 function closeDropDown() {
