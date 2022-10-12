@@ -35,6 +35,10 @@ export function updateMainHTML(dataUser) {
                                 <label for="zipcode">CEP:</label>
                                 <input id ="cepInputUser" onfocusout = "renderPage.searchCep()" type="text" name="zip_code" value="${dataUser.zip_code}">
                             </div>
+                            <div class="district-container label">
+                                        <label for="district">Bairro:</label>
+                                        <input id ="districtInputUser" type="text" value="${dataUser.district}">
+                                    </div>
                         </div>
                         <div class="third-input-container">
                             <div class="address-container label">

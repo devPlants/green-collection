@@ -7,10 +7,10 @@ export async function searchCep(){
     const address = await data.json();
     
     document.getElementById("addressInputUser").value = address.logradouro;
+    document.getElementById("districtInputUser").value = address.bairro;
     document.getElementById("cityInputUser").value = address.localidade;
     document.getElementById("stateInputUser").value = address.uf;
 }
-
 
 export async function signup() {
     const emailUser = document.querySelector("#email-input");

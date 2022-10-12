@@ -142,9 +142,13 @@ button:active {
 
 .title-container {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
     width: 42vw;
     margin: 0 8rem 0 0;
     padding: 5rem 10rem 0 0;
+    align-items: center;
 }
 
 .title-container h2 {
@@ -509,7 +513,8 @@ textarea {
 .signup-passwd-container,
 .update-passwd-container,
 .confirm-passwd-container,
-.zipcode-container {
+.zipcode-container,
+.district-container{
     width: 49%;
 }
 
@@ -1096,9 +1101,10 @@ user-header-img {
     font-weight: bold;
 }
 
-/* xxxxxxxxxxxxxxxx 
-      TESTE!!!!
-xxxxxxxxxxxxxxxxx*/
+/* ;;;;;;;;;;;;;;;;;;;
+   btn - animate
+;;;;;;;;;;;;;;;;;;; */
+
 .button {
     display: flex;
     cursor: pointer;
@@ -1119,7 +1125,7 @@ xxxxxxxxxxxxxxxxx*/
     font-size: 14px;
     font-weight: bold;
     margin-right: -18px;
-    color: black;
+    color: rgb(113, 107, 107);
     letter-spacing: 0.05em;
 }
 

@@ -35,6 +35,10 @@ export function signupMainHTML() {
                                         <label for="zipcode">CEP:</label>
                                         <input id ="cepInputUser" onfocusout = "renderPage.searchCep()" type="text" name="zipCode">
                                     </div>
+                                    <div class="district-container label">
+                                        <label for="district">Bairro:</label>
+                                        <input id ="districtInputUser" type="text">
+                                    </div>
                                 </div>
                                 <div class="third-input-container">
                                     <div class="address-container label">
