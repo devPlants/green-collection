@@ -3,12 +3,13 @@ const collectionServices = require("../services/collectionsServices");
 const collectionControllers = {
     getUserPagination: async (req, res) => {
         const userId = req.userId;
-        const { rows, page } = req.query;
+        const { rows, page, status } = req.query;
 
         const collections = await collectionServices.getByUserIdPaginate(
             userId,
             rows,
-            page
+            page,
+            status
         );
 
         if (collections.status > 300) {

@@ -14,7 +14,15 @@ export const updateExchanges = async (productId1, productId2, status, id) => {
             options
         );
         const data = await response.json();
-        pageExchanges("pending");
+
+        setTimeout(() => {
+            window.renderPage.modalAlert(
+                "Resposta realizada com sucesso!",
+                "green"
+            );
+        }, 500);
+
+        window.renderPage.exchanges("pending");
         return data;
     } catch (err) {
         console.log("Erro ao atualizar exchanges => ", err);

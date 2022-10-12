@@ -31,6 +31,7 @@ export const searchS = async (data) => {
 
         for (const card of response) {
             pageSearch += cards({
+                productId: card.products_id,
                 image: card.product_photo,
                 name: card.product_name,
                 userName: card.user_name,

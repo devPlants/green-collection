@@ -16,6 +16,7 @@ import {
     searchLocationPageS,
 } from "./searchPagesS.mjs";
 import { adminS } from "./adminS.mjs";
+import { tradeS } from "./tradeS.mjs";
 
 const pagesHTML = {
     initialHeader: () => {
@@ -59,6 +60,9 @@ const pagesHTML = {
     },
     adminPage: async () => {
         return await adminS();
+    },
+    tradePage: async (productId) => {
+        return await tradeS(productId);
     },
 };
 
