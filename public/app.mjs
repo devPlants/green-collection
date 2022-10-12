@@ -11,6 +11,8 @@ import { signup } from "./modules/signup.mjs";
 import { searchBtn, typesSearch } from "./modules/services/searchBtn.js";
 import { update } from "./modules/update.mjs";
 import { approvalAdmin } from "./modules/services/adminS.mjs";
+import { askTrade, selectProduct } from "./modules/services/tradeRequest.mjs";
+import { tradePagination } from "./modules/services/tradeS.mjs";
 
 const header = document.querySelector("header");
 const main = document.querySelector("main");
@@ -111,6 +113,11 @@ const renderPages = {
         main.innerHTML = await pagesHTML.adminPage();
         activeDropdown();
     },
+
+    trade: async (productId) => {
+        main.innerHTML = "";
+        main.innerHTML = await pagesHTML.tradePage(productId);
+    },
 };
 
 export async function renderHomeBySignup(_token, _userId) {
@@ -175,6 +182,10 @@ window.renderPage = {
     searchBtn: searchBtn,
     update: update,
     approvalAdmin: approvalAdmin,
+    selectProduct: selectProduct,
+    askTrade: askTrade,
+    tradePagination: tradePagination,
+    responseExchanges: updateExchanges,
 
     login: renderPages.login,
     homeInitial: renderPages.homeInitial,
@@ -186,4 +197,5 @@ window.renderPage = {
     searchUsersPage: renderPages.searchUsersPage,
     searchLocationPage: renderPages.searchLocationPage,
     admin: renderPages.admin,
+    trade: renderPages.trade,
 };

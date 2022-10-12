@@ -63,7 +63,7 @@ const exchangeList = (data) => {
 };
 
 export const renderExchanges = async (status) => {
-    document.querySelector(".menu-user-header").classList.remove('displayFlex');
+    document.querySelector(".menu-user-header").classList.remove("displayFlex");
     const main = document.querySelector("main");
     main.innerHTML = exchange();
     const divExchanges = document.querySelector("#exchanges-container");
@@ -78,7 +78,10 @@ export const renderExchanges = async (status) => {
         const response = await fetch("/exchanges", options);
 
         if (!response.ok) {
-            window.renderPage.modalAlert('Não foi possível consultar suas trocas!', 'red');
+            window.renderPage.modalAlert(
+                "Não foi possível consultar suas trocas!",
+                "red"
+            );
             return;
         }
 
@@ -106,13 +109,13 @@ export const renderExchanges = async (status) => {
                 userCity2: trade.user2.user_city,
                 userState1: trade.user1.user_state,
                 userState2: trade.user2.user_state,
-                res: `<button id="accept-btn" onclick="responseExchanges(
+                res: `<button id="accept-btn" onclick="renderPage.responseExchanges(
                     '${trade.user1.products_id}', 
                     '${trade.user2.products_id}', 
                     'approved', 
                     '${trade.id}'
                     )">Aceitar</button>
-                <button id="reject-btn" onclick="responseExchanges(
+                <button id="reject-btn" onclick="renderPage.responseExchanges(
                     '${trade.user1.products_id}', 
                     '${trade.user2.products_id}', 
                     'rejected', 
@@ -186,7 +189,10 @@ export const renderExchanges = async (status) => {
             }
         }
     } catch (err) {
-        window.renderPage.modalAlert(`Erro ao fazer requisição em exchanges => ${err}`, 'red');
+        window.renderPage.modalAlert(
+            `Erro ao fazer requisição em exchanges => ${err}`,
+            "red"
+        );
         console.log("Erro ao fazer requisição em exchanges => ", err);
         return;
     }

@@ -19,14 +19,14 @@ const collectionsServices = {
 
         return products;
     },
-    getByUserIdPaginate: async (id, _rows, _page) => {
+    getByUserIdPaginate: async (id, _rows, _page, status) => {
         const rows = _rows;
         const page = rows * (_page - 1);
-        const count = await collections.countCollection(id);
+        const count = await collections.countCollection(id, status);
 
         if (count.status > 300) return count;
 
-        const products = await collections.getByUserId(id, rows, page);
+        const products = await collections.getByUserId(id, rows, page, status);
 
         if (products.status > 300) return products;
 
