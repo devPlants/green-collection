@@ -13,6 +13,7 @@ import { updateUser } from "./modules/updateUser.mjs";
 import { approvalAdmin } from "./modules/services/adminS.mjs";
 import { askTrade, selectProduct } from "./modules/services/tradeRequest.mjs";
 import { tradePagination } from "./modules/services/tradeS.mjs";
+import { renderHomePaginate } from "./modules/services/homeS.mjs";
 
 const header = document.querySelector("header");
 const main = document.querySelector("main");
@@ -132,7 +133,7 @@ const renderPages = {
             return;
         }
 
-        dataUser = await decodeToken(document.cookie, dataUser.id, 'update');
+        dataUser = await decodeToken(document.cookie, dataUser.id, "update");
 
         header.innerHTML = "";
         main.innerHTML = "";
@@ -177,16 +178,17 @@ export async function renderHomeBySignup(_token, _userId) {
     renderPages.home();
     setTimeout(() => {
         window.renderPage.modalAlert(
-            `Olá ${dataUser.name.split(" ")[0]
+            `Olá ${
+                dataUser.name.split(" ")[0]
             }, bem vindo(a) ao Green Collection :)`,
             "green"
         );
     }, 1000);
 }
 
-function finallyExchange(productId1, productId2, status, id) {
+/* function finallyExchange(productId1, productId2, status, id) {
     updateExchanges(productId1, productId2, status, id);
-}
+} */
 
 async function login() {
     const response = await loginToken();
@@ -208,7 +210,10 @@ function activeDropdown() {
 }
 
 function updatePass() {
-    window.renderPage.modalAlert('Contacte o administrador para redefinir sua senha através do email: greenCollection@greenCollection.com', 'red')
+    window.renderPage.modalAlert(
+        "Contacte o administrador para redefinir sua senha através do email: greenCollection@greenCollection.com",
+        "red"
+    );
 }
 
 window.renderPage = {
@@ -227,6 +232,7 @@ window.renderPage = {
     tradePagination: tradePagination,
     responseExchanges: updateExchanges,
     updatePass: updatePass,
+    renderHomePaginate: renderHomePaginate,
 
     updateUser: renderPages.updateUser,
     login: renderPages.login,
@@ -252,9 +258,10 @@ function closeDropDown() {
 
 if (document.cookie.length > 10) {
     window.renderPage.home();
-}else{window.renderPage.homeInitial}
+} else {
+    window.renderPage.homeInitial;
+}
 
 if (document.cookie.length < 10) {
     window.renderPage.homeInitial();
 }
-

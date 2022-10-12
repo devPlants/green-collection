@@ -514,7 +514,7 @@ textarea {
 .update-passwd-container,
 .confirm-passwd-container,
 .zipcode-container,
-.district-container{
+.district-container {
     width: 49%;
 }
 
@@ -1032,8 +1032,8 @@ user-header-img {
     pointer-events: none;
 }
 
-.modalNotfRed::after{
-    content: 'Fechar';
+.modalNotfRed::after {
+    content: "Fechar";
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1049,13 +1049,12 @@ user-header-img {
     pointer-events: auto;
 }
 
-.modalNotfRed::before{
+.modalNotfRed::before {
     content: url(../imgs/alert-error.png);
     top: -40px;
     width: 100%;
     position: absolute;
     height: 15%;
-    
 }
 
 .modalNotfGreen {
@@ -1064,8 +1063,8 @@ user-header-img {
     pointer-events: none;
 }
 
-.modalNotfGreen::after{
-    content: 'Fechar';
+.modalNotfGreen::after {
+    content: "Fechar";
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1081,16 +1080,13 @@ user-header-img {
     pointer-events: auto;
 }
 
-
-.modalNotfGreen::before{
+.modalNotfGreen::before {
     content: url(../imgs/alert-sucess.png);
     top: -40px;
     width: 100%;
     position: absolute;
     height: 15%;
-    
 }
-
 
 #trade-status {
     text-align: center;
@@ -1185,10 +1181,10 @@ user-header-img {
     background-color: green;
 }
 
-#detail-paginate {
+.detail-paginate {
     width: 100%;
     display: flex;
     align-self: flex-end;
     justify-content: center;
-    gap: 0.5rem;
+    gap: 0.6rem;
 }
