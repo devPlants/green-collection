@@ -20,6 +20,10 @@ const main = document.querySelector("main");
 let token = "";
 let dataUser = ""; // {address,admin,city,cpf,email,id,name,number,phone_number,photo,state,zip_code}
 
+if (document.cookie.length > 10) {
+    dataUser = await decodeToken(document.cookie);
+}
+
 export function getData() {
     return { token, dataUser };
 }
@@ -30,6 +34,11 @@ const renderPages = {
         main.innerHTML = "";
         header.innerHTML = pagesHTML.loginHeader();
         main.innerHTML = pagesHTML.loginMain();
+        cookieStore.getAll().then((cookies) =>
+            cookies.forEach((cookie) => {
+                cookieStore.delete(cookie.name);
+            })
+        );
     },
 
     homeInitial: async () => {
@@ -41,22 +50,23 @@ const renderPages = {
 
     home: async () => {
         closeDropDown();
+        console.log("dados => ", dataUser);
 
         if (
             document.querySelector("#email-input") &&
             !document.querySelector("#singup-title")
         ) {
             const response = await login();
-            header.innerHTML = "";
-
-            if (dataUser.admin == true) {
-                header.innerHTML = pagesHTML.homeHeaderAdmin(dataUser);
-            } else {
-                header.innerHTML = pagesHTML.homeHeader(dataUser);
-            }
             if (response == 400) {
                 return;
             }
+        }
+        header.innerHTML = "";
+
+        if (dataUser.admin == true) {
+            header.innerHTML = pagesHTML.homeHeaderAdmin(dataUser);
+        } else {
+            header.innerHTML = pagesHTML.homeHeader(dataUser);
         }
 
         main.innerHTML = "";
@@ -117,9 +127,10 @@ const renderPages = {
     },
 
     updateUser: async () => {
-
         const response = await updateUser();
-        if (response == 400) { return };
+        if (response == 400) {
+            return;
+        }
 
         dataUser = await decodeToken(document.cookie, dataUser.id);
 
@@ -128,12 +139,14 @@ const renderPages = {
 
         if (dataUser.admin == true) {
             header.innerHTML = pagesHTML.homeHeaderAdmin(dataUser);
-        } else { header.innerHTML = pagesHTML.homeHeader(dataUser); }
+        } else {
+            header.innerHTML = pagesHTML.homeHeader(dataUser);
+        }
 
         main.innerHTML = await pagesHTML.homeMain();
-        printImg("#add-image", "#add-image-btn")
+        printImg("#add-image", "#add-image-btn");
     },
-    
+
     trade: async (productId) => {
         main.innerHTML = "";
         main.innerHTML = await pagesHTML.tradePage(productId);
@@ -164,7 +177,11 @@ export async function renderHomeBySignup(_token, _userId) {
     renderPages.home();
     setTimeout(() => {
         window.renderPage.modalAlert(
-            `Olá ${dataUser.name.split(" ")[0]}, bem vindo(a) ao Green Collection :)`, "green");
+            `Olá ${
+                dataUser.name.split(" ")[0]
+            }, bem vindo(a) ao Green Collection :)`,
+            "green"
+        );
     }, 1000);
 }
 
@@ -182,6 +199,7 @@ async function login() {
     document.cookie = `${token}`;
 
     dataUser = await decodeToken(token, response.userId);
+
     return 200;
 }
 
@@ -222,6 +240,12 @@ window.renderPage = {
 
 function closeDropDown() {
     if (document.querySelector(".menu-user-header")) {
-        document.querySelector(".menu-user-header").classList.remove('displayFlex');
+        document
+            .querySelector(".menu-user-header")
+            .classList.remove("displayFlex");
     }
+}
+
+if (document.cookie.length > 10) {
+    window.renderPage.home();
 }

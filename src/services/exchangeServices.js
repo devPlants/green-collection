@@ -24,6 +24,7 @@ const exchangesServices = {
             productId: data.productId1,
             status: "in_exchange",
         });
+
         if (updateStatusOne.status > 300) return updateStatusOne;
 
         const updateStatusTwo = collectionsServices.updateStatus({
@@ -31,6 +32,7 @@ const exchangesServices = {
             productId: data.productId2,
             status: "in_exchange",
         });
+
         if (updateStatusTwo.status > 300) return updateStatusTwo;
 
         const create = await exchanges.create(data);

@@ -64,7 +64,7 @@ const Users = {
             const client = await db;
             const getUser = await client.query(
                 `
-                SELECT id, email, password, admin, photo, name FROM users WHERE email = $1 AND deleted = false;
+                SELECT id, email, name, password, admin, photo, address, zip_code, city, state, cpf, phone_number, number FROM users WHERE email = $1 AND deleted = false;
                 `,
                 [email]
             );
@@ -79,7 +79,7 @@ const Users = {
         }
     },
     updateUser: async (data) => {
-        console.log(data);  
+        console.log(data);
         try {
             const client = await db;
             const helpQuery = {
@@ -95,7 +95,6 @@ const Users = {
                 }
                 helpQuery.values.push(data[column]);
             }
-
 
             const queryReplace = `UPDATE users SET/ WHERE id=$${helpQuery.count};`;
             const sql = queryReplace.replace(
