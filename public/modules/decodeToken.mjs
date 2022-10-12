@@ -1,11 +1,12 @@
 export async function decodeToken(_token, _userId) {
-
-    const options = {
+    /*  const options = {
         method: "GET",
         headers: {
             authorization: `${_token}`,
         },
     };
+
+    console.log("Teste do decode token => ", decode(document.cookie));
 
     try {
         const response = await fetch(`/users/${_userId}`, options);
@@ -22,25 +23,39 @@ export async function decodeToken(_token, _userId) {
             phone_number: dataUser[0].phone_number,
             photo: dataUser[0].photo,
             state: dataUser[0].state,
-            zip_code: dataUser[0].zip_code
-        }
+            zip_code: dataUser[0].zip_code,
+        };
     } catch (err) {
         return { status: 400, err };
-    }
-};
+    } */
 
-// export function decodeToken(_token) {
-//     let base64Url = _token.split('.')[1];
-//     let base64 = decodeURIComponent(atob(base64Url).split('').map((c) => {
-//         return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-//     }).join(''));
-//     const data = JSON.parse(base64);
+    return decode(_token);
+}
 
-//     return {
-//         userAdmin: data.userAdmin,
-//         userEmail: data.userEmail,
-//         userId: data.userId,
-//         userName: data.userName,
-//         userPhoto: data.userPhoto
-//     };
-// };
+function decode(_token) {
+    let base64Url = _token.split(".")[1];
+    let base64 = decodeURIComponent(
+        atob(base64Url)
+            .split("")
+            .map((c) => {
+                return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+            })
+            .join("")
+    );
+    const data = JSON.parse(base64);
+
+    return {
+        address: data.userAddress,
+        admin: data.userAdmin,
+        city: data.userCity,
+        cpf: data.userCpf,
+        email: data.userEmail,
+        id: data.userId,
+        name: data.userName,
+        number: data.userNumber,
+        phone_number: data.userPhoneNumber,
+        photo: data.userPhoto,
+        state: data.userState,
+        zip_code: data.userCep,
+    };
+}
