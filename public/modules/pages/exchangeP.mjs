@@ -110,14 +110,14 @@ export const renderExchanges = async (status) => {
                 userState1: trade.user1.user_state,
                 userState2: trade.user2.user_state,
                 res: `<button id="accept-btn" onclick="renderPage.responseExchanges(
-                    '${trade.user1.products_id}', 
                     '${trade.user2.products_id}', 
+                    '${trade.user1.products_id}', 
                     'approved', 
                     '${trade.id}'
                     )">Aceitar</button>
                 <button id="reject-btn" onclick="renderPage.responseExchanges(
-                    '${trade.user1.products_id}', 
                     '${trade.user2.products_id}', 
+                    '${trade.user1.products_id}', 
                     'rejected', 
                     '${trade.id}'
                     )">Rejeitar</button>`,

@@ -1,4 +1,7 @@
 export const updateExchanges = async (productId1, productId2, status, id) => {
+    console.log(
+        `{"productId1":"${productId1}","productId2":"${productId2}","status":"${status}","id":"${id}"}`
+    );
     try {
         const options = {
             method: "PUT",
@@ -9,10 +12,7 @@ export const updateExchanges = async (productId1, productId2, status, id) => {
             body: `{"productId1":"${productId1}","productId2":"${productId2}","status":"${status}","id":"${id}"}`,
         };
 
-        const response = await fetch(
-            "http://localhost:8000/exchanges",
-            options
-        );
+        const response = await fetch("/exchanges", options);
         const data = await response.json();
 
         setTimeout(() => {
