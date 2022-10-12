@@ -42,7 +42,7 @@ const exchangeControllers = {
             });
         }
 
-        res.status(201).json(exchange.response);
+        res.status(204).json(exchange.response);
     },
 };
 
