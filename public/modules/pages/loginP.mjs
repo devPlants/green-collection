@@ -16,7 +16,7 @@ export function loginMainHTML() {
                         <div class="passwd-container">
                             <label for="passwd">Senha:</label>
                             <input type="password" name="passwd" id="passwd-input">
-                            <span id="forgot-passwd">Esqueceu sua senha?</span>
+                            <span id="forgot-passwd" onclick='renderPage.updatePass()'>Esqueceu sua senha?</span>
                         </div>
 
                         <div class="btns-container">

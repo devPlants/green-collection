@@ -132,7 +132,7 @@ const renderPages = {
             return;
         }
 
-        dataUser = await decodeToken(document.cookie, dataUser.id);
+        dataUser = await decodeToken(document.cookie, dataUser.id, 'update');
 
         header.innerHTML = "";
         main.innerHTML = "";
@@ -177,8 +177,7 @@ export async function renderHomeBySignup(_token, _userId) {
     renderPages.home();
     setTimeout(() => {
         window.renderPage.modalAlert(
-            `Olá ${
-                dataUser.name.split(" ")[0]
+            `Olá ${dataUser.name.split(" ")[0]
             }, bem vindo(a) ao Green Collection :)`,
             "green"
         );
@@ -208,6 +207,10 @@ function activeDropdown() {
     dropDown.classList.toggle("displayFlex");
 }
 
+function updatePass() {
+    window.renderPage.modalAlert('Contacte o administrador para redefinir sua senha através do email: greenCollection@greenCollection.com', 'red')
+}
+
 window.renderPage = {
     modalAlert: modalAlert,
     activeDropdown: activeDropdown,
@@ -223,6 +226,7 @@ window.renderPage = {
     askTrade: askTrade,
     tradePagination: tradePagination,
     responseExchanges: updateExchanges,
+    updatePass: updatePass,
 
     updateUser: renderPages.updateUser,
     login: renderPages.login,
@@ -248,4 +252,9 @@ function closeDropDown() {
 
 if (document.cookie.length > 10) {
     window.renderPage.home();
+}else{window.renderPage.homeInitial}
+
+if (document.cookie.length < 10) {
+    window.renderPage.homeInitial();
 }
+
