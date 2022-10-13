@@ -1,16 +1,14 @@
 export const tradeP = (data) => {
     const trade = `
+    <div id="align-trade">
     <section class="trade-page-section">
 <div class="trade-req-container">
     <div id="trade-req-img" style="background-image: url(http://localhost:8000/files/${data.productPhoto});"></div>
     <div id="trade-req-info">
-        <p>Dono: ${data.userName}</p>
-        <p>${data.category}: ${data.productName}</p>
-        <p>Localização: ${data.city} - ${data.state}</p>
-        <div class="req-description-container">
-            <h4>Descrição:</h3>
-            <p>${data.description}</p>
-        </div>
+        <p><span>Dono:</span> ${data.userName}</p>
+        <p><span>${data.category}:</span> ${data.productName}</p>
+        <p><span>Localização:</span> ${data.city} - ${data.state}</p>
+        <p><span>Descrição:</span> ${data.description}</p>
     </div>
 </div>
 <div class="trade-input-container">
@@ -32,7 +30,8 @@ export const tradeP = (data) => {
         
     </div>
 </div>
-</section>`;
+</section>
+</div>`;
 
     return trade;
 };
