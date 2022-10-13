@@ -4,7 +4,11 @@ const UserControllers = {
     create: async (req, res) => {
         const data = req.body;
 
-        if (req.file) data.photo = req.file.filename;
+        if (req.file) {
+            data.photo = req.file.filename;
+        } else {
+            data.photo = "userNull.png";
+        }
 
         const createUser = await UserServices.saveUser(data);
 
