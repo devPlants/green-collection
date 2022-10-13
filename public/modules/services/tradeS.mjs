@@ -11,7 +11,7 @@ export const tradeS = async (productId) => {
         };
 
         const productDetail = await fetch(
-            `http://localhost:8000/products/${productId}`,
+            `/products/${productId}`,
             options
         );
 
@@ -82,7 +82,7 @@ const tradeList = async (_page) => {
             Math.ceil(userProducts[0].total / 9) < 1
                 ? 1
                 : Math.ceil(userProducts[0].total / 9);
-        const divPaginate = '<div id="detail-paginate">//</div>';
+        const divPaginate = '<div class="detail-paginate">//</div>';
 
         for (let i = 1; i <= indices; i++) {
             pagination += `<span style="font-weight: bold; cursor: pointer; text-align: center;" onclick="renderPage.tradePagination('${i}')">  ${i}  </span>`;

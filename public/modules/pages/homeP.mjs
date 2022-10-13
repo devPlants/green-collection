@@ -41,12 +41,12 @@ export function homeMainHTML(_cardsCollection) {
 
             <section class="collection-section">
                 <h2>Sua coleção</h2>
-                <div class="collection-cards-container">
+                <div class="collection-cards-container" id=cards-home-paginate>
 
                     <div class="collection-card" id="create-card" onclick="renderPage.modalCreate()">
                         <img src="./assets/imgs/add.png" alt="" width="42px" height="64px">
                         <span>Adicionar à coleção</span>
-                    </div>              
+                    </div>           
 
                     ${_cardsCollection}
 

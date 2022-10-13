@@ -18,7 +18,7 @@ export const approvalList = (data) => {
     return `
     <div class="toApprove-container">
         <div class="toApprove-product-owner">
-            <div class="product-owner-photo" style="background-image: url(http://localhost:8000/files/${data.userPhoto});"></div>
+            <div class="product-owner-photo" style="background-image: url(/files/${data.userPhoto});"></div>
                 <span>${data.userName}</span>
                 <span>${data.userCity}, ${data.userState}</span>
             </div>
@@ -26,7 +26,7 @@ export const approvalList = (data) => {
                 <span>Usuário adicionou um produto</span>
                 <img src="./assets/imgs/right-arrow.png" alt="">
             </div>
-            <div class="toApprove-product" style="background-image: url(http://localhost:8000/files/${data.productPhoto});">
+            <div class="toApprove-product" style="background-image: url(/files/${data.productPhoto});">
             </div>
             <div class="product-info">
                 <input type="text" id="name-product" name="product" style="padding-left: 10px;" value="${data.productName}" disabled>

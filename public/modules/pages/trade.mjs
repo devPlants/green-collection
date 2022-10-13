@@ -57,7 +57,7 @@ async function getCollection() {
     };
     try {
         const response = await fetch(
-            "http://localhost:8000/collections/?rows=9&page=1",
+            "/collections/?rows=9&page=1",
             options
         );
         const data = await response.json();
