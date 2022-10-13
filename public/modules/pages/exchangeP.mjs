@@ -39,7 +39,7 @@ const exchangeList = (data) => {
                     ${data.res}
                 </div>
                 <div id="trade-users-container">
-                    <div class="trade-user" id="offered-product-user">
+                    <div class="trade-user" id="offered-product-user" onclick="alert('aaaaa')">
                         <div class="user-trade-photo" id="offered-product-user-photo" style="background-image: url(http://localhost:8000/files/${data.userPhoto1});"></div>
                         <span>${data.userName1}</span>
                         <span>${data.userCity1}, ${data.userState1}</span>
