@@ -6,3 +6,5 @@ temp/
 .env
 coverage
 dist
+
+uploads/
