@@ -4,7 +4,7 @@ import { modalAlert } from "./modules/modalAlert.mjs";
 import { loginToken } from "./modules/loginValidation.mjs";
 import { modalCreate } from "./modules/modal.mjs";
 import { addToCollection } from "./modules/addToCollection.mjs";
-import { renderExchanges } from "./modules/pages/exchangeP.mjs";
+import { contact, renderExchanges } from "./modules/pages/exchangeP.mjs";
 import { updateExchanges } from "./modules/updateExchanges.mjs";
 import { printImg } from "./modules/printImg.mjs";
 import { signup, searchCep } from "./modules/signup.mjs";
@@ -233,6 +233,7 @@ window.renderPage = {
     responseExchanges: updateExchanges,
     updatePass: updatePass,
     renderHomePaginate: renderHomePaginate,
+    contact: contact,
 
     updateUser: renderPages.updateUser,
     login: renderPages.login,

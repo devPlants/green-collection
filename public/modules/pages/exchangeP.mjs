@@ -62,11 +62,58 @@ const exchangeList = (data) => {
     `;
 };
 
+export const contact = (userName2, userPhoto1, userName1, userEmail1, userPhone1 ) => {
+
+    const div = document.createElement('div');
+    document.querySelector('main').appendChild(div);
+    div.id= 'modalContact';
+
+    
+    
+    div.innerHTML = ` <div class="modal" style="display: block;">
+
+        <div class="modal-endExchange">
+            <span class="close-btn">×</span>
+            <h2>${userName2}, Parabéns pela troca realizada!</h2>
+
+            <div class="endExchange-wrapper">
+
+                <div class="endExchange-msg-container">
+                    <p>Para detalhes de envio, entre em contato com o "Green Colecionador" abaixo:</p>
+                </div>
+                <div class="endExchange-user">
+                    <div class="endExchangeUser-photo-container" style="background-image: url(http://localhost:8000/files/${userPhoto1});"></div>
+
+                    <div class="endExchange-user-data">
+                        <span>Nome: ${userName1}</span>
+                        <span>Email: ${userEmail1}</span>
+                        <span>Telefone:${userPhone1}</span>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+    </div>
+
+`;
+
+const bntCloseModal = document.querySelector('.close-btn').addEventListener('click', ()=>{
+    if (document.querySelector('#modalContact')) {
+        div.parentNode.removeChild(div);
+    }
+})
+
+}
+
+
+
+
 export const renderExchanges = async (status) => {
     document.querySelector(".menu-user-header").classList.remove("displayFlex");
     const main = document.querySelector("main");
     main.innerHTML = exchange();
     const divExchanges = document.querySelector("#exchanges-container");
+    
 
     try {
         const options = {
@@ -121,6 +168,8 @@ export const renderExchanges = async (status) => {
                     'rejected', 
                     '${trade.id}'
                     )">Rejeitar</button>`,
+                userPhone1: trade.user1.user_phone_number,
+                userEmail1: trade.user1.user_email
             };
 
             if (status != "pending") {
@@ -131,18 +180,19 @@ export const renderExchanges = async (status) => {
                             trade.status === "approved"
                         ) {
                             dataExchanges.res = `
-                            <p id="trade-status" style="background-color: #01760D; color: #ffffff">Solicitação aceita</p>
+                            <p id="trade-status" onclick= "renderPage.contact('${dataExchanges.userName2}', '${dataExchanges.userPhoto1}', '${dataExchanges.userName1}', '${dataExchanges.userEmail1}', '${dataExchanges.userPhone1}' )" style="background-color: #01760D; color: #ffffff">Solicitação aceita</p>
                             `;
                             const list = exchangeList(dataExchanges);
                             divExchanges.innerHTML += list;
+                            
                         }
 
                         if (
                             trade.user1.users_id === id &&
                             trade.status === "approved"
                         ) {
-                            dataExchanges.res = `<p id="trade-status" style="background-color: #01760D; color: #ffffff">Solicitação aceita</p>`;
-
+                            dataExchanges.res = `<p id="trade-status" onclick= "renderPage.contact('${dataExchanges.userName2}', '${dataExchanges.userPhoto1}', '${dataExchanges.userName1}', '${dataExchanges.userEmail1}', '${dataExchanges.userPhone1}' )" style="background-color: #01760D; color: #ffffff">Solicitação aceita</p>`;
+                            dataExchanges.status = "finish";
                             const list = exchangeList(dataExchanges);
 
                             divExchanges.innerHTML += list;
