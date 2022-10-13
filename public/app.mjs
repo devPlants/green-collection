@@ -178,8 +178,7 @@ export async function renderHomeBySignup(_token, _userId) {
     renderPages.home();
     setTimeout(() => {
         window.renderPage.modalAlert(
-            `Olá ${
-                dataUser.name.split(" ")[0]
+            `Olá ${dataUser.name.split(" ")[0]
             }, bem vindo(a) ao Green Collection :)`,
             "green"
         );
@@ -250,10 +249,9 @@ window.renderPage = {
 };
 
 function closeDropDown() {
-    if (document.querySelector(".menu-user-header")) {
-        document
-            .querySelector(".menu-user-header")
-            .classList.remove("displayFlex");
+    if (document.querySelector(".menu-user-header") &&
+        document.querySelector(".displayFlex")) {
+        document.querySelector(".menu-user-header").classList.remove("displayFlex");
     }
 }
 

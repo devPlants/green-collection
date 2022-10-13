@@ -25,7 +25,7 @@ export function homeHeaderHTML(_name, _email, _photo) {
                 <img src="./assets/imgs/logo.png" height="48px" width="48px" alt="logo">
             </div>
                 
-            <div class="searchbar-container">
+            <div class="searchbar-container" onclick="renderPage.closeDropDown()">
                 <input type="text" id="searchbar">
                 <span class="material-symbols-outlined" id="search-btn" onclick='renderPage.searchBtn()'>search</span>
             </div>
@@ -59,7 +59,7 @@ export function homeHeaderAdminHTML(_name, _email, _photo) {
                     <img src="./assets/imgs/logo.png" height="48px" width="48px" alt="logo">
                 </div>
                 
-                <div class="searchbar-container">
+                <div class="searchbar-container" onclick="renderPage.closeDropDown()">
                     <input type="text" id="searchbar">
                     <span class="material-symbols-outlined" id="search-btn" onclick='renderPage.searchBtn()'>search</span>
                 </div>
