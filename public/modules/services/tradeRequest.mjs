@@ -18,7 +18,7 @@ export const selectProduct = (id) => {
 };
 
 export const askTrade = async (product) => {
-    if (!productId) return alert("Selecione um produto");
+    if (!productId) return window.renderPage.modalAlert('Selecione um produto','red');
 
     try {
         const options = {
