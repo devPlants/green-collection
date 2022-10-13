@@ -23,7 +23,7 @@ export const searchS = async (data) => {
             },
         };
         const search = await fetch(
-            `http://localhost:8000/search/?rows=8&page=${data.page}${url}`,
+            `/search/?rows=8&page=${data.page}${url}`,
             options
         );
         const response = await search.json();

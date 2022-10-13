@@ -33,7 +33,7 @@ export function homeHeaderHTML(_name, _email, _photo) {
             <div id="div-login">
                 <div class="profile-container" onclick="renderPage.activeDropdown()">
 
-                    <div style='width: 36px; height: 36px; background-size: cover; background-image: url("http://localhost:8000/files/${_photo}"); border-radius: 50%;'></div>
+                    <div style='width: 36px; height: 36px; background-size: cover; background-image: url("/files/${_photo}"); border-radius: 50%;'></div>
 
                     <div class="login-container">
                         <span>${_name}</span>
@@ -67,7 +67,7 @@ export function homeHeaderAdminHTML(_name, _email, _photo) {
                 <div id="div-login">
                 <div class="profile-container" onclick="renderPage.activeDropdown()">
 
-                    <div style='width: 36px; height: 36px; background-size: cover; background-image: url("http://localhost:8000/files/${_photo}"); border-radius: 50%;'></div>
+                    <div style='width: 36px; height: 36px; background-size: cover; background-image: url("/files/${_photo}"); border-radius: 50%;'></div>
 
                     <div class="login-container">
                         <span>${_name}</span>

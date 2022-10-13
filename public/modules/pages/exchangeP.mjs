@@ -26,7 +26,7 @@ const exchangeList = (data) => {
         <div id="trade-wrapper">
             <div class="trade-container">
                 <div id="trade-products-container">
-                    <div class="trade-product" id="offered-product" style="background-image: url(http://localhost:8000/files/${
+                    <div class="trade-product" id="offered-product" style="background-image: url(/files/${
                         data.productPhoto1
                     });">
                     </div>
@@ -34,7 +34,7 @@ const exchangeList = (data) => {
                         <img src="./assets/imgs/right-arrow.png" alt="">
                         <img src="./assets/imgs/left-arrow.png" alt="">
                     </div>
-                    <div class="trade-product" id="requested-product" style="background-image: url(http://localhost:8000/files/${
+                    <div class="trade-product" id="requested-product" style="background-image: url(/files/${
                         data.productPhoto2
                     });">
                     </div>
@@ -44,7 +44,7 @@ const exchangeList = (data) => {
                 </div>
                 <div id="trade-users-container">
                     <div class="trade-user" id="offered-product-user">
-                        <div class="user-trade-photo" id="offered-product-user-photo" style="background-image: url(http://localhost:8000/files/${
+                        <div class="user-trade-photo" id="offered-product-user-photo" style="background-image: url(/files/${
                             data.userPhoto1
                         });"></div>
                         <span>${data.userName1}</span>
@@ -62,7 +62,7 @@ const exchangeList = (data) => {
                         </div>
                     </div>
                     <div class="trade-user" id="requested-product-user">
-                        <div class="user-trade-photo" id="requested-product-user-photo" style="background-image: url(http://localhost:8000/files/${
+                        <div class="user-trade-photo" id="requested-product-user-photo" style="background-image: url(/files/${
                             data.userPhoto2
                         });"></div>
                         <span>${data.userName2}</span>
