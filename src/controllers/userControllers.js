@@ -3,10 +3,12 @@ const UserServices = require("../services/userServices.js");
 const UserControllers = {
     create: async (req, res) => {
         const data = req.body;
-        
+
         if (req.file) {
             data.photo = req.file.filename;
-        } else { data.photo = 'userNull.png' }
+        } else {
+            data.photo = "userNull.png";
+        }
 
         const createUser = await UserServices.saveUser(data);
 
@@ -53,7 +55,9 @@ const UserControllers = {
         const id = req.userId;
         const data = req.body;
 
-        if (req.file != undefined) { data.photo = req.file.filename }
+        if (req.file != undefined) {
+            data.photo = req.file.filename;
+        }
 
         data.updated_at = new Date();
         data.id = id;
