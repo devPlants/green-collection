@@ -3,7 +3,7 @@ export const tradeP = (data) => {
     <div id="align-trade">
     <section class="trade-page-section">
 <div class="trade-req-container">
-    <div id="trade-req-img" style="background-image: url(http://localhost:8000/files/${data.productPhoto});"></div>
+    <div id="trade-req-img" style="background-image: url(/files/${data.productPhoto});"></div>
     <div id="trade-req-info">
         <p><span>Dono:</span> ${data.userName}</p>
         <p><span>${data.category}:</span> ${data.productName}</p>
@@ -38,6 +38,6 @@ export const tradeP = (data) => {
 
 export const tradeUserProducts = (data) => {
     return `
-    <div class="offer-products-ondisplay" id="${data.id}" onclick="renderPage.selectProduct('${data.id}')" style="background-image: url(http://localhost:8000/files/${data.image});"></div>
+    <div class="offer-products-ondisplay" id="${data.id}" onclick="renderPage.selectProduct('${data.id}')" style="background-image: url(/files/${data.image});"></div>
     `;
 };

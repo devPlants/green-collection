@@ -31,7 +31,7 @@ export const askTrade = async (product) => {
         };
 
         const response = await fetch(
-            "http://localhost:8000/exchanges",
+            "/exchanges",
             options
         );
 

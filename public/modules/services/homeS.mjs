@@ -34,7 +34,7 @@ async function homePaginate(_page) {
 
         data.forEach((card) => {
             cardsCollection += `<div class="collection-card product-card">
-                                    <div class="img-procuct-card" style='background-image: url("http://localhost:8000/files/${card.product_photo}");'></div>
+                                    <div class="img-procuct-card" style='background-image: url("/files/${card.product_photo}");'></div>
                                     <span><strong>${card.product_name}</strong> <br> ${card.users_city}, ${card.user_state}</span>
                                 </div>`;
         });

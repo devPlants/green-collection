@@ -11,7 +11,7 @@ export const tradeS = async (productId) => {
         };
 
         const productDetail = await fetch(
-            `http://localhost:8000/products/${productId}`,
+            `/products/${productId}`,
             options
         );
 

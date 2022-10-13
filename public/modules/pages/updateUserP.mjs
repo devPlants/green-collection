@@ -63,7 +63,7 @@ export function updateMainHTML(dataUser) {
 
                     </div>
                     <div class="photo-wrapper">
-                        <div class="photo-container" style='background-size: cover; background-image: url(http://localhost:8000/files/${dataUser.photo});'>
+                        <div class="photo-container" style='background-size: cover; background-image: url(/files/${dataUser.photo});'>
                         </div>
                         <label for='photo-btn' class="label-for-photo-btn"> Alterar Foto</label>
                         <input id="photo-btn" type="file" name="photo">

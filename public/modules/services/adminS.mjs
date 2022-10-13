@@ -11,7 +11,7 @@ export const adminS = async () => {
                 authorization: `${document.cookie}`,
             },
         };
-        const pendents = await fetch(`http://localhost:8000/admins`, options);
+        const pendents = await fetch(`/admins`, options);
         const response = await pendents.json();
 
         for (const list of response) {
@@ -45,7 +45,7 @@ export const approvalAdmin = async (userId, productId, status) => {
             body: `{"userId":"${userId}","productId":"${productId}","status":"${status}"}`,
         };
 
-        const response = await fetch("http://localhost:8000/admins", options);
+        const response = await fetch("/admins", options);
     } catch (err) {
         console.log("Erro ao atualizar adminS => ", err);
     } finally {
