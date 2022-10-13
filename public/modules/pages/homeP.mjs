@@ -1,5 +1,5 @@
 export function homeMainHTML(_cardsCollection) {
-    return `<section class="title-card">
+    return `<section class="title-card-logged">
                 <div class="title-container">
                     <h2>Encontre as plantas que sua coleção precisa</h2>
                 </div>
