@@ -101,9 +101,6 @@ const Users = {
                 "/",
                 helpQuery.columns.slice(0, -1)
             );
-
-            console.log(sql, helpQuery.values);
-
             await client.query(sql, helpQuery.values);
 
             return { status: 204, response: "User updated" };

@@ -23,7 +23,7 @@ const collections = {
             const client = await db;
             const query = `
                 SELECT users_id, products_id, p.name as product_name, p.category, p.photo  as product_photo, 
-                p.description, p.created_at, u.name as user_name, u.photo as user_photo, 
+                p.description, p.created_at, u.name as user_name, u.email, u.phone_number, u.photo as user_photo, 
                 u.city as user_city, u.state as user_state 
 
                 FROM collections c
