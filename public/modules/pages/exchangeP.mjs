@@ -26,17 +26,15 @@ const exchangeList = (data) => {
         <div id="trade-wrapper">
             <div class="trade-container">
                 <div id="trade-products-container">
-                    <div class="trade-product" id="offered-product" style="background-image: url(/files/${
-                        data.productPhoto1
-                    });">
+                    <div class="trade-product" id="offered-product" style="background-image: url(/files/${data.productPhoto1
+        });">
                     </div>
                     <div id="arrow-exchanges">
                         <img src="./assets/imgs/right-arrow.png" alt="">
                         <img src="./assets/imgs/left-arrow.png" alt="">
                     </div>
-                    <div class="trade-product" id="requested-product" style="background-image: url(/files/${
-                        data.productPhoto2
-                    });">
+                    <div class="trade-product" id="requested-product" style="background-image: url(/files/${data.productPhoto2
+        });">
                     </div>
                 </div>
                 <div id="exchanges-options-btn">
@@ -44,27 +42,24 @@ const exchangeList = (data) => {
                 </div>
                 <div id="trade-users-container">
                     <div class="trade-user" id="offered-product-user">
-                        <div class="user-trade-photo" id="offered-product-user-photo" style="background-image: url(/files/${
-                            data.userPhoto1
-                        });"></div>
+                        <div class="user-trade-photo" id="offered-product-user-photo" style="background-image: url(/files/${data.userPhoto1
+        });"></div>
                         <span>${data.userName1}</span>
                         <span>${data.userCity1}, ${data.userState1}</span>
                     </div>
                     <div id="arrow-exchanges-users">
-                        <span>${
-                            data.status == "finish"
-                                ? data.userName2
-                                : data.userName1
-                        } solicitou uma troca</span>
+                        <span>${data.status == "finish"
+            ? data.userName2
+            : data.userName1
+        } solicitou uma troca</span>
                         <div id="arrow-users">
                             <img src="./assets/imgs/right-arrow.png" alt="" width="25px">
                             <img src="./assets/imgs/left-arrow.png" alt="" width="25px">
                         </div>
                     </div>
                     <div class="trade-user" id="requested-product-user">
-                        <div class="user-trade-photo" id="requested-product-user-photo" style="background-image: url(/files/${
-                            data.userPhoto2
-                        });"></div>
+                        <div class="user-trade-photo" id="requested-product-user-photo" style="background-image: url(/files/${data.userPhoto2
+        });"></div>
                         <span>${data.userName2}</span>
                         <span>${data.userCity2}, ${data.userState2}</span>
                     </div>
@@ -74,14 +69,14 @@ const exchangeList = (data) => {
     `;
 };
 
-export const contact = (userName2, userPhoto1, userName1, userEmail1, userPhone1 ) => {
+export const contact = (userName2, userPhoto1, userName1, userEmail1, userPhone1) => {
 
     const div = document.createElement('div');
     document.querySelector('main').appendChild(div);
-    div.id= 'modalContact';
+    div.id = 'modalContact';
 
-    
-    
+
+
     div.innerHTML = ` <div class="modal" style="display: block;">
 
         <div class="modal-endExchange">
@@ -109,11 +104,11 @@ export const contact = (userName2, userPhoto1, userName1, userEmail1, userPhone1
 
 `;
 
-const bntCloseModal = document.querySelector('.close-btn').addEventListener('click', ()=>{
-    if (document.querySelector('#modalContact')) {
-        div.parentNode.removeChild(div);
-    }
-})
+    const bntCloseModal = document.querySelector('.close-btn').addEventListener('click', () => {
+        if (document.querySelector('#modalContact')) {
+            div.parentNode.removeChild(div);
+        }
+    })
 
 }
 
@@ -121,11 +116,12 @@ const bntCloseModal = document.querySelector('.close-btn').addEventListener('cli
 
 
 export const renderExchanges = async (status) => {
-    document.querySelector(".menu-user-header").classList.remove("displayFlex");
+    window.renderPage.closeDropDown();
+    
     const main = document.querySelector("main");
     main.innerHTML = exchange();
     const divExchanges = document.querySelector("#exchanges-container");
-    
+
 
     try {
         const options = {
@@ -197,7 +193,7 @@ export const renderExchanges = async (status) => {
                             dataExchanges.status = "finish";
                             const list = exchangeList(dataExchanges);
                             divExchanges.innerHTML += list;
-                            
+
                         }
 
                         if (

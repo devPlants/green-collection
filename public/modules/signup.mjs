@@ -2,7 +2,7 @@ import { renderHomeBySignup } from "../app.mjs";
 
 export async function searchCep(){
     const cep =  document.getElementById("cepInputUser").value;
-    const url = `http://viacep.com.br/ws/${cep}/json/`;
+    const url = `https://viacep.com.br/ws/${cep}/json/`;
     const data = await fetch(url);
     const address = await data.json();
     
@@ -60,10 +60,10 @@ export async function signup() {
         return 400;
     }
 
-    if (form.get('photo').name == '') {
-        window.renderPage.modalAlert('Adicione sua foto!', 'red');
-        return 400;
-    }
+    // if (form.get('photo').name == '') {
+    //     window.renderPage.modalAlert('Adicione sua foto!', 'red');
+    //     return 400;
+    // }
 
     const options = {
         method: 'POST'

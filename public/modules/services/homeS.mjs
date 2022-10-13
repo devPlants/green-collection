@@ -47,7 +47,7 @@ async function homePaginate(_page) {
             `Ocorreu um erro ao carregar sua coleção, recarregue a página ou contacte o administrador! Erro: ${err}`,
             "red"
         );
-        return 400;
+        return '';
     }
 }
 
