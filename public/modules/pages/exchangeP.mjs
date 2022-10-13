@@ -26,43 +26,33 @@ const exchangeList = (data) => {
         <div id="trade-wrapper">
             <div class="trade-container">
                 <div id="trade-products-container">
-                    <div class="trade-product" id="offered-product" style="background-image: url(/files/${
-                        data.productPhoto1
-                    });">
+                    <div class="trade-product" id="offered-product" style="background-image: url(http://localhost:8000/files/${data.productPhoto1});">
                     </div>
                     <div id="arrow-exchanges">
                         <img src="./assets/imgs/right-arrow.png" alt="">
                         <img src="./assets/imgs/left-arrow.png" alt="">
                     </div>
-                    <div class="trade-product" id="requested-product" style="background-image: url(/files/${
-                        data.productPhoto2
-                    });">
+                    <div class="trade-product" id="requested-product" style="background-image: url(http://localhost:8000/files/${data.productPhoto2});">
                     </div>
                 </div>
                 <div id="exchanges-options-btn">
                     ${data.res}
                 </div>
                 <div id="trade-users-container">
-                    <div class="trade-user" id="offered-product-user" onclick="alert('aaaaa')">
+                    <div class="trade-user" id="offered-product-user">
                         <div class="user-trade-photo" id="offered-product-user-photo" style="background-image: url(http://localhost:8000/files/${data.userPhoto1});"></div>
                         <span>${data.userName1}</span>
                         <span>${data.userCity1}, ${data.userState1}</span>
                     </div>
                     <div id="arrow-exchanges-users">
-                        <span>${
-                            data.status == "finish"
-                                ? data.userName2
-                                : data.userName1
-                        } solicitou uma troca</span>
+                        <span>${data.userName1} solicitou uma troca</span>
                         <div id="arrow-users">
                             <img src="./assets/imgs/right-arrow.png" alt="" width="25px">
                             <img src="./assets/imgs/left-arrow.png" alt="" width="25px">
                         </div>
                     </div>
                     <div class="trade-user" id="requested-product-user">
-                        <div class="user-trade-photo" id="requested-product-user-photo" style="background-image: url(/files/${
-                            data.userPhoto2
-                        });"></div>
+                        <div class="user-trade-photo" id="requested-product-user-photo" style="background-image: url(http://localhost:8000/files/${data.userPhoto2});"></div>
                         <span>${data.userName2}</span>
                         <span>${data.userCity2}, ${data.userState2}</span>
                     </div>
@@ -143,7 +133,6 @@ export const renderExchanges = async (status) => {
                             dataExchanges.res = `
                             <p id="trade-status" style="background-color: #01760D; color: #ffffff">Solicitação aceita</p>
                             `;
-                            dataExchanges.status = "finish";
                             const list = exchangeList(dataExchanges);
                             divExchanges.innerHTML += list;
                         }
@@ -153,7 +142,7 @@ export const renderExchanges = async (status) => {
                             trade.status === "approved"
                         ) {
                             dataExchanges.res = `<p id="trade-status" style="background-color: #01760D; color: #ffffff">Solicitação aceita</p>`;
-                            dataExchanges.status = "finish";
+
                             const list = exchangeList(dataExchanges);
 
                             divExchanges.innerHTML += list;
