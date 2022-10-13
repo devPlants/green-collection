@@ -3,7 +3,11 @@ const UserServices = require("../services/userServices.js");
 const UserControllers = {
     create: async (req, res) => {
         const data = req.body;
-        data.photo = req.file.filename;
+        
+        if (req.file) {
+            data.photo = req.file.filename;
+        } else { data.photo = 'userNull.png' }
+
         const createUser = await UserServices.saveUser(data);
 
         if (createUser.status > 300) {

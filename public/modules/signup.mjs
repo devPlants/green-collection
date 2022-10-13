@@ -1,11 +1,11 @@
 import { renderHomeBySignup } from "../app.mjs";
 
-export async function searchCep(){
-    const cep =  document.getElementById("cepInputUser").value;
+export async function searchCep() {
+    const cep = document.getElementById("cepInputUser").value;
     const url = `https://viacep.com.br/ws/${cep}/json/`;
     const data = await fetch(url);
     const address = await data.json();
-    
+
     document.getElementById("addressInputUser").value = address.logradouro;
     document.getElementById("districtInputUser").value = address.bairro;
     document.getElementById("cityInputUser").value = address.localidade;
@@ -16,7 +16,7 @@ export async function signup() {
     const emailUser = document.querySelector("#email-input");
     const passwordUser = document.querySelector("#password-input");
 
-    const forms = document.querySelector('#form-signup')
+    const forms = document.querySelector('#form-signup');
 
     const form = new FormData(forms);
 

@@ -51,7 +51,6 @@ const renderPages = {
 
     home: async () => {
         closeDropDown();
-        console.log("dados => ", dataUser);
 
         if (
             document.querySelector("#email-input") &&
