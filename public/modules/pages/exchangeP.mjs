@@ -26,15 +26,17 @@ const exchangeList = (data) => {
         <div id="trade-wrapper">
             <div class="trade-container">
                 <div id="trade-products-container">
-                    <div class="trade-product" id="offered-product" style="background-image: url(/files/${data.productPhoto1
-        });">
+                    <div class="trade-product" id="offered-product" style="background-image: url(/files/${
+                        data.productPhoto1
+                    });">
                     </div>
                     <div id="arrow-exchanges">
                         <img src="./assets/imgs/right-arrow.png" alt="">
                         <img src="./assets/imgs/left-arrow.png" alt="">
                     </div>
-                    <div class="trade-product" id="requested-product" style="background-image: url(/files/${data.productPhoto2
-        });">
+                    <div class="trade-product" id="requested-product" style="background-image: url(/files/${
+                        data.productPhoto2
+                    });">
                     </div>
                 </div>
                 <div id="exchanges-options-btn">
@@ -42,24 +44,27 @@ const exchangeList = (data) => {
                 </div>
                 <div id="trade-users-container">
                     <div class="trade-user" id="offered-product-user">
-                        <div class="user-trade-photo" id="offered-product-user-photo" style="background-image: url(/files/${data.userPhoto1
-        });"></div>
+                        <div class="user-trade-photo" id="offered-product-user-photo" style="background-image: url(/files/${
+                            data.userPhoto1
+                        });"></div>
                         <span>${data.userName1}</span>
                         <span>${data.userCity1}, ${data.userState1}</span>
                     </div>
                     <div id="arrow-exchanges-users">
-                        <span>${data.status == "finish"
-            ? data.userName2
-            : data.userName1
-        } solicitou uma troca</span>
+                        <span>${
+                            data.status == "finish"
+                                ? data.userName2
+                                : data.userName1
+                        } solicitou uma troca</span>
                         <div id="arrow-users">
                             <img src="./assets/imgs/right-arrow.png" alt="" width="25px">
                             <img src="./assets/imgs/left-arrow.png" alt="" width="25px">
                         </div>
                     </div>
                     <div class="trade-user" id="requested-product-user">
-                        <div class="user-trade-photo" id="requested-product-user-photo" style="background-image: url(/files/${data.userPhoto2
-        });"></div>
+                        <div class="user-trade-photo" id="requested-product-user-photo" style="background-image: url(/files/${
+                            data.userPhoto2
+                        });"></div>
                         <span>${data.userName2}</span>
                         <span>${data.userCity2}, ${data.userState2}</span>
                     </div>
@@ -69,13 +74,16 @@ const exchangeList = (data) => {
     `;
 };
 
-export const contact = (userName2, userPhoto1, userName1, userEmail1, userPhone1) => {
-
-    const div = document.createElement('div');
-    document.querySelector('main').appendChild(div);
-    div.id = 'modalContact';
-
-
+export const contact = (
+    userName2,
+    userPhoto1,
+    userName1,
+    userEmail,
+    userPhone
+) => {
+    const div = document.createElement("div");
+    document.querySelector("main").appendChild(div);
+    div.id = "modalContact";
 
     div.innerHTML = ` <div class="modal" style="display: block;">
 
@@ -93,8 +101,8 @@ export const contact = (userName2, userPhoto1, userName1, userEmail1, userPhone1
 
                     <div class="endExchange-user-data">
                         <span>Nome: ${userName1}</span>
-                        <span>Email: ${userEmail1}</span>
-                        <span>Telefone:${userPhone1}</span>
+                        <span>Email: ${userEmail}</span>
+                        <span>Telefone:${userPhone}</span>
                     </div>
                 </div>
             </div>
@@ -104,24 +112,21 @@ export const contact = (userName2, userPhoto1, userName1, userEmail1, userPhone1
 
 `;
 
-    const bntCloseModal = document.querySelector('.close-btn').addEventListener('click', () => {
-        if (document.querySelector('#modalContact')) {
-            div.parentNode.removeChild(div);
-        }
-    })
-
-}
-
-
-
+    const bntCloseModal = document
+        .querySelector(".close-btn")
+        .addEventListener("click", () => {
+            if (document.querySelector("#modalContact")) {
+                div.parentNode.removeChild(div);
+            }
+        });
+};
 
 export const renderExchanges = async (status) => {
     window.renderPage.closeDropDown();
-    
+
     const main = document.querySelector("main");
     main.innerHTML = exchange();
     const divExchanges = document.querySelector("#exchanges-container");
-
 
     try {
         const options = {
@@ -176,8 +181,10 @@ export const renderExchanges = async (status) => {
                     'rejected', 
                     '${trade.id}'
                     )">Rejeitar</button>`,
-                userPhone1: trade.user1.user_phone_number,
-                userEmail1: trade.user1.user_email
+                userPhone1: trade.user1.phone_number,
+                userEmail1: trade.user1.email,
+                userPhone2: trade.user2.phone_number,
+                userEmail2: trade.user2.email,
             };
 
             if (status != "pending") {
@@ -188,19 +195,19 @@ export const renderExchanges = async (status) => {
                             trade.status === "approved"
                         ) {
                             dataExchanges.res = `
-                            <p id="trade-status" onclick= "renderPage.contact('${dataExchanges.userName2}', '${dataExchanges.userPhoto1}', '${dataExchanges.userName1}', '${dataExchanges.userEmail1}', '${dataExchanges.userPhone1}' )" style="background-color: #01760D; color: #ffffff">Solicitação aceita</p>
+                            <p id="trade-status" onclick= "renderPage.contact('${dataExchanges.userName2}', '${dataExchanges.userPhoto1}', '${dataExchanges.userName1}', '${dataExchanges.userEmail1}', '${dataExchanges.userPhone1}' )" style="background-color: #01760D; color: #ffffff; cursor: pointer;">Solicitação aceita</p>
                             `;
                             dataExchanges.status = "finish";
                             const list = exchangeList(dataExchanges);
                             divExchanges.innerHTML += list;
-
                         }
 
                         if (
                             trade.user1.users_id === id &&
                             trade.status === "approved"
                         ) {
-                            dataExchanges.res = `<p id="trade-status" onclick= "renderPage.contact('${dataExchanges.userName2}', '${dataExchanges.userPhoto1}', '${dataExchanges.userName1}', '${dataExchanges.userEmail1}', '${dataExchanges.userPhone1}' )" style="background-color: #01760D; color: #ffffff">Solicitação aceita</p>`;
+                            dataExchanges.res = `<p id="trade-status" onclick= "renderPage.contact('${dataExchanges.userName1}', '${dataExchanges.userPhoto2}', '${dataExchanges.userName2}', '${dataExchanges.userEmail2}', '${dataExchanges.userPhone2}' )" style="background-color: #01760D; color: #ffffff; cursor: pointer;">Solicitação aceita</p>
+                            `;
                             dataExchanges.status = "finish";
                             const list = exchangeList(dataExchanges);
 
