@@ -10,7 +10,7 @@ export function modalCreate() {
 
         modal.style.display = 'none';
     })
-// 
+
     function readImage() {
         if (this.files && this.files[0]) {
             const file = new FileReader();
@@ -26,3 +26,4 @@ export function modalCreate() {
     }
     document.querySelector(`${"#add-image-btn"}`).addEventListener("change", readImage, false);
 }
+// 
