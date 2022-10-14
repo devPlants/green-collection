@@ -100,9 +100,9 @@ export const contact = (
                     <div class="endExchangeUser-photo-container" style="background-image: url(http://localhost:8000/files/${userPhoto1});"></div>
 
                     <div class="endExchange-user-data">
-                        <span>Nome: ${userName1}</span>
-                        <span>Email: ${userEmail}</span>
-                        <span>Telefone:${userPhone}</span>
+                        <span><b>Nome:</b> ${userName1}</span>
+                        <span><b>Email:</b> ${userEmail}</span>
+                        <span><b>Telefone:</b> ${userPhone}</span>
                     </div>
                 </div>
             </div>
