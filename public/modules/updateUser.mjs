@@ -48,7 +48,7 @@ export async function updateUser() {
 
     setTimeout(() => {
       window.renderPage.modalAlert(`Dados atualizados com sucesso :)`, 'green');
-    }, 500);
+    }, 900);
     return 200;
 
   } catch (err) {

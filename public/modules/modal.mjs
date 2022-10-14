@@ -10,4 +10,19 @@ export function modalCreate() {
 
         modal.style.display = 'none';
     })
+
+    function readImage() {
+        if (this.files && this.files[0]) {
+            const file = new FileReader();
+            file.onload = function (e) {
+                const photoContainer =
+                    document.querySelector(`${"#add-image"}`);
+                photoContainer.style = `background-image: url(${e.target.result});
+                                        background-size: cover;
+                                        background-position: center;`;
+            };
+            file.readAsDataURL(this.files[0]);
+        }
+    }
+    document.querySelector(`${"#add-image-btn"}`).addEventListener("change", readImage, false);
 }
