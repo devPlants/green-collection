@@ -145,6 +145,11 @@ const renderPages = {
 
         main.innerHTML = await pagesHTML.homeMain();
         printImg("#add-image", "#add-image-btn");
+        cookieStore.getAll().then((cookies) =>
+            cookies.forEach((cookie) => {
+                cookieStore.delete(cookie.name);
+            })
+        );
     },
 
     trade: async (productId) => {
@@ -177,16 +182,13 @@ export async function renderHomeBySignup(_token, _userId) {
     renderPages.home();
     setTimeout(() => {
         window.renderPage.modalAlert(
-            `Olá ${dataUser.name.split(" ")[0]
+            `Olá ${
+                dataUser.name.split(" ")[0]
             }, bem vindo(a) ao Green Collection :)`,
             "green"
         );
     }, 1000);
 }
-
-/* function finallyExchange(productId1, productId2, status, id) {
-    updateExchanges(productId1, productId2, status, id);
-} */
 
 async function login() {
     const response = await loginToken();
@@ -248,9 +250,13 @@ window.renderPage = {
 };
 
 function closeDropDown() {
-    if (document.querySelector(".menu-user-header") &&
-        document.querySelector(".displayFlex")) {
-        document.querySelector(".menu-user-header").classList.remove("displayFlex");
+    if (
+        document.querySelector(".menu-user-header") &&
+        document.querySelector(".displayFlex")
+    ) {
+        document
+            .querySelector(".menu-user-header")
+            .classList.remove("displayFlex");
     }
 }
 
