@@ -20,6 +20,14 @@ async function homePaginate(_page) {
             `/collections/?rows=7&page=${_page}`,
             options
         );
+
+        if (!response.ok) {
+            setTimeout(() => {
+                window.renderPage.login();
+            }, 500);
+            return;
+        }
+
         const data = await response.json();
         const indices =
             Math.ceil(data[0].total / 7) < 1 ? 1 : Math.ceil(data[0].total / 7);
@@ -47,7 +55,7 @@ async function homePaginate(_page) {
             `Ocorreu um erro ao carregar sua coleção, recarregue a página ou contacte o administrador! Erro: ${err}`,
             "red"
         );
-        return '';
+        return "";
     }
 }
 

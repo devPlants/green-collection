@@ -10,6 +10,8 @@ const UserControllers = {
             data.photo = "userNull.png";
         }
 
+        console.log(data);
+
         const createUser = await UserServices.saveUser(data);
 
         if (createUser.status > 300) {
